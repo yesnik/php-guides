@@ -1,4 +1,7 @@
  # microtime()
+ 
+ We can use php function `microtime()` to mesure script execution time.
+ 
  ## Mesure execution time in seconds
  ```php
  $startTime = microtime(true);
