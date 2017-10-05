@@ -18,8 +18,8 @@ if (flock($fp, LOCK_EX | LOCK_NB ) === false ) {
 
 echo "Execute our task...";
 
-sleep ( 5 );
+sleep (5);
 
 echo 'Lock was released';
-fclose ( $fp );
+fclose ($fp);
 ```
