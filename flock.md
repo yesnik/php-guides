@@ -21,5 +21,11 @@ echo "Execute our task...";
 sleep (5);
 
 echo 'Lock was released';
-fclose ($fp);
+
+// We should not call fclose() twice, otherwise there will be error:
+// PHP Error[2]: fclose(): supplied resource is not a valid stream resource
+if (is_resource($fp)) {
+    fclose ($fp);
+}
+
 ```
