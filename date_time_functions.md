@@ -28,7 +28,7 @@ $endDate = strtotime( date('Y-m-d', strtotime('+10 day')) );
 var_dump($startDate <= $date && $date <= $endDate); // true
 ```
 
-## Get age by date of birhth
+## Get age by date of birth
 
 ```php
 /**
