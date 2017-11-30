@@ -27,3 +27,27 @@ $endDate = strtotime( date('Y-m-d', strtotime('+10 day')) );
 
 var_dump($startDate <= $date && $date <= $endDate); // true
 ```
+
+## Get age by date of birhth
+
+```php
+/**
+ * Method returns age by date of birth
+ *
+ * @param string $birthdate - date in format '2017-01-25'
+ * @return null|string
+ */
+function getAge($birthdate)
+{
+    $datetime = date_create(date($birthdate));
+    $datetimeCurrent = date_create(date('Y-m-d'));
+
+    if ($datetime >= $datetimeCurrent) {
+        return null;
+    }
+
+    $interval  = date_diff($datetime, $datetimeCurrent);
+
+    return $interval->format('%y');
+}
+```
