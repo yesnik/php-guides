@@ -26,6 +26,22 @@ $date->modify('+5 minutes');
 echo $date->format('Y-m-d H:i:s'); // Returns string: '2018-01-29 05:08:56'
 ```
 
+### Another examples
+
+```php
+echo date('Y-m-d H:i:s', strtotime('+5 minutes')); // 2018-01-29 06:05:00
+
+echo date('Y-m-d H:i:s', strtotime('+2 hours')); // 2018-01-29 06:00:00
+
+echo date('Y-m-d H:i:s', strtotime('+2 days')); // 2018-01-31 06:00:00
+
+echo date('Y-m-d H:i:s', strtotime('+1 week')); // 2018-02-05 06:00:00
+
+echo date('Y-m-d H:i:s', strtotime('+1 month')); // 2018-03-01 06:00:00
+
+echo date('Y-m-d H:i:s', strtotime('+1 year')); // 2019-01-29 06:00:00
+```
+
 ## Check if date is in interval
 
 ```php
