@@ -18,6 +18,14 @@ echo date('Y-m-d H:i:s', strtotime("-60 minutes")); // Returns string: '2017-11-
 echo date('Y-m-d H:i:s', strtotime('-3 hours')); // Returns string: '2017-11-03 09:00:00'
 ```
 
+### In 5 minutes
+
+```php
+$date = new DateTime();
+$date->modify('+5 minutes');
+echo $date->format('Y-m-d H:i:s'); // Returns string: '2018-01-29 05:08:56'
+```
+
 ## Check if date is in interval
 
 ```php
