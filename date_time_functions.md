@@ -16,10 +16,10 @@ echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 12:15:00'
 ```php
 $dt = new DateTime();
 $dt->setTimezone(new DateTimeZone('UTC'));
-echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 07:15:00
+echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 07:15:00'
 
 $dt->setTimezone(new DateTimeZone('Europe/Moscow'));
-echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 10:15:00
+echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 10:15:00'
 ```
 
 List of timezones: [Asia](http://php.net/manual/en/timezones.asia.php), [Europe](http://php.net/manual/en/timezones.europe.php)
