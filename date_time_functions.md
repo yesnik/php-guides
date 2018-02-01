@@ -81,6 +81,29 @@ $endDate = strtotime( date('Y-m-d', strtotime('+10 day')) );
 var_dump($startDate <= $date && $date <= $endDate); // true
 ```
 
+## Round to nearest minute interval
+
+```php
+function roundToNearestMinuteInterval(\DateTime $dateTime, $minuteInterval = 10)
+{
+    return $dateTime->setTime(
+        $dateTime->format('H'),
+        round($dateTime->format('i') / $minuteInterval) * $minuteInterval,
+        0
+    );
+}
+
+$dt = new DateTime('2018-02-01 16:24:55');
+$roundedDatetime = roundToNearestMinuteInterval($dt, 10);
+echo $roundedDatetime->format('Y-m-d H:i:s'); // returns string '2018-02-01 16:20:00'
+
+$dt = new DateTime('2018-02-01 16:29:00');
+$roundedDatetime = roundToNearestMinuteInterval($dt, 10);
+echo $roundedDatetime->format('Y-m-d H:i:s'); // returns string '2018-02-01 16:30:00'
+```
+
+Another useful functions about rounding time in PHP can be found on [stackoverflow](https://stackoverflow.com/a/40084666).
+
 ## Get age by date of birth
 
 ```php
