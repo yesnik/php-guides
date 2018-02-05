@@ -71,6 +71,17 @@ echo date('Y-m-d H:i:s', strtotime('+1 month')); // 2018-03-01 06:00:00
 echo date('Y-m-d H:i:s', strtotime('+1 year')); // 2019-01-29 06:00:00
 ```
 
+## Difference between dates
+
+### Difference between dates in seconds
+
+```php
+$datetime1 = strtotime('2018-02-05 00:00:00');
+$datetime2 = strtotime('2018-02-05 00:01:30');
+
+echo $datetime2 - $datetime1; // returns integer: 90
+```
+
 ## Check if date is in interval
 
 ```php
