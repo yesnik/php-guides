@@ -1,2 +1,3 @@
-# php_syntax
-PHP Syntax Examples
+# PHP Guides
+
+PHP tips and solutions of common tasks
