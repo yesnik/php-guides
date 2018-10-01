@@ -20,7 +20,7 @@ Check installed version: `php -v`
 These are the most common PHP 7 modules often used by PHP applications:
 
 ```
-sudo apt install php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml libapache2-mod-php
+sudo apt install php-pear php-fpm php-dev php-zip php-curl php-xmlrpc php-gd php-mysql php-mbstring php-xml php-apcu libapache2-mod-php
 ```
 
 ### Manual activation of modules
