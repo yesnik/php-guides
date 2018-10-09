@@ -24,6 +24,7 @@ We have in this setting value `No proxy`.
 3. Install XDebug extension for your browser:
 
 - Google Chrome - [XDebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc)
+- Mozilla - [XDebug helper](https://addons.mozilla.org/en-US/firefox/addon/xdebug-helper-for-firefox/)
 
 ## Ubuntu 18.04
 
