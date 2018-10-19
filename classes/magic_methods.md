@@ -42,6 +42,11 @@ class Cat {
     {
         echo "Attribute {$attr} was called with args: " . print_r($args, true) . PHP_EOL;
     }
+    
+    public function __invoke($city, $age)
+    {
+        echo "Object was invoked: city: $city, age: $age";
+    }
 }
 
 $tom = new Cat;
@@ -62,4 +67,7 @@ unset($tom->bbb); // unset was called for attribute: bbb
 $tom->getSecretName();
 $tom->think(); // Attribute think was called with args: Array()
 $tom->jump('table', 'bed'); // Attribute jump was called with args: Array([0] => table [1] => bed)
+
+$tom('NY', 15); // Object was invoked: city: NY, age: 15
+
 ```
