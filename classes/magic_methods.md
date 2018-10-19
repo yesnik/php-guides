@@ -8,6 +8,16 @@ class Cat {
     public $name;
     protected $nameSecret;
     
+    public function getSecretName()
+    {
+        $this->nameSecret;
+    }
+    
+    protected function think()
+    {
+        echo 'Thinking...';
+    }
+    
     public function __get($attr)
     {
         echo 'Attribute called: ' . $attr . PHP_EOL;
@@ -27,6 +37,11 @@ class Cat {
     {
         echo 'unset was called for attribute: ' . $attr . PHP_EOL;
     }
+    
+    public function __call($attr, $args)
+    {
+        echo "Attribute {$attr} was called with args: " . print_r($args, true) . PHP_EOL;
+    }
 }
 
 $tom = new Cat;
@@ -43,4 +58,8 @@ isset($tom->aaa); // isset was called for attribute: aaa
 
 unset($tom->name);
 unset($tom->bbb); // unset was called for attribute: bbb
+
+$tom->getSecretName();
+$tom->think(); // Attribute think was called with args: Array()
+$tom->jump('table', 'bed'); // Attribute jump was called with args: Array([0] => table [1] => bed)
 ```
