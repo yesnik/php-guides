@@ -48,8 +48,10 @@ xdebug
 [xdebug]
 zend_extension=/usr/lib64/php/modules/xdebug.so
 xdebug.remote_enable=1
+
+; NOTE: This is IP of your PC in local network.
+; It may not be remote address in $_SERVER['REMOTE_ADDR']
 xdebug.remote_host=172.22.10.170
-# xdebug.remote_connect_back=1
 xdebug.remote_port=9009
 xdebug.remote_log="/tmp/debug.log"
 ```
