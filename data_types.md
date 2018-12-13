@@ -17,4 +17,11 @@ Special types:
 value `NULL`
 - **resource**. Certain built-in functions (such as database functions) return variables that have the type
 resource. They represent external resources (such as database connections)
-**callable***. This is essentially a function that is passed to other function.
+- **callable**. This is essentially a function that is passed to other function.
+- **variable variable**. Variable variables enable you to change the name of a variable dynamically:
+
+```
+$hello = 'Hi';
+$action = 'hello';
+echo $$action; // Hi
+```
