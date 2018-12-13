@@ -42,3 +42,11 @@ $sum = [1, 2] + [11, 22, 33]; // [1, 2, 33]
 ```php
 [1, 2] !== ['1', 2]; // true
 ```
+
+## Type operator
+
+```php
+class Cat {};
+$tom = new Cat;
+var_dump($tom instanceof Cat); // true
+```
