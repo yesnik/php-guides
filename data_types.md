@@ -1,5 +1,7 @@
 # PHP Data Types
 
+PHP is called a weakly typed or dynamically typed language. In PHP, the *type* of a variable is determined by the value assigned to it.
+
 PHP supports the following basic data types:
 
 - **Integer**. Used for whole numbers
