@@ -1,5 +1,11 @@
 # PHP script user info
 
+## Gets the name of the owner of the current PHP script
+
+```php
+get_current_user();
+```
+
 ## Get system id of script's runner
 
 Place this in your php-script to define `uid` of user that runs it:
