@@ -1,5 +1,11 @@
 # PHP script user info
 
+## Get the name of script runner
+
+```php
+echo(exec("whoami"));
+```
+
 ## Gets the name of the owner of the current PHP script
 
 ```php
