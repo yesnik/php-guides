@@ -37,17 +37,15 @@ echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 16:55:00
 
 ## Time from now
 
-### 60 minutes ago
+### date
+
 ```php
 echo date('Y-m-d H:i:s', strtotime("-60 minutes")); // Returns string: '2017-11-03 11:00:00'
-```
 
-### 3 hours ago
-```php
 echo date('Y-m-d H:i:s', strtotime('-3 hours')); // Returns string: '2017-11-03 09:00:00'
 ```
 
-### In 5 minutes
+### DateTime
 
 ```php
 $date = new DateTime();
