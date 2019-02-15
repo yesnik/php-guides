@@ -33,4 +33,18 @@ var_dump($reflectionClass->getDocComment()); // Returns:
 // /**
 //  * Class Robot
 //  */
+
+class Robocop extends Robot {
+}
+
+$class = new ReflectionClass('Robocop');
+
+print_r($class->getParentClass());
+/* Returns:
+ReflectionClass Object
+(
+    [name] => Robot
+)
+*/
 ```
+
