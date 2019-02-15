@@ -1,5 +1,7 @@
 # Reflection
 
+PHP is providing a rich Reflection API that makes life easy to reach any area of the OOP structures.
+
 - `ReflectionClass`: reports information about a class
 - `ReflectionFunction`: reports information about a function
 - `ReflectionParameter`: retrieves information about function’s or method’s parameters
@@ -46,5 +48,11 @@ ReflectionClass Object
     [name] => Robot
 )
 */
+
+$method = new ReflectionMethod('Robot', 'getRobotName');
+var_dump($method->getDocComment());
+//  /**
+//   * @return string
+//   */"
 ```
 
