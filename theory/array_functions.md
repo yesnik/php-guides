@@ -1,4 +1,4 @@
-# PHP array methods
+# PHP array functions
 
 ## extract()
 
