@@ -51,6 +51,9 @@ echo $tom->getNickname(); // 'Tom'
 $calculator = new Calculator();
 echo $calculator->add(1, 2); // 3
 
+// We can display all autoload functions
+print_r( spl_autoload_functions() );
+
 // We can unregister autoload function
 spl_autoload_unregister('loadFromClasses');
 
