@@ -5,7 +5,7 @@ In PHP there is an instrument to autoload classes that script sees at first time
 
 ## Before using autoload
 
-Before using the class we need to include it in the script.
+Without autoloading we need to manually include file with desired class in our script.
 
 File `index.php`:
 
