@@ -3,7 +3,7 @@
 In PHP there is an instrument to autoload classes that script sees at first time. 
 
 
-## Before using autoload
+## Without autoload
 
 Without autoloading we need to manually include file with desired class in our script.
 
@@ -24,7 +24,7 @@ $calculator = new Calculator();
 echo $calculator->add(1, 2); // 3
 ```
 
-## After using autoload
+## With autoload
 
 We don't need to `require` each file manually. All we need is to register at least one autoload function.
 
