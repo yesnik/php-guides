@@ -46,4 +46,9 @@ echo $tom->getNickname(); // 'Tom'
 
 $calculator = new Calculator();
 echo $calculator->add(1, 2); // 3
+
+// We can unregister autoload function
+spl_autoload_unregister('loadFromClasses');
+
+$druppy = new Dog('Druppy'); // Fatal error: Uncaught Error: Class 'Dog' not found
 ```
