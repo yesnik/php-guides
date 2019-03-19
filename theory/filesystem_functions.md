@@ -1,6 +1,16 @@
 # PHP Filesystem Functions
 
-## dirname()
+## basename
+
+Returns trailing element of provided path.
+
+```php
+echo basename('/var/www/html/index.php'); // 'index.php'
+echo basename('/var/www/html/'); // 'html'
+var_dump( basename('/') ); // ''
+```
+
+## dirname
 
 Returns absolute path of the parent's directory.
 
