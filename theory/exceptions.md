@@ -18,3 +18,18 @@ function set($key, $value)
 
 set('a', 1); // Fatal error: Uncaught InvalidArgumentException: An uploaded file must be an instance of UploadedFile.
 ```
+
+### LogicException
+
+Exception that represents error in the program logic. This kind of exception should lead directly to a fix in your code. 
+
+```php
+function deliver($amount)
+{
+    if ($amount > 10) {
+        throw new \LogicException('We cannot deliver more than 10 items');
+    }
+}
+
+deliver(15); // Fatal error: Uncaught LogicException: We cannot deliver more than 10 items
+```
