@@ -24,6 +24,31 @@ echo Car::getTitle(); // 'Audi 2017'
 Car::getYear(); // Fatal error:  Call to protected method Car::getYear() from context '' in ...
 ```
 
+## new self vs. new static
+
+- `new self()` - will be executed in the context of the class whom it physically belongs to
+- `new static()` - will be executed in the context of child class
+
+```php
+class Animal {
+    public static function getSelf() {
+        return new self();
+    }
+
+    public static function getStatic() {
+        return new static();
+    }
+}
+
+class Cat extends Animal {}
+
+echo get_class(Cat::getStatic()); // Cat
+echo get_class(Cat::getSelf());  // Animal
+
+echo get_class(Animal::getStatic()); // Animal
+echo get_class(Animal::getSelf()); // Animal
+```
+
 ## Inheritance of static methods
 
 Word `static` helps us to redefine method in subclass.
