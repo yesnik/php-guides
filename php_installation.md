@@ -63,3 +63,6 @@ sudo ln -s /etc/php/7.2/mods-available/apcu.ini /etc/php/7.2/fpm/conf.d/20-apcu.
 apt-cache search --names-only ^php
 ```
 
+## Useful commands
+
+- `php --ini` - show loaded configuration files
