@@ -24,3 +24,23 @@ sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl p
 ```
 php -v
 ```
+
+## Install PHP module
+
+- Find available modules for `SOAP`:
+
+```
+yum search php-soap
+```
+
+- After this we can copy name of found module and install it:
+
+```
+yum install php73-php-soap.x86_64
+```
+
+- Check if module was installed
+
+```
+php -m
+```
