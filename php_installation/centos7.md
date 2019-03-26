@@ -27,6 +27,8 @@ php -v
 
 ## Install PHP module
 
+### Install soap module
+
 - Find available modules for `SOAP`:
 
 ```
@@ -39,7 +41,21 @@ yum search php-soap
 yum install php73-php-soap.x86_64
 ```
 
-- Check if module was installed
+### Install memcached module
+
+- Find available php modules for `memcached`:
+
+```
+yum search php | grep memcached
+```
+
+- Copy name of found module and install it:
+
+```
+yum install php-pecl-memcached.x86_64
+```
+
+### Show installed modules
 
 ```
 php -m
