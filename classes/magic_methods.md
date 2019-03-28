@@ -1,5 +1,7 @@
 # Magic methods in PHP
 
+See [documentation](https://www.php.net/manual/en/language.oop5.magic.php)
+
 PHP class has methods that will be called if attribute is not defined or not public.
 
 ```php
