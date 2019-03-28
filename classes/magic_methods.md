@@ -4,6 +4,42 @@ See [documentation](https://www.php.net/manual/en/language.oop5.magic.php)
 
 PHP class has methods that will be called if attribute is not defined or not public.
 
+## __toString
+
+Method allows a class to decide how it will react when it is treated like a string. For example, what `echo $obj;` will print.
+
+*Without __toString*
+
+```php
+class Cat {}
+
+$tom = new Cat();
+$tom->nickname = 'tom';
+
+//echo $tom; // Recoverable fatal error: Object of class Cat could not be converted to string
+```
+
+*With __toString*
+
+```php
+class Dog
+{
+    public $nickname;
+    
+    public function __toString()
+    {
+        return 'A dog called ' . $this->nickname;
+    }
+}
+
+$spike = new Dog();
+$spike->nickname = 'Spike';
+
+echo $spike; // A dog called Spike
+```
+
+## General example of magic methods
+
 ```php
 <?php
 class Cat {
