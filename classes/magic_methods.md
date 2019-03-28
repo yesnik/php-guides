@@ -45,7 +45,7 @@ class Cat {
     
     public function __invoke($city, $age)
     {
-        echo "Object was invoked: city: $city, age: $age";
+        echo "Object was called as function - args: city: $city, age: $age";
     }
 }
 
@@ -68,6 +68,6 @@ $tom->getSecretName();
 $tom->think(); // Attribute think was called with args: Array()
 $tom->jump('table', 'bed'); // Attribute jump was called with args: Array([0] => table [1] => bed)
 
-$tom('NY', 15); // Object was invoked: city: NY, age: 15
+$tom('NY', 15); // Object was called as function - args: city: NY, age: 15
 
 ```
