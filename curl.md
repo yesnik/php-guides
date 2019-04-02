@@ -42,6 +42,12 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
 $result = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
+// This condition will help us to catch timeout error
+if (curl_errno($ch)) {
+    echo PHP_EOL . "Curl error:" . PHP_EOL;
+    echo curl_error($ch);
+}
+
 curl_close($ch);
 
 echo PHP_EOL . "Response code:" . PHP_EOL;
