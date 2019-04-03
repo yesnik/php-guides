@@ -35,6 +35,72 @@ $dt->setTimezone(new DateTimeZone('Asia/Yekaterinburg'));
 echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 16:55:00
 ```
 
+### Convert time from one timezone to another
+
+**Method 1**
+
+```php
+$dateString = '2019-03-20T09:17:25.000';
+
+$timesoneMoscow = new DateTimeZone('Europe/Moscow'); 
+$date = DateTime::createFromFormat('Y-m-d\TH:i:s.u', $dateString, $timesoneMoscow);
+
+$timezoneYekaterinburg = new DateTimeZone('Asia/Yekaterinburg'); 
+$date->setTimeZone($timezoneYekaterinburg);
+
+echo $date->format('Y-m-d H:i:s'); // 2019-03-20 11:17:25
+```
+
+**Note:** In case of error function [DateTime::createFromFormat](https://www.php.net/manual/en/datetime.createfromformat.php) will return `false`. Use function `DateTime::getLastErrors()` to get the cause of error:
+
+```php
+$date = DateTime::createFromFormat('Y-m-d H:i:s', '2019-03-01 22:30');
+var_dump($date); // bool(false)
+
+print_r(DateTime::getLastErrors());
+/*
+Returns:
+
+Array
+(
+    [warning_count] => 0
+    [warnings] => Array
+        (
+        )
+
+    [error_count] => 1
+    [errors] => Array
+        (
+            [16] => Data missing
+        )
+
+)
+*/
+```
+
+**Method 2**
+
+```php
+// Get current timezone
+$currentTimezone = date_default_timezone_get(); // 'US/Pacific'
+
+// Set timezone we want to convert time to
+date_default_timezone_set('Europe/Moscow');
+
+$dateTime = '2019-03-20T09:17:25.000';
+
+$timestamp = strtotime($dateTime);
+
+$dt = new DateTime();
+$dt->setTimestamp($timestamp);
+$dt->setTimezone(new DateTimeZone('Asia/Yekaterinburg'));
+
+echo $dt->format('Y-m-d H:i:s'); // 2019-03-20 11:17:25
+
+// Set initial settings of timezone
+date_default_timezone_set($currentTimezone);
+```
+
 ## Time from now
 
 ### date
