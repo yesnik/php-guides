@@ -113,10 +113,29 @@ echo date('Y-m-d H:i:s', strtotime('-3 hours')); // Returns string: '2017-11-03 
 
 ### DateTime
 
+**Using modify()**
+
 ```php
 $date = new DateTime();
 $date->modify('+5 minutes');
 echo $date->format('Y-m-d H:i:s'); // Returns string: '2018-01-29 05:08:56'
+```
+
+**Using DateInterval**
+
+```php
+$date = new DateTime(); 
+echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-04 19:58:39'
+// In 24 days
+$date->add(new DateInterval('P24D'));
+echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-28 19:58:39'
+```
+```php
+$date = new DateTime(); 
+echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-04 20:02:30'
+// In 2 days 3 hours 30 minutes
+$date->add(new DateInterval('P2DT3H30M'));
+echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-06 23:32:30'
 ```
 
 ### Another examples
@@ -177,7 +196,7 @@ $roundedDatetime = roundToNearestMinuteInterval($dt, 10);
 echo $roundedDatetime->format('Y-m-d H:i:s'); // returns string '2018-02-01 16:30:00'
 ```
 
-Another useful functions about rounding time in PHP can be found on [stackoverflow](https://stackoverflow.com/a/40084666).
+Another useful functions about rounding time in PHP can be found at [stackoverflow](https://stackoverflow.com/a/40084666).
 
 ## Get age by date of birth
 
