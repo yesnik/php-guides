@@ -50,8 +50,8 @@ echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 16:55:00
 ```php
 $dateString = '2019-03-20T09:17:25.000';
 
-$timesoneMoscow = new DateTimeZone('Europe/Moscow'); 
-$date = DateTime::createFromFormat('Y-m-d\TH:i:s.u', $dateString, $timesoneMoscow);
+$timezoneMoscow = new DateTimeZone('Europe/Moscow'); 
+$date = DateTime::createFromFormat('Y-m-d\TH:i:s.u', $dateString, $timezoneMoscow);
 
 $timezoneYekaterinburg = new DateTimeZone('Asia/Yekaterinburg'); 
 $date->setTimeZone($timezoneYekaterinburg);
