@@ -17,9 +17,17 @@ echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 12:15:00'
 $dt = new DateTime();
 $dt->setTimezone(new DateTimeZone('UTC'));
 echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 07:15:00'
+```
 
+```php
 $dt->setTimezone(new DateTimeZone('Europe/Moscow'));
 echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 10:15:00'
+```
+
+```php
+$timezoneMoscow = new DateTimeZone('Europe/Moscow'); 
+$date = new DateTime('now', $timezoneMoscow);
+echo $date->format('Y-m-d\TH:i:s.u'); // 2019-04-05T16:06:57.139769
 ```
 
 List of timezones: [Asia](http://php.net/manual/en/timezones.asia.php), [Europe](http://php.net/manual/en/timezones.europe.php)
