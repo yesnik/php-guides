@@ -92,7 +92,7 @@ Include composer's autoload file to your script. File `index.php`:
 ```php
 <?php
 
-require_once 'vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 $tom = new Cat('Tom');
 echo $tom->getNickname(); // 'Tom'
