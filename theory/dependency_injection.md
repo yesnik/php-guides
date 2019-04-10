@@ -72,11 +72,11 @@ class Store
 }
 
 // The services are defined using an interface
-interface GeolocationService {
+interface GeolocationServiceInterface {
     public function getCoordinatesFromAddress($address);
 }
 
-class GoogleMaps implements GeolocationService
+class GoogleMaps implements GeolocationServiceInterface
 {
     public function getCoordinatesFromAddress($address) {
         // Get coordinates from Google API
@@ -84,7 +84,7 @@ class GoogleMaps implements GeolocationService
     }
 }
 
-class OpenStreetMap implements GeolocationService
+class OpenStreetMap implements GeolocationServiceInterface
 {
     public function getCoordinatesFromAddress($address) {
         // Get coordinates from OpenStreet
@@ -96,7 +96,7 @@ class StoreService
 {
     private $geolocationService;
     
-    public function __construct(GeolocationService $geolocationService)
+    public function __construct(GeolocationServiceInterface $geolocationService)
     {
         $this->geolocationService = $geolocationService;
     }
