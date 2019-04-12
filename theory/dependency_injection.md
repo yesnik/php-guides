@@ -3,127 +3,93 @@
 ## Without DI
 
 ```php
-class Store
-{
-    private $address;
-    
-    public function __construct($address)
-    {
-        $this->address = $address;
-    }
-    
-    public function getAddress()
-    {
-        return $this->address;
-    }
-}
-
 class GoogleMaps
 {
-    public function getCoordinatesFromAddress($address) {
+    public function getCityCoordinates($cityName) {
         // Get coordinates from Google API
-        return 'Google: ' . $address;
+        return 'Google: ' . $cityName;
     }
 }
 
-class OpenStreetMap
+class YandexMaps
 {
-    public function getCoordinatesFromAddress($address) {
+    public function getCityCoordinates($cityName) {
         // Get coordinates from OpenStreet
-        return 'OpenStreet: ' . $address;
+        return 'Yandex: ' . $cityName;
     }
 }
 
 class StoreService
 {
-    public function getStoreCoordinates($store) {
-        // We need manually edit this class to change type of geolocation service:
-        // Without dependency injection, your classes are tightly coupled to their dependencies
+    public function getCoordinates($cityName) {
+        // We need manually edit this class to change the type of geolocation service
         
         // $geolocationService = new GoogleMaps();
-        $geolocationService = new OpenStreetMap();
+        $geolocationService = new YandexMaps();
         
-        return $geolocationService->getCoordinatesFromAddress($store->getAddress());
+        return $geolocationService->getCityCoordinates($cityName);
     }
 }
 
-$moscowStore = new Store('Moscow');
-$storeService = new StoreService();
+$service = new StoreService();
 
-echo $storeService->getStoreCoordinates($moscowStore); // OpenStreet: Moscow
+echo $service->getCoordinates('Moscow'); // Yandex: Moscow
 ```
+
+**Note:** Without dependency injection, your classes are tightly coupled to their dependencies.
 
 ## With DI
 
 ```php
-class Store
-{
-    private $address;
-    
-    public function __construct($address)
-    {
-        $this->address = $address;
-    }
-    
-    public function getAddress()
-    {
-        return $this->address;
-    }
+interface GeolocationInterface {
+    public function getCityCoordinates($cityName);
 }
 
-// The services are defined using an interface
-interface GeolocationServiceInterface {
-    public function getCoordinatesFromAddress($address);
-}
-
-class GoogleMaps implements GeolocationServiceInterface
+class GoogleMaps implements GeolocationInterface
 {
-    public function getCoordinatesFromAddress($address) {
+    public function getCityCoordinates($cityName) {
         // Get coordinates from Google API
-        return 'Google: ' . $address;
+        return 'Google: ' . $cityName;
     }
 }
 
-class OpenStreetMap implements GeolocationServiceInterface
+class YandexMaps implements GeolocationInterface
 {
-    public function getCoordinatesFromAddress($address) {
+    public function getCityCoordinates($cityName) {
         // Get coordinates from OpenStreet
-        return 'OpenStreet: ' . $address;
+        return 'Yandex: ' . $cityName;
     }
 }
 
 class StoreService
 {
-    private $geolocationService;
-    
-    public function __construct(GeolocationServiceInterface $geolocationService)
+    public function __construct(GeolocationInterface $geolocaionService)
     {
-        $this->geolocationService = $geolocationService;
+        $this->geolocationService = $geolocaionService;
     }
     
-    public function getStoreCoordinates($store) {
-        return $this->geolocationService->getCoordinatesFromAddress($store->getAddress());
+    public function getCoordinates($cityName) {
+        return $this->geolocationService->getCityCoordinates($cityName);
     }
 }
-
-$moscowStore = new Store('Moscow');
 
 // Now, it is for the user of the StoreService to decide which implementation to use. 
 // And it can be changed anytime, without having to rewrite the StoreService.
 
-//$geolocationService = new GoogleMaps();
-$geolocationService = new OpenStreetMap();
+// $geolocationService = new GoogleMaps();
+$geolocationService = new YandexMaps();
 
-$storeService = new StoreService($geolocationService);
+// Pass dependency in the constructor
+$service = new StoreService($geolocationService);
 
-echo $storeService->getStoreCoordinates($moscowStore); // OpenStreet: Moscow
+echo $service->getCoordinates('Moscow'); // Yandex: Moscow
 ```
 
 You may see that dependency injection will leave with one drawback: you now have to *handle injecting dependencies*:
 
 ```php
-$geolocationService = new OpenStreetMap();
-$storeService = new StoreService($geolocationService);
+$geolocationService = new YandexMaps();
+$service = new StoreService($geolocationService);
 ```
 
 *Container* can solve this issue.
