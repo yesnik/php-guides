@@ -36,7 +36,7 @@ $service = new StoreService();
 echo $service->getCoordinates('Moscow'); // Yandex: Moscow
 ```
 
-**Note:** Without dependency injection, your classes are tightly coupled to their dependencies.
+**Note:** Without dependency injection, our classes are tightly coupled to their dependencies.
 
 ## With DI
 
@@ -56,7 +56,7 @@ class GoogleMaps implements GeolocationInterface
 class YandexMaps implements GeolocationInterface
 {
     public function getCityCoordinates($cityName) {
-        // Get coordinates from OpenStreet
+        // Get coordinates from YandexMaps API
         return 'Yandex: ' . $cityName;
     }
 }
