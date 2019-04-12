@@ -6,7 +6,7 @@
 class GoogleMaps
 {
     public function getCityCoordinates($cityName) {
-        // Get coordinates from Google API
+        // Get coordinates from GoogleMaps API
         return 'Google: ' . $cityName;
     }
 }
@@ -14,7 +14,7 @@ class GoogleMaps
 class YandexMaps
 {
     public function getCityCoordinates($cityName) {
-        // Get coordinates from OpenStreet
+        // Get coordinates from YandexMaps API
         return 'Yandex: ' . $cityName;
     }
 }
