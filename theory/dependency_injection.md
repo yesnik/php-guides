@@ -85,7 +85,7 @@ $service = new StoreService($geolocationService);
 echo $service->getCoordinates('Moscow'); // Yandex: Moscow
 ```
 
-You may see that dependency injection will leave with one drawback: you now have to *handle injecting dependencies*:
+You may see that dependency injection introduced one drawback: we have to *inject dependencies ourselves*:
 
 ```php
 $geolocationService = new YandexMaps();
