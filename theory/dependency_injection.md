@@ -1,5 +1,7 @@
 # Dependency Injection in PHP
 
+If you want to have a good well written application you should avoid dependencies between your modules/classes. There is a design pattern which could help and it's called *Dependency Injection (DI)*. It allows you to inject objects into a class, instead of creating them there.
+
 ## Without DI
 
 ```php
