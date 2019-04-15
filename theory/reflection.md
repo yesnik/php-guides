@@ -17,13 +17,17 @@ See [documentation](http://php.net/manual/en/class.reflectionclass.php)
  * Class Robot
  */
 class Robot {
-   /**
-    * @return string
-    */
-   public function getRobotName(): string
-   {
-      return 'Robocop';
-   }
+    public function __construct($nickname) {
+        $this->nickname = $nickname;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getRobotName(): string
+    {
+        return 'Robocop';
+    }
 }
 
 class Robocop extends Robot {
@@ -70,6 +74,19 @@ ReflectionClass Object
     [name] => Robot
 )
 */
+```
+
+### getConstructor()
+
+```php
+var_dump ($reflectionClass->getConstructor());
+/* Returns: 
+object(ReflectionMethod)#3 (2) {
+  ["name"]=>
+  string(11) "__construct"
+  ["class"]=>
+  string(5) "Robot"
+}
 ```
 
 ## ReflectionMethod
