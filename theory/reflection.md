@@ -3,10 +3,11 @@
 PHP is providing a rich Reflection API that makes life easy to reach any area of the OOP structures.
 
 - `ReflectionClass`: reports information about a class
-- `ReflectionFunction`: reports information about a function
-- `ReflectionParameter`: retrieves information about function’s or method’s parameters
-- `ReflectionClassConstant`: reports information about a class constant
 - `ReflectionMethod`: reports information about a method
+- `ReflectionParameter`: retrieves information about function’s or method’s parameters
+- `ReflectionFunction`: reports information about a function
+- `ReflectionClassConstant`: reports information about a class constant
+
 
 ## ReflectionClass
 
@@ -20,13 +21,21 @@ class Robot {
     public function __construct($nickname) {
         $this->nickname = $nickname;
     }
-    
+
     /**
      * @return string
      */
-    public function getRobotName(): string
+    public function getNickname()
     {
-        return 'Robocop';
+        return $this->nickname;
+    }
+
+    /**
+     * @param string $nickname
+     */
+    public function setNickname($nickname)
+    {
+        $this->nickname = $nickname;
     }
 }
 
@@ -96,11 +105,33 @@ See [documentation](https://www.php.net/manual/en/class.reflectionmethod.php)
 ### getDocComment()
 
 ```php
-$method = new ReflectionMethod('Robot', 'getRobotName');
+$method = new ReflectionMethod('Robot', 'setNickname');
+
 var_dump( $method->getDocComment() ); // Returns:
 ```
 ```php
 /**
- * @return string
+ * @param string $nickname
  */
 ```
+
+### getParameters()
+
+```php
+$method = new ReflectionMethod('Robot', 'setNickname');
+var_dump( $method->getParameters() ); // Returns:
+/*
+array(1) {
+  [0]=>
+  object(ReflectionParameter)#2 (1) {
+    ["name"]=>
+    string(8) "nickname"
+  }
+}
+*/
+```
+
+## ReflectionParameter
+
+See [documentation](https://www.php.net/manual/en/class.reflectionparameter.php)
+
