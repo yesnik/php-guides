@@ -6,10 +6,11 @@ PHP is providing a rich Reflection API that makes life easy to reach any area of
 - `ReflectionFunction`: reports information about a function
 - `ReflectionParameter`: retrieves information about function’s or method’s parameters
 - `ReflectionClassConstant`: reports information about a class constant
+- `ReflectionMethod`: reports information about a method
 
 ## ReflectionClass
 
-[Document](http://php.net/manual/en/class.reflectionclass.php)
+See [documentation](http://php.net/manual/en/class.reflectionclass.php)
 
 ```php
 /**
@@ -25,34 +26,64 @@ class Robot {
    }
 }
 
-$reflectionClass = new ReflectionClass('Robot');
-
-// get name of the class
-var_dump($reflectionClass->getName()); // "Robot"
-
-// get documentation of class
-var_dump($reflectionClass->getDocComment()); // Returns: 
-// /**
-//  * Class Robot
-//  */
-
 class Robocop extends Robot {
 }
 
-$class = new ReflectionClass('Robocop');
+$reflectionClass = new ReflectionClass('Robot');
 
-print_r($class->getParentClass());
+$reflectionClassChild = new ReflectionClass('Robocop');
+```
+
+### isInstantiable()
+
+```php
+// Returns true if we can create instance
+var_dump( $reflectionClass->isInstantiable() ); // bool(true)
+```
+
+### getName()
+
+```php
+// Returns name of the class
+var_dump($reflectionClass->getName()); // "Robot"
+```
+
+### getDocComment()
+
+```php
+// Returns documentation of class
+var_dump($reflectionClass->getDocComment()); // Returns: 
+```
+```php
+/**
+ * Class Robot
+ */
+```
+
+### getParentClass()
+
+```php
+print_r($reflectionClassChild->getParentClass());
 /* Returns:
 ReflectionClass Object
 (
     [name] => Robot
 )
 */
-
-$method = new ReflectionMethod('Robot', 'getRobotName');
-var_dump($method->getDocComment());
-//  /**
-//   * @return string
-//   */"
 ```
 
+## ReflectionMethod
+
+See [documentation](https://www.php.net/manual/en/class.reflectionmethod.php)
+
+### getDocComment()
+
+```php
+$method = new ReflectionMethod('Robot', 'getRobotName');
+var_dump( $method->getDocComment() ); // Returns:
+```
+```php
+/**
+ * @return string
+ */
+```
