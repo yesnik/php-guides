@@ -164,7 +164,7 @@ $container = $builder->build();
 
 $storeService = $container->get('StoreService');
 
-echo $storeService->getCoordinates('Moscow'); 
+echo $storeService->getCoordinates('Moscow'); // Google: Moscow
 ```
 
 As you can see container helps us not to think about dependency injection in client code. In `config.php` we defined how dependencies should be resolved.
