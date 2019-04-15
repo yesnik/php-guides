@@ -94,6 +94,81 @@ $service = new StoreService($geolocationService);
 
 *Container* can solve this issue.
 
+## With PHP-DI
+
+[PHP-DI](http://php-di.org/) is a dependency injection container.
+
+It helps us to place injection of dependencies to config file.
+
+1. Install *PHP-DI*: `composer require php-di/php-di`
+
+2. Create files in `src/` directory:
+
+```php
+// File: src/GeolocationInterface.php
+interface GeolocationInterface {
+    public function getCityCoordinates($cityName);
+}
+
+// File: src/GoogleMaps.php
+class GoogleMaps implements GeolocationInterface
+{
+    public function getCityCoordinates($cityName) {
+        // Get coordinates from Google API
+        return 'Google: ' . $cityName;
+    }
+}
+
+// File: src/YandexMaps.php
+class YandexMaps implements GeolocationInterface
+{
+    public function getCityCoordinates($cityName) {
+        // Get coordinates from YandexMaps API
+        return 'Yandex: ' . $cityName;
+    }
+}
+
+// File: src/StoreService.php
+class StoreService
+{
+    public function __construct(GeolocationInterface $geolocaionService)
+    {
+        $this->geolocationService = $geolocaionService;
+    }
+    
+    public function getCoordinates($cityName) {
+        return $this->geolocationService->getCityCoordinates($cityName);
+    }
+}
+```
+
+3. Create `config.php`:
+
+```php
+return [
+    'GeolocationInterface' => DI\autowire('GoogleMaps'),
+];
+```
+
+4. Create `index.php`:
+
+```php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+require __DIR__ . '/vendor/autoload.php';
+
+$builder = new DI\ContainerBuilder();
+$builder->addDefinitions('config.php');
+$container = $builder->build();
+
+$storeService = $container->get('StoreService');
+
+echo $storeService->getCoordinates('Moscow'); 
+```
+
+As you can see container helps us not to think about dependency injection in client code. In `config.php` we defined how dependencies should be resolved.
+
 ## Useful links
 
 - [Understanding Dependency Injection](http://php-di.org/doc/understanding-di.html)
