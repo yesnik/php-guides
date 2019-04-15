@@ -54,6 +54,21 @@ $reflectionClassChild = new ReflectionClass('Robocop');
 var_dump( $reflectionClass->isInstantiable() ); // bool(true)
 ```
 
+### newInstanceArgs()
+
+Creates a new class instance from given arguments.
+
+```php
+$reflectionClass = new ReflectionClass('Robot');
+var_dump( $reflectionClass->newInstanceArgs(['Kenny']) );
+/*
+object(Robot)#2 (1) {
+  ["nickname"]=>
+  string(5) "Kenny"
+}
+*/
+```
+
 ### getName()
 
 ```php
