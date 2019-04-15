@@ -2,6 +2,18 @@
 
 If you want to have a good well written application you should avoid dependencies between your modules/classes. There is a design pattern which could help and it's called *Dependency Injection (DI)*. It allows you to inject objects into a class, instead of creating them there.
 
+*Dependency Injection Container* is the way to manage injecting and reading objects and third party libraries in your application.
+
+PHP-FIG [PSR-11](https://www.php-fig.org/psr/psr-11/) is telling us how to have a container in you application:
+
+```php
+<?php
+interface ContainerInterface {
+    public function get($id);
+    public function has($id);
+}
+```
+
 ## Without DI
 
 ```php
