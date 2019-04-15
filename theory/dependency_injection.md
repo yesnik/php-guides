@@ -14,6 +14,8 @@ interface ContainerInterface {
 }
 ```
 
+Most of frameworks are using the DI Container also for *resolving dependencies* - [Autowiring](https://symfony.com/doc/current/service_container/autowiring.html). It means the ability of your application to automatically handle the dependencies for a specific class instead of doing it manually.
+
 ## Without DI
 
 ```php
