@@ -25,7 +25,7 @@ var_dump($userId); // 996
 
 ```php
 $userId = posix_getuid();
-var_dump($posix_getpwuid($userId));
+var_dump(posix_getpwuid($userId));
 
 /*
 array (size=7)
