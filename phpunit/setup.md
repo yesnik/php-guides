@@ -15,11 +15,10 @@ composer init
 
 You'll see file `composer.json` in the directory.
 
-3. Install `phpunit` and `phpunit-bridge`:
+3. Install `phpunit`:
 
 ```
 composer require phpunit/phpunit --dev
-composer require symfony/phpunit-bridge --dev
 ```
 
 4. Add `"autoload"` section to file `composer.json`:
@@ -30,7 +29,6 @@ composer require symfony/phpunit-bridge --dev
     "type": "project",
     "require": {},
     "require-dev": {
-        "symfony/phpunit-bridge": "^4.2",
         "phpunit/phpunit": "^8.1"
     },
     "autoload": {
@@ -78,10 +76,6 @@ require dirname(__DIR__).'/vendor/autoload.php';
             <directory>src</directory>
         </whitelist>
     </filter>
-
-    <listeners>
-        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
-    </listeners>
 </phpunit>
 ```
 
@@ -120,4 +114,20 @@ class CalculatorTest extends TestCase
 
 9. Regenerate autoload files via command: `composer install`
 
-10. Run tests: `./vendor/bin/phpunit`
+10. Run tests: 
+
+```
+./vendor/bin/phpunit
+```
+
+We'll see results:
+
+```
+PHPUnit 8.1.3 by Sebastian Bergmann and contributors.
+
+.                                                                   1 / 1 (100%)
+
+Time: 23 ms, Memory: 4.00 MB
+
+OK (1 test, 1 assertion)
+```
