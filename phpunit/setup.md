@@ -112,7 +112,11 @@ class CalculatorTest extends TestCase
 }
 ```
 
-9. Regenerate autoload files via command: `composer install`
+9. *Regenerate autoload files* via command:
+
+```
+composer install
+```
 
 10. Run tests: 
 
