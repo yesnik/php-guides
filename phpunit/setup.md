@@ -1,6 +1,10 @@
 # PHP Unit setup
 
-1. Let's create simple project: `mkdir calculator`
+1. Let's create a folder for our simple project:
+
+```
+mkdir calculator
+```
 
 2. Init composer 
 
