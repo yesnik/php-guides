@@ -13,7 +13,7 @@ cd calculator
 composer init
 ```
 
-You'll see file `composer.json` in the directory.
+You'll see file `composer.json` appeared in the directory.
 
 3. Install `phpunit`:
 
