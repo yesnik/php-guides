@@ -3,7 +3,7 @@
 1. Let's create a folder for our simple project:
 
 ```
-mkdir calculator
+mkdir world
 ```
 
 2. Init composer 
@@ -25,7 +25,7 @@ composer require phpunit/phpunit --dev
 
 ```
 {
-    "name": "nik/calculator",
+    "name": "nik/world",
     "type": "project",
     "require": {},
     "require-dev": {
@@ -79,40 +79,40 @@ require dirname(__DIR__).'/vendor/autoload.php';
 </phpunit>
 ```
 
-7. Create file `src/Services/Calculator.php`:
+7. Create file `src/Services/World.php`:
 
 ```php
 <?php
 
 namespace App\Services;
 
-class Calculator {
-    public function add($a, $b) {
-        return $a + $b;
+class World {
+    public function hello($name = 'stranger') {
+        return 'Hello ' . $name;
     }
 }
 ```
 
-8. For our simple test create file `tests/Services/CalculatorTest.php`:
+8. For our simple test create file `tests/Services/WorldTest.php`:
 
 ```php
 <?php
 
 use PHPUnit\Framework\TestCase;
-use App\Services\Calculator;
+use App\Services\World;
 
-class CalculatorTest extends TestCase
+class WorldTest extends TestCase
 {
-    public function testEquals()
+    public function testHello()
     {
-        $calculator = new Calculator();
+        $world = new World();
 
-        $this->assertEquals(4, $calculator->add(1, 3));
+        $this->assertEquals('Hello Kenny', $world->hello('Kenny'));
     }
 }
 ```
 
-9. *Regenerate autoload files* via command:
+9. *Regenerate autoload files* of composer via command:
 
 ```
 composer install
@@ -131,7 +131,7 @@ PHPUnit 8.1.3 by Sebastian Bergmann and contributors.
 
 .                                                                   1 / 1 (100%)
 
-Time: 23 ms, Memory: 4.00 MB
+Time: 90 ms, Memory: 4.00 MB
 
 OK (1 test, 1 assertion)
 ```
