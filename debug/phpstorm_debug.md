@@ -65,3 +65,19 @@ We have in this setting value `No proxy`.
 
 3. Install XDebug extension for your browser.
 
+## Docker-compose
+
+In your `php.ini` for container with PHP place this config:
+
+```
+[xdebug]
+xdebug.remote_host = 172.17.0.1
+xdebug.default_enable = 1
+xdebug.remote_autostart = 1
+xdebug.remote_connect_back = 0
+xdebug.remote_enable = 1
+xdebug.remote_handler = "dbgp"
+xdebug.remote_port = 9009
+```
+
+Note: `172.17.0.1` - is IP address of your host PC where you run PHPStorm
