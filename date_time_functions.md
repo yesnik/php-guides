@@ -32,6 +32,18 @@ echo $date->format('Y-m-d\TH:i:s.u'); // 2019-04-05T16:06:57.139769
 
 List of timezones: [Asia](http://php.net/manual/en/timezones.asia.php), [Europe](http://php.net/manual/en/timezones.europe.php)
 
+## Convert date format
+
+```php
+$dateString = '21.01.1990';
+// Method returns `false` in case of conversion error
+$dateTime = DateTime::createFromFormat('d.m.Y', $dateString);
+
+if ($dateTime !== false) {
+    $newDateString = $dateTime->format('Y-m-d');
+    echo $newDateString; // '1990-01-21'
+}
+```
 
 ## Time with timezone
 
