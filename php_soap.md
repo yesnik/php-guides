@@ -1,5 +1,18 @@
 # PHP SOAP
 
+## Install php-soap extension on server
+
+```bash
+sudo yum install php-soap
+```
+
+Check `php-soap` extension installation:
+
+```bash
+php -m | grep soap
+```
+If this command returns `soap` then you have installed `php-soap` extension on the server.
+
 ## Example of PHP SOAP client
 
 ```php
