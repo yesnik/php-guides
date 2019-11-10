@@ -52,18 +52,11 @@ require dirname(__DIR__).'/vendor/autoload.php';
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.5/phpunit.xsd"
-         backupGlobals="false"
+<phpunit verbose="true"
          colors="true"
+         stopOnFailure="false"
          bootstrap="config/bootstrap.php"
 >
-    <php>
-        <ini name="error_reporting" value="-1" />
-        <server name="APP_ENV" value="test" force="true" />
-        <server name="SHELL_VERBOSITY" value="-1" />
-    </php>
 
     <testsuites>
         <testsuite name="Project Test Suite">
