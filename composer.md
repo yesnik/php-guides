@@ -2,6 +2,16 @@
 
 Composer allows us to manage package dependencies.
 
+## Commands
+
+```bash
+# Init project
+composer init
+
+# Generate autoload files
+composer dump-autoload
+```
+
 ## Autoload with composer
 
 Init [composer](https://getcomposer.org/) in your project:
