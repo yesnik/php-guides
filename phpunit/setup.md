@@ -115,6 +115,10 @@ class WorldTest extends TestCase
 9. *Regenerate autoload files* of composer via command:
 
 ```
+# Way 1
+composer dump-autoload
+
+# Way 2
 composer install
 ```
 
