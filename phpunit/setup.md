@@ -39,15 +39,7 @@ composer require phpunit/phpunit --dev
 }
 ```
 
-5. Create file `config/bootstrap.php`:
-
-```php
-<?php
-
-require dirname(__DIR__).'/vendor/autoload.php';
-```
-
-6. Create config file for PHP Unit - `phpunit.xml`:
+5. Create config file for PHP Unit - `phpunit.xml`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -55,7 +47,7 @@ require dirname(__DIR__).'/vendor/autoload.php';
 <phpunit verbose="true"
          colors="true"
          stopOnFailure="false"
-         bootstrap="config/bootstrap.php"
+         bootstrap="vendor/autoload.php"
 >
 
     <testsuites>
@@ -72,7 +64,7 @@ require dirname(__DIR__).'/vendor/autoload.php';
 </phpunit>
 ```
 
-7. Create file `src/Services/World.php`:
+6. Create file `src/Services/World.php`:
 
 ```php
 <?php
@@ -86,7 +78,7 @@ class World {
 }
 ```
 
-8. For our simple test create file `tests/Services/WorldTest.php`:
+7. For our simple test create file `tests/Services/WorldTest.php`:
 
 ```php
 <?php
@@ -105,7 +97,7 @@ class WorldTest extends TestCase
 }
 ```
 
-9. *Regenerate autoload files* of composer via command:
+8. *Regenerate autoload files* of composer via command:
 
 ```
 # Way 1
@@ -115,7 +107,7 @@ composer dump-autoload
 composer install
 ```
 
-10. Run tests: 
+9. Run tests: 
 
 ```
 ./vendor/bin/phpunit
@@ -124,11 +116,11 @@ composer install
 We'll see results:
 
 ```
-PHPUnit 8.1.3 by Sebastian Bergmann and contributors.
+PHPUnit 8.4.3 by Sebastian Bergmann and contributors.
 
 .                                                                   1 / 1 (100%)
 
-Time: 90 ms, Memory: 4.00 MB
+Time: 113 ms, Memory: 4.00 MB
 
 OK (1 test, 1 assertion)
 ```
