@@ -1,5 +1,21 @@
 # PHPUnit Method annotations 
 
+## @test
+
+```php
+class UserTest extends TestCase
+{
+    /** @test */
+    public function we_can_get_firstname()
+    {
+        $user = new User();
+        $user->setFirstname('Kenny');
+
+        $this->assertEquals($user->getFirstname(), 'Kenny');
+    }
+}
+```
+
 ## @dataProvider
 
 Arbitrary arguments are accepted by the test method. 
