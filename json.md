@@ -67,3 +67,31 @@ echo "Associative array always displayed as object: ", json_encode($d), "\n";
 echo "Associative array always displayed as object: ", json_encode($d, JSON_FORCE_OBJECT), "\n\n";
 // Associative array always displayed as object: {"name":"Kenny","age":"18"}
 ```
+
+## Interface `JsonSerializable`
+
+Allows us to make class serializable with `json_encode`:
+
+```php
+class Collection implements JsonSerializable
+{
+    protected $items;
+
+    public function __construct(array $items = [])
+    {
+        $this->items = $items;
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->items;
+    }
+}
+
+$items = new Collection([
+    ['name' => 'Kenny'],
+    ['name' => 'Lara'],
+]);
+
+echo json_encode($items); // [{"name":"Kenny"},{"name":"Lara"}]
+```
