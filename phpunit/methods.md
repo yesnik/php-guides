@@ -16,6 +16,8 @@ $this->assertTrue($var);
 $this->assertFalse($var);
 
 $this->assertArrayHasKey('some_key', $array);
+
+$this->expectException(\App\Calculator\Exceptions\NoOperandsException::class);
 ```
 
 ## Useful methods
