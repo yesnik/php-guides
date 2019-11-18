@@ -13,6 +13,20 @@ print_r( array_filter($a) );
 */
 ```
 
+## array_reduce()
+
+```php
+$a = [100, 2, 10];
+$res = array_reduce($a, function($total, $item) {
+    if (is_null($total)) {
+        return $item;
+    }
+    return $total / $item;
+}, null);
+
+echo $res; // 5
+```
+
 ## extract()
 
 This method allows you to initialize variables from associative array.
