@@ -40,4 +40,14 @@ phpmd src/ text cleancode
 PHPMD will scan the directory and sub-directories of your project and output in plain text the errors found. 
 You can as well create an `html` or `xml` output by replacing the text option in the command line above.
 
+### PHP Stan
+
+[PHP Stan](https://github.com/phpstan/phpstan) - PHP Static Analysis Tool - discover bugs in your code without running it.
+It's a good complement to PHPMD.
+
+```bash
+phpstan analyse src/ --level=7
+```
+
+You can precise the strictness of PHPStan with the `level` option. The minimum is `level` 0, the maximum level 7.
 
