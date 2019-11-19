@@ -51,3 +51,11 @@ phpstan analyse src/ --level=7
 
 You can precise the strictness of PHPStan with the `level` option. The minimum is `level` 0, the maximum level 7.
 
+### PHP Loc
+
+[phploc](https://github.com/sebastianbergmann/phploc) is a tool for quickly measuring the size and analyzing the structure of a PHP project.
+
+```bash
+phploc src
+```
+
