@@ -59,3 +59,10 @@ You can precise the strictness of PHPStan with the `level` option. The minimum i
 phploc src
 ```
 
+### PHP Insights
+
+[PHP Insights](https://github.com/nunomaduro/phpinsights) was carefully crafted to simplify the analysis of your code directly from your terminal, and is the perfect starting point to analyze the code quality of your PHP projects.
+
+```bash
+./vendor/bin/phpinsights ./src
+```
