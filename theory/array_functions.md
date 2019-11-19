@@ -15,10 +15,7 @@ print_r( array_filter($a) );
 
 // Example 2
 $filteredOperations = array_filter($operations, function($operation) {
-    if ($operation instanceof OperationInterface) {
-        return true;
-    }
-    return false;
+    return $operation instanceof OperationInterface;
 });
 ```
 
