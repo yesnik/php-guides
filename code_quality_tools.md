@@ -10,3 +10,34 @@ With the following command you can format an entire codebase:
 ```bash
 php-cs-fixer fix src/
 ```
+
+### PHP CodeSniffer
+
+[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.
+
+Output the actual coding standards flaws:
+
+```bash
+phpcs src/
+```
+
+Fix some errors for you:
+
+```bash
+phpcbf src/Model/Calculator.php
+```
+
+### PHP Mess Detector
+
+[PHPMD](https://github.com/phpmd/phpmd) is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD. PHPMD can be seen as an user friendly frontend application for the raw metrics stream measured by PHP Depend.
+
+PHPMD will display the possible bugs and misuses of the language in your application:
+
+```bash
+phpmd src/ text cleancode
+```
+
+PHPMD will scan the directory and sub-directories of your project and output in plain text the errors found. 
+You can as well create an `html` or `xml` output by replacing the text option in the command line above.
+
+
