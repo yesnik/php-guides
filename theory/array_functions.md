@@ -19,6 +19,17 @@ $filteredOperations = array_filter($operations, function($operation) {
 });
 ```
 
+## array_map()
+
+```php
+$a = [1, 2, 3];
+$result = array_map(function($x) {
+    return $x ** 2;
+}, $a);
+
+print_r($result); // [1, 4, 9]
+```
+
 ## array_merge()
 
 ```php
@@ -26,16 +37,7 @@ $a = [1, 2];
 $b = [2, 3];
 $res = array_merge($a, $b);
 
-print_r($res);
-/*
-Array
-(
-    [0] => 1
-    [1] => 2
-    [2] => 2
-    [3] => 3
-)
-*/
+print_r($res); // [1, 2, 2, 3]
 ```
 
 ## array_reduce()
