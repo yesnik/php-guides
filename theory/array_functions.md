@@ -3,6 +3,7 @@
 ## array_filter()
 
 ```php
+// Example 1
 $a = [5, 0, [], 2, null, ''];
 print_r( array_filter($a) );
 /* Array
@@ -11,6 +12,14 @@ print_r( array_filter($a) );
     [3] => 2
 )
 */
+
+// Example 2
+$filteredOperations = array_filter($operations, function($operation) {
+    if ($operation instanceof OperationInterface) {
+        return true;
+    }
+    return false;
+});
 ```
 
 ## array_merge()
