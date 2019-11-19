@@ -2,6 +2,17 @@
 
 Use [FIG](https://www.php-fig.org/) Framework Interoperability Group in your projects.
 
+Within software development Lehman (1985) suggested a number of laws, of which two were, basically, as follows:
+
+- A computer program that is used will be modified
+- When a program is modified, its complexity will increase, provided that one does not actively work against this.
+
+Andrew Hunt and David Thomas use fixing *broken windows* as a metaphor for avoiding *software entropy* in software development.
+
+The process of code refactoring can result in stepwise reductions in *software entropy*.
+
+Software entropy is increased[clarification needed] with accumulation of technical debt.
+
 ### PHP-CS-Fixer
 
 [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) is a tool to automatically fix PHP Coding Standards issues.
