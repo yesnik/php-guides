@@ -79,3 +79,12 @@ phpcpd src/
 
 [dephpend](https://github.com/mihaeu/dephpend) detects flaws in your architecture, before they drag you down into the depths of dependency hell.
 
+### churn-php
+
+[churn-php](https://github.com/bmitch/churn-php) is a package that helps you identify php files in your project that *could be good candidates for refactoring*. It examines each PHP file in the path it is provided and:
+
+- Checks how many commits it has.
+- Calculates the cyclomatic complexity.
+- Creates a score based on these two values.
+
+
