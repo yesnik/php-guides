@@ -90,3 +90,8 @@ phpcpd src/
 ### PHP Metrics
 
 [PhpMetrics](https://github.com/phpmetrics/PhpMetrics) provides metrics about PHP project and classes, with beautiful and readable HTML report.
+
+```bash
+phpmetrics --report-html=myreport.html src/
+```
+
