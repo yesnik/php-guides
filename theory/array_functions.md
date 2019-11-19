@@ -13,6 +13,25 @@ print_r( array_filter($a) );
 */
 ```
 
+## array_merge()
+
+```php
+$a = [1, 2];
+$b = [2, 3];
+$res = array_merge($a, $b);
+
+print_r($res);
+/*
+Array
+(
+    [0] => 1
+    [1] => 2
+    [2] => 2
+    [3] => 3
+)
+*/
+```
+
 ## array_reduce()
 
 ```php
