@@ -15,7 +15,33 @@ echo '<pre>'.$out.'</pre>';
 ### Union operator `+`
 
 ```php
-$sum = [1, 2] + [11, 22, 33]; // [1, 2, 33]
+// Example 1
+$a = [1, 2];
+$b = [2, 3, 4];
+$res = $a + $b;
+print_r($res);
+/*
+Array
+(
+    [0] => 1
+    [1] => 2
+    [2] => 4
+)
+*/
+
+// Example 2
+$default = ['safe' => true, 'dbname' => 'app'];
+$result = $default + ['safe' => false, 'user' => 'root'];
+
+print_r($result);
+/*
+Array
+(
+    [safe] => 1
+    [dbname] => app
+    [user] => root
+)
+*/
 ```
 
 ### Equality operator `==`
