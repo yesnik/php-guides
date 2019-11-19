@@ -66,3 +66,16 @@ phploc src
 ```bash
 ./vendor/bin/phpinsights ./src
 ```
+
+### PHP Copy/Paste Detector
+
+[phpcpd](https://github.com/sebastianbergmann/phpcpd) is a Copy/Paste Detector (CPD) for PHP code.
+
+```bash
+phpcpd src/
+```
+
+### dePHPend
+
+[dephpend](https://github.com/mihaeu/dephpend) detects flaws in your architecture, before they drag you down into the depths of dependency hell.
+
