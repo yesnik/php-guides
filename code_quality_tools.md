@@ -87,4 +87,6 @@ phpcpd src/
 - Calculates the cyclomatic complexity.
 - Creates a score based on these two values.
 
+### PHP Metrics
 
+[PhpMetrics](https://github.com/phpmetrics/PhpMetrics) provides metrics about PHP project and classes, with beautiful and readable HTML report.
