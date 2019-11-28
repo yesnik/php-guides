@@ -25,7 +25,7 @@ echo run($hello);
 
 ## Closure::bind
 
-[Closure::bind](https://www.php.net/manual/en/closure.bind.php) duplicates a closure with a specific bound object and class scope. This method is a static version of `Closure::bindTo()`.
+[Closure::bind](https://www.php.net/manual/en/closure.bind.php) is a static version of `Closure::bindTo()`.
 
 ```php
 class Cat {
