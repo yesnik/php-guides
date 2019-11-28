@@ -22,6 +22,14 @@ echo dirname(__DIR__); // '/home/nik'
 echo dirname(__DIR__, 2); // '/home'
 ```
 
+## file
+
+Reads entire file into an array. You can use `file_get_contents()` to return the contents of a file as a string.
+
+```php
+$lines = file(__DIR__ . '/file.txt');
+```
+
 ## glob
 
 Find pathnames matching a pattern.
