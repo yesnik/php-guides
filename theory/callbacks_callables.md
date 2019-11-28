@@ -1,6 +1,6 @@
 # Callbacks / Callables in PHP
 
-Callbacks can be denoted by `callable` type hint as of PHP 5.4.
+[Callbacks](https://www.php.net/manual/en/language.types.callable.php) can be denoted by `callable` type hint as of PHP 5.4.
 
 ## Callback function examples
 
