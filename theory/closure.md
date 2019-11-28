@@ -55,3 +55,26 @@ $ron = new Cat('Ron');
 $closure3 = Closure::bind($closure, $ron);
 echo $closure3(); // 'Ron'
 ```
+
+### Pass variable in the closure
+
+```php
+$params = new stdClass();
+$setDefaults = \Closure::bind(function () use ($params) {
+    $params->height = 100;
+    $params->width= 150;
+}, null);
+
+print_r($params); // stdClass Object()
+
+echo $setDefaults();
+
+print_r($params);
+/*
+stdClass Object
+(
+    [height] => 100
+    [width] => 150
+)
+*/
+```
