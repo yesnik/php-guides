@@ -31,10 +31,8 @@ Edit this file and add [autoload](https://getcomposer.org/doc/04-schema.md#psr-4
     "type": "project",
     "require": {},
     "autoload": {
-        "psr-4": { "": [
-          "classes/",
-          "libs/"
-          ] 
+        "psr-4": {
+            "App\\": "src/"
         }
     }
 }
@@ -47,6 +45,9 @@ Include composer's autoload file to your script. File `index.php`:
 
 require __DIR__ . '/vendor/autoload.php';
 
-$tom = new Cat('Tom');
-echo $tom->getNickname(); // 'Tom'
+// Your code here...
+
+use App\Animals\Cat;
+
+$tom = new Cat();
 ```
