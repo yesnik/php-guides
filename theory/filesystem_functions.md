@@ -53,3 +53,11 @@ var_dump($files);
 ]
 */
 ```
+
+## unlink
+
+Deletes a file.
+
+```php
+$wasDeleted = unlink(__DIR__ . '/temp/file.txt');
+```
