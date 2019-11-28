@@ -10,6 +10,14 @@ echo basename('/var/www/html/'); // 'html'
 var_dump( basename('/') ); // ''
 ```
 
+## copy
+
+Makes a copy of the file.
+
+```php
+$wasCopied = copy(__DIR__ . '/file.txt', __DIR__ . '/out/file.txt');
+```
+
 ## dirname
 
 Returns absolute path of the parent's directory.
