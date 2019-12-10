@@ -5,3 +5,32 @@
 ```bash
 composer require guzzlehttp/guzzle
 ```
+
+## Examples
+
+### GET
+
+```php
+use GuzzleHttp\Client;
+
+$client = new Client([
+    'base_uri' => 'http://httpbin.org',
+    'timeout'  => 2,
+]);
+
+$response = $client->get('/get');
+```
+
+### GET with timeout
+
+```php
+$client = new Client([
+    'timeout'  => 2, // Timeout in seconds
+]);
+
+try {
+    $response = $client->get('http://127.0.0.1:8000/get10sec');
+} catch(\GuzzleHttp\Exception\ConnectException $e) {
+    $response = ['success' => false, 'error' => $e->getMessage()];
+}
+```
