@@ -6,14 +6,10 @@
 composer require guzzlehttp/guzzle
 ```
 
-## Examples
-
-### GET
+## GET query
 
 ```php
-use GuzzleHttp\Client;
-
-$client = new Client([
+$client = new \GuzzleHttp\Client([
     'base_uri' => 'http://httpbin.org',
     'timeout'  => 2,
 ]);
@@ -33,4 +29,25 @@ try {
 } catch(\GuzzleHttp\Exception\ConnectException $e) {
     $response = ['success' => false, 'error' => $e->getMessage()];
 }
+```
+
+## POST query
+
+```php
+$client = new \GuzzleHttp\Client([
+    'timeout'  => 5,
+]);
+
+$response = $client->post('http://127.0.0.1:8000/home/postShow', [
+    'query' => [
+        'name' => 'Kenny',
+        'age' => 18,
+    ]
+]);
+
+$body = $response->getBody(); // GuzzleHttp\Psr7\Stream Object
+
+$stringBody = $body->getContents();
+
+print_r($stringBody);
 ```
