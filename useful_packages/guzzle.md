@@ -6,7 +6,7 @@
 composer require guzzlehttp/guzzle
 ```
 
-## GET query
+## GET request
 
 ```php
 $client = new \GuzzleHttp\Client([
@@ -17,7 +17,7 @@ $client = new \GuzzleHttp\Client([
 $response = $client->get('/get');
 ```
 
-### GET with timeout
+### GET request with timeout
 
 ```php
 $client = new Client([
@@ -31,7 +31,7 @@ try {
 }
 ```
 
-## POST query
+## POST request
 
 ```php
 $client = new \GuzzleHttp\Client([
@@ -50,4 +50,20 @@ $body = $response->getBody(); // GuzzleHttp\Psr7\Stream Object
 $stringBody = $body->getContents();
 
 print_r($stringBody);
+```
+
+## PUT request
+
+```php
+$client = new \GuzzleHttp\Client([
+    'timeout' => 2,
+]);
+
+$response = $client->put('http://127.0.0.1:8000/home/put', [
+    'query' => [
+        'name' => 'Kenny',
+    ]
+]);
+
+print_r($response->getBody()->getContents()); // {"name":"Kenny"}
 ```
