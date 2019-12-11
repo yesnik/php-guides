@@ -1,4 +1,4 @@
-# Request Params
+# HTTP Requests
 
 We can make requests to web server using different 
 [HTTP methods](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods) - GET, POST, PUT, DELETE, etc.
