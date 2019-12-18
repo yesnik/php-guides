@@ -30,5 +30,7 @@
   ```
 - Install popular modules
    ```bash
-   sudo dnf install php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-pear php-bcmath php-json
+   sudo dnf install php-fpm php-mysqlnd php-zip \
+     php-devel php-gd php-mcrypt php-mbstring \
+     php-curl php-xml php-pear php-bcmath php-json
    ```
