@@ -11,7 +11,7 @@ Andrew Hunt and David Thomas use fixing *broken windows* as a metaphor for avoid
 
 The process of code refactoring can result in stepwise reductions in *software entropy*.
 
-Software entropy is increased[clarification needed] with accumulation of technical debt.
+Software entropy is increased with accumulation of technical debt.
 
 ### PHP-CS-Fixer
 
