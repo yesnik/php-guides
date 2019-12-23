@@ -29,13 +29,13 @@ php-cs-fixer fix src/
 Output the actual coding standards flaws:
 
 ```bash
-phpcs src/
+phpcs src/ --standard=PSR12
 ```
 
 Fix some errors for you:
 
 ```bash
-phpcbf src/Model/Calculator.php
+phpcbf src/Model/Calculator.php --standard=PSR12
 ```
 
 ### PHP Mess Detector
