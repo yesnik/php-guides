@@ -2,6 +2,33 @@
 
 Here you can find examples of usage `curl` in PHP.
 
+## GET request
+
+```php
+$ch = curl_init();
+
+$url = "https://www.google.com/";
+
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_TIMEOUT, 5); // Timeout in seconds
+
+$response = curl_exec($ch);
+
+// if the CURLOPT_RETURNTRANSFER option is set, curl_exec will return false on failure
+if ($response === false) {
+    echo 'Error code: ' . curl_errno($ch) . ', error: ' . curl_error($ch);
+    die();
+}
+
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+echo $httpCode;
+echo $response;
+
+curl_close($ch);
+```
+
 ## POST JSON with digest auth
 
 ```php
