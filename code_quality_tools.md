@@ -111,9 +111,5 @@ phpmetrics --report-html=myreport.html src/
 [security-checker](https://github.com/sensiolabs/security-checker) is a command line tool that checks if your application uses dependencies with known security vulnerabilities.
 
 ```bash
-composer require sensiolabs/security-checker --dev
-```
-
-```bash
 php security-checker security:check /path/to/composer.lock
 ```
