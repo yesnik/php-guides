@@ -106,3 +106,10 @@ phpcpd src/
 phpmetrics --report-html=myreport.html src/
 ```
 
+### Security tests: Sensiolabs
+
+[security-checker](https://github.com/sensiolabs/security-checker) is a command line tool that checks if your application uses dependencies with known security vulnerabilities.
+
+```bash
+php security-checker security:check /path/to/composer.lock
+```
