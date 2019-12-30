@@ -2,6 +2,8 @@
 
 ## Assertions
 
+See [docs](https://phpunit.readthedocs.io/en/master/assertions.html)
+
 ```php
 $this->assertCount(3, [1, 2, 3]);
 $this->assertEquals($var, 'someValue');
