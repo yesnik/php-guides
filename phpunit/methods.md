@@ -20,6 +20,7 @@ $this->assertFalse($var);
 $this->assertArrayHasKey('some_key', $array);
 
 $this->expectException(\App\Calculator\Exceptions\NoOperandsException::class);
+$this->expectExceptionMessage('Queue is full');
 ```
 
 ## Useful methods
