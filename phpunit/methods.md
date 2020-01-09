@@ -51,3 +51,20 @@ class UserTest extends TestCase
     }
 }
 ```
+
+### setUpBeforeClass(), tearDownAfterClass()
+
+```php
+class QueueTest extends TestCase
+{
+    public static function setUpBeforeClass(): void
+    {
+        // Connect to DB
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        // Disconnect from DB
+    }
+}
+```
