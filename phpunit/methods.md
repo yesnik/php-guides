@@ -37,3 +37,17 @@ class UserTest extends TestCase
     }
 }
 ```
+
+### tearDown()
+
+This method is useful to release unused resources after each test: opened files, sockets, big objects.
+
+```php
+class UserTest extends TestCase
+{
+    public function tearDown(): void
+    {
+        unset($this->user);
+    }
+}
+```
