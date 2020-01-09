@@ -23,6 +23,21 @@ $this->expectException(\App\Calculator\Exceptions\NoOperandsException::class);
 $this->expectExceptionMessage('Queue is full');
 ```
 
+## Mock
+
+We can create mock objects to remove unnecessary dependencies.
+
+```php
+// Create mock object
+$mailerMock = $this->createMock(Mailer::class);
+
+// Stub method
+$mailerMock->method('send')
+    ->willReturn(true);
+
+$this->assertTrue($mailer->send('hi@gmail.com', 'Hello'));
+```
+
 ## Useful methods
 
 ### setUp()
