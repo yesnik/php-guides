@@ -59,6 +59,22 @@ $mailerMock
     ->willReturn(true);
 ```
 
+**Method will throw exception**
+
+```php
+$user = new User;
+
+$mailerMock = $this->createMock(Mailer::class);
+$mailerMock->method('send')
+    ->will($this->throwException(new Exception));
+
+$user->setMailer($mailerMock);
+
+$this->expectException(Exception::class);
+
+$user->notify('hello');
+```
+
 ## Useful methods
 
 ### setUp()
