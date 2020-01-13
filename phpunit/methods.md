@@ -63,6 +63,7 @@ $mailerMock
 
 ```php
 $mailerMock = $this->getMockBuilder(Mailer::class)
+                   ->disableOriginalConstructor()
                    ->setMethods(['send'])
                    ->getMock();
 ```
