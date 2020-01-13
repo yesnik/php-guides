@@ -59,6 +59,14 @@ $mailerMock
     ->willReturn(true);
 ```
 
+**Stub only provided methods**
+
+```php
+$mailerMock = $this->getMockBuilder(Mailer::class)
+                   ->setMethods(['send'])
+                   ->getMock();
+```
+
 **Method will throw exception**
 
 ```php
