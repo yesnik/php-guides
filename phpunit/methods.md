@@ -37,16 +37,24 @@ $mailerMock
     ->method('send')
     ->willReturn(true);
 
-// Stub method, check arguments
-$mailerMock->expects($this->once())
+$this->assertTrue($mailer->send('hi@gmail.com', 'Hello'));
+```
+
+### Stub method
+
+**Check value of arguments**
+
+```php
+$mailerMock = $this->createMock(Mailer::class);
+
+$mailerMock
+    ->expects($this->once())
     ->method('send')
     ->with(
         $this->equalTo('joe@gmail.com'),
         $this->equalTo('hello'),
     )
     ->willReturn(true);
-
-$this->assertTrue($mailer->send('hi@gmail.com', 'Hello'));
 ```
 
 ## Useful methods
