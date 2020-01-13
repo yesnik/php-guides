@@ -32,7 +32,9 @@ We can create mock objects to remove unnecessary dependencies.
 $mailerMock = $this->createMock(Mailer::class);
 
 // Stub method
-$mailerMock->method('send')
+$mailerMock
+    ->expects($this->once())
+    ->method('send')
     ->willReturn(true);
 
 $this->assertTrue($mailer->send('hi@gmail.com', 'Hello'));
