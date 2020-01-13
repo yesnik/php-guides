@@ -40,6 +40,8 @@ $mailerMock
 $this->assertTrue($mailer->send('hi@gmail.com', 'Hello'));
 ```
 
+If we don't provide stub for a method, this method will return `null` by default.
+
 ### Stub method
 
 **Check value of arguments**
