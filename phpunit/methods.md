@@ -25,6 +25,8 @@ $this->expectExceptionMessage('Queue is full');
 
 ## Mock
 
+*Note:* Install [Mockery](https://github.com/mockery/mockery) - simple and flexible PHP mock object framework. 
+
 We can create mock objects to remove unnecessary dependencies.
 
 ```php
