@@ -32,6 +32,14 @@ use App\Services\World;
 
 class WorldTest extends TestCase
 {
+    public function helloProvider()
+    {
+        return [
+            ['Kenny', 'Hello Kenny'],
+            [null, 'Hello stanger'],
+        ];
+    }
+    
     /**
      * @dataProvider helloProvider
      */
@@ -41,27 +49,18 @@ class WorldTest extends TestCase
 
         $this->assertEquals('Hello Kenny', $world->hello('Kenny'));
     }
-
-    public function helloProvider()
-    {
-        return [
-            ['Kenny', 'Hello Kenny'],
-            [null, 'Hello stanger'],
-        ];
-    }
 }
 ```
 Also we can add title for each dataset:
 
 ```php
-public function titleProvider()
-{
-    return [
-        'Spaces are replaced by single underscore' => ['Hello world', 'Hello_world'],
-        'Whitespaces are replaced by single underscore' => ["Hello  \n dear  world", 'Hello_dear_world'],
-        'Start and end whitespaces are ommited' => ["  Hello  \n dear  world  ", 'Hello_dear_world'],
-    ];
-}
+    public function helloProvider()
+    {
+        return [
+            'Argument is added to greeting' => ['Kenny', 'Hello Kenny'],
+            'Without argument stranger is used' => [null, 'Hello stanger'],
+        ];
+    }
 ```
 
 ## @depends
