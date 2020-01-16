@@ -19,26 +19,38 @@ class Item
 }
 ```
 
-### Test
+### Method without arguments
 
 ```php
-use PHPUnit\Framework\TestCase;
-use App\Item;
-
-class ItemTest extends TestCase
+/** @test */
+public function getToken_returns_string()
 {
-    /** @test */
-    public function getToken_returns_string()
-    {
-        $item = new Item;
+    $item = new Item;
 
-        $reflector = new ReflectionClass(Item::class);
-        $method = $reflector->getMethod('getToken');
-        $method->setAccessible(true);
+    $reflector = new ReflectionClass(Item::class);
+    $method = $reflector->getMethod('getToken');
+    $method->setAccessible(true);
 
-        $result = $method->invoke($item);
+    $result = $method->invoke($item);
 
-        $this->assertIsString($result);
-    }
+    $this->assertIsString($result);
+}
+```
+
+### Method with arguments
+
+```php
+/** @test */
+public function prefixedToken_starts_with_prefix()
+{
+    $item = new Item;
+
+    $reflector = new ReflectionClass(Item::class);
+    $method = $reflector->getMethod('getPrefixedToken');
+    $method->setAccessible(true);
+
+    $result = $method->invokeArgs($item, ['wp_']);
+
+    $this->assertStringStartsWith('wp_', $result);
 }
 ```
