@@ -1,5 +1,7 @@
 # PHPUnit test private methods
 
+It's possible to test private methods but *it's not recommended*, because private methods are the part of internal implementation of the class.
+
 ## Example
 
 ### Tested class
