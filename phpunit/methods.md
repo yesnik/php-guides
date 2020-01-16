@@ -22,6 +22,7 @@ $this->assertTrue($var);
 $this->assertFalse($var);
 
 $this->assertArrayHasKey('some_key', $array);
+$this->assertStringStartsWith('wp_', 'wp_site'); // OK
 
 $this->expectException(\App\Calculator\Exceptions\NoOperandsException::class);
 $this->expectExceptionMessage('Queue is full');
