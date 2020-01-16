@@ -51,6 +51,18 @@ class WorldTest extends TestCase
     }
 }
 ```
+Also we can add title for each dataset:
+
+```php
+public function titleProvider()
+{
+    return [
+        'Spaces are replaced by single underscore' => ['Hello world', 'Hello_world'],
+        'Whitespaces are replaced by single underscore' => ["Hello  \n dear  world", 'Hello_dear_world'],
+        'Start and end whitespaces are ommited' => ["  Hello  \n dear  world  ", 'Hello_dear_world'],
+    ];
+}
+```
 
 ## @depends
 
