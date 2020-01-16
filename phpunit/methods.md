@@ -91,6 +91,46 @@ $this->expectException(Exception::class);
 $user->notify('hello');
 ```
 
+### Mock abstract class
+
+Suppose we have abstract class:
+
+```php
+abstract class AbstractPerson
+{
+    protected $surname;
+
+    public function __construct(string $surname)
+    {
+        $this->surname = $surname;
+    }
+
+    abstract protected function getTitle();
+
+    public function getNameAndTitle()
+    {
+        return $this->getTitle() . ' ' . $this->surname;
+    }
+}
+```
+
+Test for this abstract class:
+
+```php
+/** @test */
+public function name_and_title_is_returned_using_get_title()
+{
+    $mock = $this->getMockBuilder(AbstractPerson::class)
+                 ->setConstructorArgs(['Green'])
+                 ->getMockForAbstractClass();
+
+    $mock->method('getTitle')
+         ->willReturn('Dr.');          
+
+    $this->assertEquals('Dr. Green', $mock->getNameAndTitle());
+}
+```
+
 ## Useful methods
 
 ### setUp()
