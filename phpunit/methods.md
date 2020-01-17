@@ -91,6 +91,29 @@ $this->expectException(Exception::class);
 $user->notify('hello');
 ```
 
+**Method will return values from the map**
+
+```php
+/** @test */
+public function correct_average_is_returned()
+{
+    $service = $this->createMock(TemperatureService::class);
+
+    $map = [
+        ['12:00', 20],
+        ['14:00', 26],
+    ];
+
+    $service->expects($this->exactly(2))
+            ->method('getTemperature')
+            ->will($this->returnValueMap($map));
+
+    $weather = new WeatherMonitor($service);
+
+    $this->assertEquals(23, $weather->getAverageTemperature('12:00', '14:00'));
+}
+```
+
 ### Mock abstract class
 
 Suppose we have abstract class:
