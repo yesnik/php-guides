@@ -51,6 +51,14 @@ phpmd src/ text cleancode
 PHPMD will scan the directory and sub-directories of your project and output in plain text the errors found. 
 You can as well create an `html` or `xml` output by replacing the text option in the command line above.
 
+### PHP Insights
+
+[PHP Insights](https://github.com/nunomaduro/phpinsights) was carefully crafted to simplify the analysis of your code directly from your terminal, and is the perfect starting point to analyze the code quality of your PHP projects.
+
+```bash
+./vendor/bin/phpinsights ./src
+```
+
 ### PHP Stan
 
 [PHP Stan](https://github.com/phpstan/phpstan) - PHP Static Analysis Tool - discover bugs in your code without running it.
@@ -68,14 +76,6 @@ You can precise the strictness of PHPStan with the `level` option. The minimum i
 
 ```bash
 phploc src
-```
-
-### PHP Insights
-
-[PHP Insights](https://github.com/nunomaduro/phpinsights) was carefully crafted to simplify the analysis of your code directly from your terminal, and is the perfect starting point to analyze the code quality of your PHP projects.
-
-```bash
-./vendor/bin/phpinsights ./src
 ```
 
 ### PHP Copy/Paste Detector
