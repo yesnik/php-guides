@@ -69,11 +69,21 @@ $mailerMock
 **Stub only provided methods**
 
 ```php
+// Example 1
 $mailerMock = $this->getMockBuilder(Mailer::class)
                    ->disableOriginalConstructor()
                    ->setMethods(['send'])
                    ->getMock();
+
+// Example 2
+$handler = $this->getMockBuilder(DelayedPublicationHandler::class)
+    ->setMethods(['getObjectForUpdate'])
+    ->getMock();
+$handler->method('getObjectForUpdate')->willReturn(true);
 ```
+
+`setMethods(array $methods)` specifies the methods that are to be replaced with a configurable test double. 
+The behavior of the *other methods is not changed*. If you call `setMethods(null)`, then no methods will be replaced.
 
 **Method will throw exception**
 
