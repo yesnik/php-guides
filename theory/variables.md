@@ -18,3 +18,19 @@ access global variables inside a function: `$GLOBALS['myvariable']`
   - `$_SERVER['REQUEST_METHOD']` - eg. *POST*
 - `$_ENV`. An array of environment variables
 - `$_SESSION`. An array of session variables
+
+## Scopes
+
+### Assignment inside function call
+
+```php
+function hi($name) {
+    return 'Hi, ' . $name;
+}
+
+echo hello(
+    $user = 'Kenny'    
+);
+
+echo $user; // 'Kenny'
+```
