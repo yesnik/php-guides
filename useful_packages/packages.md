@@ -7,4 +7,7 @@
 ## DateTime
 
 - [nesbot/carbon](https://github.com/briannesbitt/Carbon). It helps to return the date as a string: `5 minutes ago` or `1 month ago`.
+```php
+echo Carbon::now()->subMinutes(2)->diffForHumans(); // '2 minutes ago'
+```
 
