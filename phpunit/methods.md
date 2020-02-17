@@ -1,5 +1,13 @@
 # PHPUnit methods
 
+## Console commands
+
+Run only one method:
+
+```bash
+vendor/bin/phpunit /tests/MyTest.php --filter 'method name'
+```
+
 ## Assertions
 
 See [docs](https://phpunit.readthedocs.io/en/master/assertions.html)
