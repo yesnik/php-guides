@@ -29,6 +29,37 @@ echo $response;
 curl_close($ch);
 ```
 
+## POST JSON
+
+```php
+function send(string $url, string $message)
+{
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $message);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_TIMEOUT_MS, 2000);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Accept: application/json',
+            'Content-Length: ' . strlen($message)
+        ]
+    );
+
+    $content = curl_exec($curl);
+    if (!$content) {
+        throw new Exception(curl_error($curl), curl_errno($curl));
+    }
+
+    return [
+        'requestBody' => $message,
+        'status' => curl_getinfo($curl, CURLINFO_RESPONSE_CODE),
+        'data' => $content
+    ];
+}
+```
+
 ## POST JSON with digest auth
 
 ```php
