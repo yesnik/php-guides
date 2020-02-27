@@ -55,6 +55,15 @@ $dt->setTimezone(new DateTimeZone('Asia/Yekaterinburg'));
 echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 16:55:00
 ```
 
+### Convert time from timestamp
+
+```php
+$dt = new DateTime();
+$dt->setTimestamp(1582796891);
+$dt->setTimezone(new DateTimeZone('Asia/Yekaterinburg'));
+echo $dt->format('Y-m-d H:i:s'); // Returns string: '2020-02-27 14:48:11'
+```
+
 ### Convert time from one timezone to another
 
 **Method 1**
