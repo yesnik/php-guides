@@ -32,22 +32,22 @@ use App\Services\World;
 
 class WorldTest extends TestCase
 {
-    public function helloProvider()
-    {
-        return [
-            ['Kenny', 'Hello Kenny'],
-            [null, 'Hello stanger'],
-        ];
-    }
-    
     /**
      * @dataProvider helloProvider
      */
-    public function testHello()
+    public function testHello($expected, $name)
     {
         $world = new World();
 
-        $this->assertEquals('Hello Kenny', $world->hello('Kenny'));
+        $this->assertEquals($expected, $world->hello($name));
+    }
+    
+    public function helloProvider()
+    {
+        return [
+            ['Hello Kenny', 'Kenny'],
+            ['Hello stanger', null],
+        ];
     }
 }
 ```
@@ -57,8 +57,8 @@ Also we can add title for each dataset:
     public function helloProvider()
     {
         return [
-            'Argument is added to greeting' => ['Kenny', 'Hello Kenny'],
-            'Without argument stranger is used' => [null, 'Hello stanger'],
+            'Argument is added to greeting' => ['Hello Kenny', 'Kenny'],
+            'Without argument stranger is used' => ['Hello stanger', null],
         ];
     }
 ```
