@@ -1,14 +1,37 @@
 # Date and time functions
 
-## Current time
+## Convert date format
+
+```php
+$dateString = '21.01.1990';
+// Method returns `false` in case of conversion error
+$dateTime = DateTime::createFromFormat('d.m.Y', $dateString);
+
+if ($dateTime !== false) {
+    $newDateString = $dateTime->format('Y-m-d');
+    echo $newDateString; // '1990-01-21'
+}
+```
+
+## Time with timezone
+
+### Given datetime in different timezone
+
+```php
+$dt = new DateTime('2018-01-31T11:55:00Z');
+echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 11:55:00
+
+$dt->setTimezone(new DateTimeZone('Asia/Yekaterinburg'));
+echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 16:55:00
+```
 
 ### Current time in server's timezone
 
 ```php
-echo date('Y-m-d H:i:s'); // Returns string: '2017-11-03 12:00:00'
+echo date('Y-m-d H:i:s'); // Returns string: '2020-03-10 09:00:00'
 
 $dt = new DateTime();
-echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 12:15:00'
+echo $dt->format('Y-m-d H:i:s'); // Returns string: '2020-03-10 09:00:00'
 ```
 
 ### Current time in defined timezone
@@ -31,29 +54,6 @@ echo $date->format('Y-m-d\TH:i:s.u'); // 2019-04-05T16:06:57.139769
 ```
 
 List of timezones: [Asia](http://php.net/manual/en/timezones.asia.php), [Europe](http://php.net/manual/en/timezones.europe.php)
-
-## Convert date format
-
-```php
-$dateString = '21.01.1990';
-// Method returns `false` in case of conversion error
-$dateTime = DateTime::createFromFormat('d.m.Y', $dateString);
-
-if ($dateTime !== false) {
-    $newDateString = $dateTime->format('Y-m-d');
-    echo $newDateString; // '1990-01-21'
-}
-```
-
-## Time with timezone
-
-```php
-$dt = new DateTime('2018-01-31T11:55:00Z');
-echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 11:55:00
-
-$dt->setTimezone(new DateTimeZone('Asia/Yekaterinburg'));
-echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 16:55:00
-```
 
 ### Convert time from timestamp
 
@@ -135,10 +135,12 @@ date_default_timezone_set($currentTimezone);
 ### date
 
 ```php
-echo date('Y-m-d H:i:s', strtotime("-60 minutes")); // Returns string: '2017-11-03 11:00:00'
+echo date('Y-m-d H:i:s', strtotime("+15 minutes")); // Returns string: '2017-11-03 11:00:00'
 
 echo date('Y-m-d H:i:s', strtotime('-3 hours')); // Returns string: '2017-11-03 09:00:00'
 ```
+
+Available values: `week`, `month`, `year`
 
 ### DateTime
 
@@ -167,20 +169,12 @@ $date->add(new DateInterval('P2DT3H30M'));
 echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-06 23:32:30'
 ```
 
-### Another examples
+## Time from date
 
 ```php
-echo date('Y-m-d H:i:s', strtotime('+5 minutes')); // 2018-01-29 06:05:00
+$date = '2020-03-15';
 
-echo date('Y-m-d H:i:s', strtotime('+2 hours')); // 2018-01-29 06:00:00
-
-echo date('Y-m-d H:i:s', strtotime('+2 days')); // 2018-01-31 06:00:00
-
-echo date('Y-m-d H:i:s', strtotime('+1 week')); // 2018-02-05 06:00:00
-
-echo date('Y-m-d H:i:s', strtotime('+1 month')); // 2018-03-01 06:00:00
-
-echo date('Y-m-d H:i:s', strtotime('+1 year')); // 2019-01-29 06:00:00
+echo date('Y-m-d', strtotime($date . ' - 5 days')); // Returns string: '2020-03-10'
 ```
 
 ## Difference between dates
