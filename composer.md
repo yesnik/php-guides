@@ -10,6 +10,9 @@ composer init
 
 # Generate autoload files
 composer dump-autoload
+
+# Update package to specific version
+composer req phpmailer/phpmailer 5.2.28
 ```
 
 ## Autoload with composer
