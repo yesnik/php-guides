@@ -28,6 +28,8 @@ Array
 
 ## POST request
 
+### Usual body
+
 Request:
 
 ```bash
@@ -47,6 +49,29 @@ Array
 )
 */
 ```
+
+### JSON body
+
+Request:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"name":"Kenny"}' http://127.0.0.1:8000/
+```
+
+PHP:
+
+```php
+print_r($_POST);
+$data = file_get_contents('php://input');
+print_r($data);
+
+/* Output:
+Array()
+
+{"name":"Kenny"}
+*/
+```
+**Note:** `$_POST` will be empty in this case.
 
 ## PUT request
 
