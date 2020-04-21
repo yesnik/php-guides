@@ -1,6 +1,6 @@
 # How to set timezone in PHP
 
-Edit file `/etc/php.ini`:
+Edit file: `sudo vim /etc/php.ini`:
 
 ```
 date.timezone = Asia/Yekaterinburg
