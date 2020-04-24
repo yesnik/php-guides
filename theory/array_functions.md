@@ -40,6 +40,16 @@ $res = array_merge($a, $b);
 print_r($res); // [1, 2, 2, 3]
 ```
 
+## array_rand()
+
+Returns random *key* of array.
+
+```php
+$arr = ['a', 'b', 'c'];
+echo $arr[ array_rand($arr) ]; // 'c'
+echo array_rand($arr); // 1
+```
+
 ## array_reduce()
 
 ```php
