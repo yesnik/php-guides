@@ -13,6 +13,13 @@ if ($dateTime !== false) {
 }
 ```
 
+### ISO 8601 date format
+
+```php
+$dt = new DateTime();
+echo $dt->format('c'); // Returns string: '2020-05-17T21:30:00-07:00'
+```
+
 ## Time with timezone
 
 ### Given datetime in different timezone
