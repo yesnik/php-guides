@@ -8,6 +8,12 @@ Composer allows us to manage package dependencies.
 # Init project
 composer init
 
+# Add package 'phpmd/phpmd' to 'require-dev' of composer.json
+composer req phpmd/phpmd --dev
+
+# Install dependencies without dev
+composer install --no-dev
+
 # Generate autoload files
 composer dump-autoload
 
