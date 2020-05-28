@@ -38,6 +38,31 @@ Fix some errors for you:
 phpcbf src/Model/Calculator.php --standard=PSR12
 ```
 
+**Example Ruleset** 
+
+File `phpcs.xml`:
+
+```xml
+<?xml version="1.0"?>
+
+<ruleset name="PHP_CodeSniffer">
+    <description>PHPCS configuration file.</description>
+    <!-- check all files in the app directory, feel free to add more files with:
+    <file>FOLDER NAME</file>
+    -->
+    <file>protected</file>
+
+    <!-- exclude our migrations directory from the violation check-->
+    <exclude-pattern>*/migrations/*</exclude-pattern>
+
+    <!-- ignore warnings and display ERRORS only -->
+    <!--<arg value="np"/>-->
+
+    <!-- Our base rule: set to PSR12-->
+    <rule ref="PSR12"/>
+</ruleset>
+```
+
 ### PHP Mess Detector
 
 [PHPMD](https://github.com/phpmd/phpmd) is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD. PHPMD can be seen as an user friendly frontend application for the raw metrics stream measured by PHP Depend.
