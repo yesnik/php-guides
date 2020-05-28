@@ -11,6 +11,9 @@ composer init
 # Add package 'phpmd/phpmd' to 'require-dev' of composer.json
 composer req phpmd/phpmd --dev
 
+# Remove package from composer.json
+composer remove phpmd/phpmd
+
 # Install dependencies without dev
 composer install --no-dev
 
