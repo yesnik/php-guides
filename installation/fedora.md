@@ -1,4 +1,12 @@
-# Install PHP on Fedora
+# PHP on Fedora
+
+## Update PHP
+
+```bash
+sudo dnf update php-cli
+```
+
+## Install PHP
 
 - Update system
   ```bash
@@ -11,9 +19,6 @@
 
   # Fedora 30
   sudo dnf -y install https://rpms.remirepo.net/fedora/remi-release-30.rpm
-
-  # Fedora 29
-  sudo dnf -y install https://rpms.remirepo.net/fedora/remi-release-29.rpm
   ```
 - Enable repos
   ```bash
@@ -32,5 +37,5 @@
    ```bash
    sudo dnf install php-fpm php-mysqlnd php-zip \
      php-devel php-gd php-mcrypt php-mbstring \
-     php-curl php-xml php-pear php-bcmath php-json
+     php-curl php-xml php-pear php-bcmath php-json php-intl
    ```
