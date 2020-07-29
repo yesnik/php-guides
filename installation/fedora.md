@@ -8,6 +8,16 @@ sudo dnf update php-cli
 
 ## Install PHP
 
+### New Fedora version
+
+New version of Fedora already has links to new PHP versions.
+
+```bash
+sudo dnf install php
+```
+
+### Old Fedora versions
+
 - Update system
   ```bash
   sudo dnf -y update
@@ -33,9 +43,11 @@ sudo dnf update php-cli
   ```bash
   php -v
   ```
-- Install popular modules
-   ```bash
-   sudo dnf install php-fpm php-mysqlnd php-zip \
-     php-devel php-gd php-mcrypt php-mbstring \
-     php-curl php-xml php-pear php-bcmath php-json php-intl php-opcache
-   ```
+
+### Install popular PHP modules
+
+ ```bash
+sudo dnf install php-fpm php-mysqlnd php-zip \
+    php-devel php-gd php-mcrypt php-mbstring \
+    php-curl php-xml php-pear php-bcmath php-json php-intl php-opcache
+ ```
