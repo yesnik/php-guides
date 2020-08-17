@@ -151,6 +151,24 @@ Available values: `week`, `month`, `year`
 
 ### DateTime
 
+**Usinf constructor**
+
+```php
+// 3 days ago
+$datetime = new \DateTime('-3 days');
+var_dump($datetime);
+/*
+object(DateTime)#1 (3) {
+  ["date"]=>
+  string(26) "2020-08-14 04:59:24.153581"
+  ["timezone_type"]=>
+  int(3)
+  ["timezone"]=>
+  string(10) "US/Pacific"
+}
+*/
+```
+
 **Using modify()**
 
 ```php
