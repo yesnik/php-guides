@@ -65,6 +65,8 @@ try {
         throw new SoapTimeoutException();
     }
     
+    throw new Exception($message);
+    
 } catch (Exception $exception) {
     echo 'ERROR! ';
     print_r($client->__getLastResponse());
