@@ -77,3 +77,42 @@ try {
     throw $exception;
 }
 ```
+
+## SOAP Request via curl
+
+```php
+<?php
+
+$username = 'admin';
+$password = '123';
+
+$xmlData = <<<XML
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="URN:DOWNLOAD_DIRECTORIES">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:MT_REQ_DIRECTORIES>
+         <REQUEST type="GET_BANK_PRODUCTS_TO_POINTS_OF_SALES">
+<PRODUCT>P105</PRODUCT>
+         </REQUEST>
+      </urn:MT_REQ_DIRECTORIES>
+   </soapenv:Body>
+</soapenv:Envelope>
+XML;
+
+// We can get this URL from WSDL file
+$URL = "http://test.mysite.ru:5000/XISOAPAdapter/MessageServlet?channel=:DOWNLOAD_DIRECTORIES:SEND_SOAP&version=3.0&Sender.Service=DOWNLOAD_DIRECTORIES&Interface=URN:DOWNLOAD_DIRECTORIES^SI_REQ_DIRECTORIES";
+
+$ch = curl_init($URL);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/xml'));
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlData);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
+
+$output = curl_exec($ch);
+curl_close($ch);
+
+print_r($output);
+```
