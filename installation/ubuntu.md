@@ -1,4 +1,4 @@
-# PHP installation on Ubuntu 18
+# PHP installation on Ubuntu 20
 
 * Update server:
 
@@ -9,8 +9,14 @@ sudo apt upgrade
 
 * Install PHP
 
-```
+```bash
 sudo apt install php
+```
+
+* Install popular modules
+
+```bash
+sudo apt install php-fpm php-json php-pdo php-mysql php-zip php-gd  php-mbstring php-curl php-xml php-pear php-bcmath
 ```
 
 Check installed version: `php -v`
