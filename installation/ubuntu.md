@@ -16,7 +16,9 @@ sudo apt install php
 * Install popular modules
 
 ```bash
-sudo apt install php-fpm php-json php-pdo php-mysql php-zip php-gd  php-mbstring php-curl php-xml php-pear php-bcmath
+sudo apt install php-fpm php-json php-pdo php-mysql php-zip \
+    php-gd  php-mbstring php-curl php-xml php-pear php-bcmath \
+    php-intl php-xdebug 
 ```
 
 Check installed version: `php -v`
