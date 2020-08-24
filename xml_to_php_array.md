@@ -1,40 +1,34 @@
 # Convert XML to PHP array
 
-## Using preg_replace
-
 ```php
 $xml = <<<XML
-  <MT_GENERAL xmlns="URN:CREATE_BP_AND_BO_LP13">
-      <TASK xmlns="">
-          <PROCESS_TYPE xmlns="">ZINV</PROCESS_TYPE>
-          <LINK xmlns="">Loan</LINK>
-          <DATE_FROM xmlns="">2020-08-24</DATE_FROM>
-          <TIME_FROM xmlns="">13:08:04.0Z</TIME_FROM>
-          <CATEGORY xmlns=""></CATEGORY>
-          <QUEUE xmlns="">loans-general</QUEUE>
-      </TASK>
-  </MT_GENERAL>
+<MT_GENERAL>
+    <TASK>
+        <PROCESS_TYPE>ZINT</PROCESS_TYPE>
+        <LINK>Loan</LINK>
+        <DATE_FROM>2020-08-05</DATE_FROM>
+    </TASK>
+</MT_GENERAL>
 XML;
 
-$xml = preg_replace('/xmlns=".*"/', '', $xml);
-$xml = preg_replace('/<\/.*$/m', "'", $xml);
-$xml = str_replace(['<', '>'], "'", $xml);
-$xml = preg_replace("/\'(.*)\s\'(.+)\'/", '\'$1\' => \'$2\',', $xml);
-$xml = preg_replace('/\s*\'$/m', "\n\t],", $xml);
-$xml = preg_replace("/\'(\w+)\s\'/m", '\'$1\' => [', $xml);
+// Convert xml string into an object of class SimpleXMLElement
+$obj = simplexml_load_string($xml);
 
-echo $xml;
+// Convert to JSON
+$json = json_encode($obj);
+
+// Convert into associative array
+$arr = json_decode($json, true);
+
+var_export($arr);
 /* Returns:
-
-'MT_GENERAL' => [
-  'TASK' => [
-    'PROCESS_TYPE' => 'ZINV',
+array (
+  'TASK' =>
+  array (
+    'PROCESS_TYPE' => 'ZINT',
     'LINK' => 'Loan',
-    'DATE_FROM' => '2020-08-24',
-    'TIME_FROM' => '13:08:04.0Z',
-    'CATEGORY' => [],
-    'QUEUE' => 'loans-general',
-  ],
-],
+    'DATE_FROM' => '2020-08-05',
+  ),
+)
 */
 ```
