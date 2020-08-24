@@ -13,15 +13,29 @@ php -m | grep soap
 ```
 If this command returns `soap` then you have installed `php-soap` extension on the server.
 
-## Example of PHP SOAP client
+## Make SOAP request
+
+We want to send this XML to the service:
+
+```xml
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="URN:DOWNLOAD_DIRECTORIES">
+   <soapenv:Body>
+      <urn:MT_REQ_DIRECTORIES>
+         <REQUEST type="GET_BANK_PRODUCTS_TO_POINTS_OF_SALES">
+            <PRODUCT>P105</PRODUCT>
+         </REQUEST>
+      </urn:MT_REQ_DIRECTORIES>
+   </soapenv:Body>
+</soapenv:Envelope>
+```
+
+### With PHP SoapClient
 
 ```php
-<?php
-
 ini_set('soap.wsdl_cache_ttl', 0);
-ini_set("default_socket_timeout", 20);
+ini_set('default_socket_timeout', 20);
 
-$url = dirname(__DIR__) . '/wsdl/PIQ_SI.wsdl';
+$url = dirname(__DIR__) . '/wsdl/PIQ_SI_REQ_DIRECTORIES.wsdl';
 
 $client = new SoapClient($url, [
     'soap_version' => SOAP_1_1,
@@ -31,45 +45,37 @@ $client = new SoapClient($url, [
     'password' => '123'
 ]);
 
-//var_dump($client->__getTypes());
+// echo 'Types: ' . PHP_EOL;
+// print_r($client->__getTypes());
 
-// Returns all methods of service
-//var_dump($client->__getFunctions());
+// echo 'All methods of the service: ' . PHP_EOL;
+// print_r($client->__getFunctions());
+// echo PHP_EOL . PHP_EOL;
 
 $data = [
-    'GENERAL' => [
-        'IDENTIDIER' => 'S11',
-        'ID' => '800',
+    'REQUEST' => [
+        'PRODUCT' => 'P105',
+        'type' => 'GET_BANK_PRODUCTS_TO_POINTS_OF_SALES',
     ],
-    'BP' => [
-        'TEL_NUMBER' => '(911)1111111'
-    ],
-    'TASK' => [
-        'PROCESS_TYPE' => 'ZINT',
-        'DATE_FROM' => '2019-03-21',
-        'TIME_FROM' => '10:40:05.0Z',
-    ]
 ];
 
 class SoapTimeoutException extends Exception {};
 
 try {
-    $response = $client->__soapCall("SI_REQ", [$data]);
+    $response = $client->__soapCall("SI_REQ_DIRECTORIES", [$data]);
 
     var_dump($response);
 
-} catch (SoapFault $exception) {
+} catch (Throwable $exception) {
     $message = $exception->getMessage();
 
     if ($message === 'Error Fetching http headers') {
         throw new SoapTimeoutException();
     }
-    
-    throw new Exception($message);
-    
-} catch (Exception $exception) {
+
     echo 'ERROR! ';
     print_r($client->__getLastResponse());
+    
     echo 'REQUEST HEADERS ';
     print_r($client->__getLastRequestHeaders());
 
@@ -80,11 +86,9 @@ try {
 }
 ```
 
-## SOAP Request via curl
+### With curl
 
 ```php
-<?php
-
 $username = 'admin';
 $password = '123';
 
@@ -94,7 +98,7 @@ $xmlData = <<<XML
    <soapenv:Body>
       <urn:MT_REQ_DIRECTORIES>
          <REQUEST type="GET_BANK_PRODUCTS_TO_POINTS_OF_SALES">
-<PRODUCT>P105</PRODUCT>
+            <PRODUCT>P105</PRODUCT>
          </REQUEST>
       </urn:MT_REQ_DIRECTORIES>
    </soapenv:Body>
@@ -116,5 +120,5 @@ curl_setopt($ch, CURLOPT_USERPWD, $username . ":" . $password);
 $output = curl_exec($ch);
 curl_close($ch);
 
-print_r($output);
+var_dump($output);
 ```
