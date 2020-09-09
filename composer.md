@@ -22,6 +22,9 @@ composer dump-autoload
 
 # Update package to specific version
 composer req phpmailer/phpmailer 5.2.28
+
+# Shows a list of installed packages that have updates available
+composer outdated
 ```
 
 ## Autoload with composer
