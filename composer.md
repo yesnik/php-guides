@@ -25,6 +25,9 @@ composer req phpmailer/phpmailer 5.2.28
 
 # Shows a list of installed packages that have updates available
 composer outdated
+
+# Show all dependencies as a tree 
+composer show --tree
 ```
 
 ## Autoload with composer
