@@ -8,8 +8,7 @@ $dateString = '21.01.1990';
 $dateTime = DateTime::createFromFormat('d.m.Y', $dateString);
 
 if ($dateTime !== false) {
-    $newDateString = $dateTime->format('Y-m-d');
-    echo $newDateString; // '1990-01-21'
+    echo $dateTime->format('Y-m-d'); // '1990-01-21'
 }
 ```
 
