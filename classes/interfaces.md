@@ -67,3 +67,18 @@ $point2 = new CylindricalPoint(100, 3.14159, 3);
 echo Game::draw($point); // [1, 2, 3]
 echo Game::draw($point2); // [-99.999999999648, 0.00026535897933527, 3]
 ```
+
+## Check if an instance's class implements an interface
+
+```php
+interface Reservable {};
+
+class Car implements Reservable {};
+
+$bmw = new Car();
+var_dump($bmw instanceof Reservable); // bool(true)
+
+class Robot {}
+$robot = new Robot();
+var_dump($robot instanceof Reservable); // bool(false)
+```
