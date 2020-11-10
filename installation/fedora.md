@@ -58,3 +58,5 @@ sudo dnf install php-fpm php-mysqlnd php-zip \
  Other packages:
  
  - `php-pgsql` - adds `pdo_pgsql` module
+ - `php-amqp`
+ 
