@@ -54,3 +54,7 @@ sudo dnf install php-fpm php-mysqlnd php-zip \
     php-devel php-gd php-mcrypt php-mbstring \
     php-curl php-xml php-pear php-bcmath php-json php-intl php-opcache
  ```
+ 
+ Other packages:
+ 
+ - `php-pgsql` - adds `pdo_pgsql` module
