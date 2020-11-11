@@ -1,5 +1,13 @@
 # PHP String functions
 
+## htmlspecialchars
+
+Converts special characters to HTML entities. It helps to avoid XSS issues.
+
+```php
+echo htmlspecialchars('<a href="/">home</a>'); // &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;
+```
+
 ## trim
 
 ```php
