@@ -65,6 +65,14 @@ We have in this setting value `No proxy`.
 
 3. Install XDebug extension for your browser.
 
+## Fedora
+
+1. Install `xdebug` extension:
+
+```bash
+yum install php-pecl-xdebug
+```
+
 ## Docker-compose
 
 In your `php.ini` for container with PHP place this config:
