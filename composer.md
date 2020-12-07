@@ -29,6 +29,9 @@ composer outdated
 # Update Symfony components
 composer update "symfony/*"
 
+# Show all dependencies and versions
+composer show
+
 # Show all dependencies as a tree 
 composer show --tree
 ```
