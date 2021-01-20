@@ -22,25 +22,22 @@ sudo dnf install php
   ```bash
   sudo dnf -y update
   ```
-- Add REMI Repository
+- Add REMI Repository. *Note:* Check your Fedora's version: `cat /etc/os-release` 
   ```bash
+  # Fedora 33
+  sudo dnf install https://rpms.remirepo.net/fedora/remi-release-33.rpm
+  
   # Fedora 32
-  sudo dnf -y install https://rpms.remirepo.net/fedora/remi-release-32.rpm
-
-  # Fedora 31
-  sudo dnf -y install https://rpms.remirepo.net/fedora/remi-release-31.rpm
-
-  # Fedora 30
-  sudo dnf -y install https://rpms.remirepo.net/fedora/remi-release-30.rpm
+  sudo dnf install https://rpms.remirepo.net/fedora/remi-release-32.rpm
   ```
 - Enable repos
   ```bash
-  sudo dnf config-manager --set-enabled remi
-  sudo dnf module reset php
+  sudo dnf config-manager --set-enabled remi-php80
   ```
-- Install PHP 7.4
+- Install PHP 8 
   ```bash
-  sudo dnf module install php:remi-7.4
+  sudo dnf module reset php
+  sudo dnf module install php:remi-8.0
   ```
 - Check installed PHP version
   ```bash
