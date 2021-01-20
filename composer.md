@@ -5,6 +5,9 @@ Composer allows us to manage package dependencies.
 ## Commands
 
 ```bash
+# Update composer's version
+composer self-update
+
 # Init project
 composer init
 
