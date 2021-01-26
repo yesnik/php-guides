@@ -128,8 +128,9 @@ phpcpd src/
 [PhpMetrics](https://github.com/phpmetrics/PhpMetrics) provides metrics about PHP project and classes, with beautiful and readable HTML report.
 
 ```bash
-phpmetrics --report-html=myreport.html src/
+phpmetrics --report-html=report src/
 ```
+HTML Report will be created in the `report` folder.
 
 ### Security tests: Sensiolabs
 
