@@ -13,9 +13,9 @@ The process of code refactoring can result in stepwise reductions in *software e
 
 Software entropy is increased with accumulation of technical debt.
 
-### PHP-CS-Fixer
+### PHP Coding Standards Fixer
 
-[PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) (PHP Coding Standards Fixer) is a tool to automatically fix PHP Coding Standards issues.
+[PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) is a tool to automatically fix PHP Coding Standards issues.
 With the following command you can format an entire codebase:
 
 ```bash
