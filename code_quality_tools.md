@@ -90,10 +90,10 @@ You can as well create an `html` or `xml` output by replacing the text option in
 It's a good complement to PHPMD.
 
 ```bash
-phpstan analyse src/ --level=7
+phpstan analyse src/ --level=8
 ```
 
-You can precise the strictness of PHPStan with the `level` option. The minimum is `level` 0, the maximum level 7.
+You can precise the strictness of PHPStan with the `level` option. The minimum is `level` 0, the maximum level is 8.
 
 ### PHP Loc
 
