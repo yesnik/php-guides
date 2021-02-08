@@ -1,17 +1,5 @@
 # About PHP functions
 
-## Splat operator (`...`)
-
-```php
-function add($a, $b) {
-    return $a + $b;
-}
-
-$digits = [1, 2];
-
-echo add(...$digits); // 3
-```
-
 ## Objects are passed by reference
 
 It's not completely true - [see docs](https://www.php.net/manual/en/language.oop5.references.php).
