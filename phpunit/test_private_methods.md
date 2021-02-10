@@ -23,12 +23,29 @@ class Item
 
 ### Method without arguments
 
+*Way 1*. Using `ReflectionMethod`
+
 ```php
 /** @test */
 public function getToken_returns_string()
 {
-    $item = new Item;
+    $item = new Item();
+    $method = new ReflectionMethod($item, 'getToken');
+    $method->setAccessible(true);
 
+    $result = $method->invoke($item);
+
+    $this->assertEquals('string', gettype($result));
+}
+```
+
+*Way 2*. Using `ReflectionClass`
+
+```php
+/** @test */
+public function getToken_returns_string()
+{
+    $item = new Item();
     $reflector = new ReflectionClass(Item::class);
     $method = $reflector->getMethod('getToken');
     $method->setAccessible(true);
@@ -45,8 +62,7 @@ public function getToken_returns_string()
 /** @test */
 public function prefixedToken_starts_with_prefix()
 {
-    $item = new Item;
-
+    $item = new Item();
     $reflector = new ReflectionClass(Item::class);
     $method = $reflector->getMethod('getPrefixedToken');
     $method->setAccessible(true);
