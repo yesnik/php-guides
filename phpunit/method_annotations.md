@@ -42,7 +42,7 @@ class WorldTest extends TestCase
         $this->assertEquals($expected, $world->hello($name));
     }
     
-    public function helloProvider()
+    public function helloProvider(): array
     {
         return [
             ['Hello Kenny', 'Kenny'],
@@ -51,10 +51,14 @@ class WorldTest extends TestCase
     }
 }
 ```
-Also we can add title for each dataset:
+
+By default, each data provider is referenced by its array index.
+In case of error PHPUnit could tell you, that the test failed with data set #0.
+
+To prevent confusion when having lot of data providers, we can add title for each dataset:
 
 ```php
-    public function helloProvider()
+    public function helloProvider(): array
     {
         return [
             'Argument is added to greeting' => ['Hello Kenny', 'Kenny'],
