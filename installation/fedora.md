@@ -10,6 +10,8 @@ sudo dnf update php-cli
 
 ### New Fedora version
 
+You can use [Remi's config Wizard](https://rpms.remirepo.net/wizard/).
+
 New version of Fedora already has links to new PHP versions.
 
 ```bash
