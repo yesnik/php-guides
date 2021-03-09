@@ -39,7 +39,12 @@ composer require phpunit/phpunit --dev
 }
 ```
 
-5. Create config file for PHP Unit - `phpunit.xml`:
+5. Generate config file for PHP Unit - `phpunit.xml`:
+```bash
+./vendor/bin/phpunit --generate-configuration
+```
+
+Or you can create it manually:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
