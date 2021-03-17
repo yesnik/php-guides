@@ -1,4 +1,4 @@
-# PHP operators
+# PHP Operators
 
 [Documentation](https://www.php.net/manual/en/language.operators.php) says about many operators.
 
@@ -11,7 +11,7 @@ Operators can be grouped according to the number of values they take:
 - Binary operators. They take two values, such as the familiar arithmetical operators + (plus) and - (minus), and the majority of PHP operators fall into this category.
 - Ternary operator. It is `? :`, which takes three values.
 
-## Arithmetic operators
+## Arithmetic Operators
 
 - `+$a` - Identity - Conversion of $a to int or float as appropriate.
     ```php
@@ -28,6 +28,27 @@ Operators can be grouped according to the number of values they take:
     ```php
     echo 2 ** 3; // 8
     ```
+
+## Assignment Operators
+
+Assignment means that the left operand gets set to the value of the expression on the right.
+
+```
+$b = ($a = 2) + 3;
+echo $a; // 2
+echo $b; // 5
+```
+
+### Arithmetic Assignment Operators
+
+- `$a *= $b` - `$a = $a * $b` - Multiplication
+- `$a %= $b` - `$a = $a % $b` - Modulus
+- `$a **= $b` - `$a = $a ** $b` - Exponentiation
+
+### Other Assignment Operators
+
+- `$a .= $b` - `$a = $a . $b` - String Concatenation
+- `$a ??= $b` - `$a = $a ?? $b` - Null Coalesce
 
 ## The Execution Operator
 
