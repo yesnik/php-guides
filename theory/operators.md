@@ -18,9 +18,11 @@ Operators can be grouped according to the number of values they take:
     $a = '12';
     var_dump(+$a); // (int) 12
     ```
-- `$a % $b` - Modulo - Remainder of $a divided by $b.
+- `$a % $b` - Modulo - Remainder of $a divided by $b. The result of the modulo operator % has the same sign as the dividend. 
+    The result of $a % $b will have the same sign as $a.
     ```php
     echo 8 % 3; // 2
+    echo -8 % 3; // -2
     ```
 - `$a ** $b` - Exponentiation - Result of raising $a to the $b'th power.
     ```php
