@@ -93,6 +93,15 @@ echo '<pre>'.$out.'</pre>';
 **Note**: The increment/decrement operators only affect numbers and strings. 
 Arrays, objects, booleans and resources are not affected. Decrementing null values has no effect too, but incrementing them results in 1.
 
+## Logical Operators
+
+- `$a && $b` - And - true if both $a and $b are true.
+- `$a || $b` - Or - true if either $a or $b is true.
+- `! $a` - Not - true if $a is not true.
+- `$a and $b` - And - true if both $a and $b are true.
+- `$a or $b` - Or - true if either $a or $b is true.
+- `$a xor $b` - Xor - true if either $a or $b is true, but not both.
+
 ## Array operators
 
 ### Union operator `+`
