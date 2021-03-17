@@ -9,7 +9,13 @@ Operators can be grouped according to the number of values they take:
 
 - Unary operators. They take only one value, for example ! (the logical not operator) or ++ (the increment operator). 
 - Binary operators. They take two values, such as the familiar arithmetical operators + (plus) and - (minus), and the majority of PHP operators fall into this category.
-- Ternary operator. It is `? :`, which takes three values.
+- Ternary operator. It is `? :`, which takes three values. It is possible to leave out the middle part of the ternary operator. Expression `expr1 ?: expr3` returns `expr1` if `expr1` evaluates to true, and `expr3` otherwise.
+    ```
+    $action = 'show';
+    echo $action ?: 'index'; // 'show'
+    $action = '';
+    echo $action ?: 'index'; // 'index'
+    ```
 
 ## Arithmetic Operators
 
