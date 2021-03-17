@@ -11,6 +11,22 @@ Operators can be grouped according to the number of values they take:
 - Binary operators. They take two values, such as the familiar arithmetical operators + (plus) and - (minus), and the majority of PHP operators fall into this category.
 - Ternary operator. It is `? :`, which takes three values.
 
+## Arithmetic operators
+
+- `+$a` - Identity - Conversion of $a to int or float as appropriate.
+    ```php
+    $a = '12';
+    var_dump(+$a); // (int) 12
+    ```
+- `$a % $b` - Modulo - Remainder of $a divided by $b.
+    ```php
+    echo 8 % 3; // 2
+    ```
+- `$a ** $b` - Exponentiation - Result of raising $a to the $b'th power.
+    ```php
+    echo 2 ** 3; // 8
+    ```
+
 ## The Execution Operator
 
 PHP attempts to execute whatever is contained between the backticks as a command at the
