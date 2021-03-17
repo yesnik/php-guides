@@ -1,5 +1,16 @@
 # PHP operators
 
+[Documentation](https://www.php.net/manual/en/language.operators.php) says about many operators.
+
+An operator is something that takes one or more values (or expressions, in programming jargon) 
+and yields another value (so that the construction itself becomes an expression).
+
+Operators can be grouped according to the number of values they take: 
+
+- Unary operators. They take only one value, for example ! (the logical not operator) or ++ (the increment operator). 
+- Binary operators. They take two values, such as the familiar arithmetical operators + (plus) and - (minus), and the majority of PHP operators fall into this category.
+- Ternary operator. It is `? :`, which takes three values.
+
 ## The Execution Operator
 
 PHP attempts to execute whatever is contained between the backticks as a command at the
