@@ -161,11 +161,11 @@ Array
 */
 ```
 
-## Type operator
+## Type Operator
 
 ```php
 class Cat {};
-$tom = new Cat;
+$tom = new Cat();
 var_dump($tom instanceof Cat); // true
 ```
 
