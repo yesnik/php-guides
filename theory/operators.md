@@ -83,6 +83,16 @@ $out = `ls -la`;
 echo '<pre>'.$out.'</pre>';
 ```
 
+## Incrementing/Decrementing Operators
+
+- `++$a` - Pre-increment. Increments $a by one, then returns $a.
+- `$a++` - Post-increment. Returns $a, then increments $a by one.
+- `--$a` - Pre-decrement. Decrements $a by one, then returns $a.
+- `$a--` - Post-decrement. Returns $a, then decrements $a by one.
+
+**Note**: The increment/decrement operators only affect numbers and strings. 
+Arrays, objects, booleans and resources are not affected. Decrementing null values has no effect too, but incrementing them results in 1.
+
 ## Array operators
 
 ### Union operator `+`
