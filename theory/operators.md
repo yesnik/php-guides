@@ -50,6 +50,17 @@ echo $b; // 5
 - `$a .= $b` - `$a = $a . $b` - String Concatenation
 - `$a ??= $b` - `$a = $a ?? $b` - Null Coalesce
 
+## Comparison Operators
+
+- `$a == $b` - Equal - true if $a is equal to $b after type juggling.
+- `$a === $b` - Identical - true if $a is equal to $b, and they are of the same type.
+- `$a <=> $b` - Spaceship
+    ```php
+    echo 10 <=> 20; // - 1
+    echo 20 <=> 10; // 1
+    echo 10 <=> 10; // 0
+    ```
+
 ## The Execution Operator
 
 PHP attempts to execute whatever is contained between the backticks as a command at the
