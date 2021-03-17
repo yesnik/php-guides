@@ -180,3 +180,9 @@ $digits = [1, 2];
 
 echo add(...$digits); // 3
 ```
+
+## Nullsafe operator (`?->`)
+
+```php
+$firstName = $company?->getManager()?->firstName;
+```
