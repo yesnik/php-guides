@@ -109,6 +109,26 @@ Arrays, objects, booleans and resources are not affected. Decrementing null valu
 
 ## Array operators
 
+- `$a + $b` - Union - Union of $a and $b.
+- `$a == $b` - Equality - true if $a and $b have the same key/value pairs.
+    ```php
+    [1, 2] == ['1', 2]; // true
+    ```
+- `$a === $b` - Identity - true if $a and $b have the same key/value pairs in the same order and of the same types.
+    ```php
+    [1, 2] === ['1', 2]; // false
+    ```
+- `$a != $b` - Inequality - true if $a is not equal to $b.
+- `$a <> $b` - Inequality - true if $a is not equal to $b.
+    ```php
+    [1, 2] != ['1', 2]; // false
+    [1, 2] <> ['1', 2]; // false
+    ```
+- `$a !== $b` - Non-identity - true if $a is not identical to $b.
+    ```php
+    [1, 2] !== ['1', 2]; // true
+    ```
+
 ### Union operator `+`
 
 ```php
@@ -141,31 +161,6 @@ Array
 */
 ```
 
-### Equality operator `==`
-
-```php
-[1, 2] == ['1', 2]; // true
-```
-
-### Inequality operator `!=`, `<>`
-
-```php
-[1, 2] != ['1', 2]; // false
-[1, 2] <> ['1', 2]; // false
-```
-
-### Identity operator `===`
-
-```php
-[1, 2] === ['1', 2]; // false
-```
-
-### Non-identity operator `!==`
-
-```php
-[1, 2] !== ['1', 2]; // true
-```
-
 ## Type operator
 
 ```php
@@ -185,4 +180,3 @@ $digits = [1, 2];
 
 echo add(...$digits); // 3
 ```
-
