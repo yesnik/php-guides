@@ -102,6 +102,11 @@ Arrays, objects, booleans and resources are not affected. Decrementing null valu
 - `$a or $b` - Or - true if either $a or $b is true.
 - `$a xor $b` - Xor - true if either $a or $b is true, but not both.
 
+## String Operators
+
+- `$a . $b` - Concatenation operator - returns the concatenation of its right and left arguments
+- `$a .= $b` - Concatenating assignment operator - appends the argument on the right side to the argument on the left side
+
 ## Array operators
 
 ### Union operator `+`
