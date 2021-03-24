@@ -1,4 +1,4 @@
-# Mocks
+# Test Doubles
 
 The `createStub($type)`, `createMock($type)`, and `getMockBuilder($type)` methods can be used in a test 
 to automatically generate an object that can act as a test double for the 
