@@ -1,5 +1,9 @@
 # Mocks
 
+The `createStub($type)`, `createMock($type)`, and `getMockBuilder($type)` methods can be used in a test 
+to automatically generate an object that can act as a test double for the 
+specified original type (interface or class name). 
+
 ### Mock without constructor args
 
 We can create mock objects to remove unnecessary dependencies.
