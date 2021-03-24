@@ -1,6 +1,6 @@
 # Mocks
 
-*Note:* Install [Mockery](https://github.com/mockery/mockery) - simple and flexible PHP mock object framework. 
+### Mock without constructor args
 
 We can create mock objects to remove unnecessary dependencies.
 
@@ -18,6 +18,13 @@ $this->assertTrue($mailer->send('hi@gmail.com', 'Hello'));
 ```
 
 If we don't provide stub for a method, this method will return `null` by default.
+
+Under the [hood](https://github.com/sebastianbergmann/phpunit/blob/master/src/Framework/TestCase.php) `createMock` calls 
+```php
+$this->getMockBuilder($originalClassName)
+    ->disableOriginalConstructor()
+    // ...
+```
 
 ### Stub method
 
@@ -133,3 +140,5 @@ public function name_and_title_is_returned_using_get_title()
     $this->assertEquals('Dr. Green', $mock->getNameAndTitle());
 }
 ```
+
+*Note:* Also you can install [Mockery](https://github.com/mockery/mockery) - simple and flexible PHP mock object framework. 
