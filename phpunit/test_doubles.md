@@ -3,7 +3,7 @@
 When we are writing a test in which we don't want to use a real depended-on component (DOC), we can replace it with a *Test Double*. 
 The Test Double has to provide the same API as the real one so that the tested system thinks it is the real one.
 
-PHPUnit provides methods: 
+PHPUnit has class [PHPUnit\Framework\TestCase](https://github.com/sebastianbergmann/phpunit/blob/master/src/Framework/TestCase.php) that provides methods: 
 
 - `createStub()`, `createMock()` - they immediately return a test double object for the specified type
 - `getMockBuilder()` - it allows to customize the test double generation 
@@ -27,7 +27,9 @@ class Greeting
 }
 ```
 
-### ::setMethods - pass an array with method names
+### Stub methods of the class
+
+Use `setMethods()` to define methods you want to stub:
 
 ```php
 $greeting = $this->getMockBuilder(Greeting::class)
@@ -36,11 +38,11 @@ $greeting = $this->getMockBuilder(Greeting::class)
 
 $greeting->method('getFullname')->willReturn('John Doe');
 
-$this->assertEquals('Dear John Doe', $greeting->getGreeting());
+$this->assertEquals('Dear John Doe', $greeting->getText());
 ```
 
-In the `$greeting` mock object the `::getFullname()` method would return `null` or you can override their return values. 
-Any method within the class `Greeting` other than `::getFullname()` will run their original code.
+In the `$greeting` mock object the `getFullname()` method would return `null` or you can override their return values. 
+Any method within the class `Greeting` other than `getFullname()` will run their original code.
 
 ### Mock without constructor args
 
