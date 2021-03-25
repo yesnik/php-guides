@@ -27,17 +27,16 @@ class Greeting
 }
 ```
 
-### Pass an array with method names
+### ::setMethods - pass an array with method names
 
 ```php
 $greeting = $this->getMockBuilder(Greeting::class)
     ->setMethods(['getFullname'])
     ->getMock();
 
-$greeting->method('getFullname')
-    ->willReturn('John Doe');
-    
-$this->assertEquals('Dear John Doe', $greeting->getText());
+$greeting->method('getFullname')->willReturn('John Doe');
+
+$this->assertEquals('Dear John Doe', $greeting->getGreeting());
 ```
 
 In the `$greeting` mock object the `::getFullname()` method would return `null` or you can override their return values. 
