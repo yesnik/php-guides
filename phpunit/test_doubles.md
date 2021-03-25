@@ -190,3 +190,8 @@ public function name_and_title_is_returned_using_get_title()
 ```
 
 *Note:* Also you can install [Mockery](https://github.com/mockery/mockery) - simple and flexible PHP mock object framework. 
+
+## Links
+
+- [Unit Testing Tutorial Part V: Mock Methods and Overriding Constructors](https://jtreminio.com/blog/unit-testing-tutorial-part-v-mock-methods-and-overriding-constructors/)
+- [Managing return values with PHPUnit mock objects. Matt Zandstra](https://getinstance.com/return-values-phpunit-mock-objects/)
