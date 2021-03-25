@@ -1,8 +1,14 @@
 # Test Doubles
 
-The `createStub($type)`, `createMock($type)`, and `getMockBuilder($type)` methods can be used in a test 
-to automatically generate an object that can act as a test double for the 
-specified original type (interface or class name).
+When we are writing a test in which we don't want to use a real depended-on component (DOC), we can replace it with a *Test Double*. 
+The Test Double has to provide the same API as the real one so that the tested system thinks it is the real one.
+
+PHPUnit provides methods: 
+
+- `createStub()`, `createMock()` - they immediately return a test double object for the specified type
+- `getMockBuilder()` - it allows to customize the test double generation 
+
+They can be used in a test to automatically generate an object that can act as a test double for the specified original type (interface or class name).
 
 By default, all methods of the original class are replaced with a dummy implementation that returns `null` (without calling the original method). 
 Using the `will($this->returnValue())` method, for instance, you can configure these dummy implementations to return a value when called.
