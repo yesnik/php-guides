@@ -10,8 +10,38 @@ PHPUnit provides methods:
 
 They can be used in a test to automatically generate an object that can act as a test double for the specified original type (interface or class name).
 
-By default, all methods of the original class are replaced with a dummy implementation that returns `null` (without calling the original method). 
-Using the `will($this->returnValue())` method, for instance, you can configure these dummy implementations to return a value when called.
+## Stubs
+
+**Stubbing** is the practice of replacing an object with a test double that (optionally) returns configured return values.
+
+Tested class:
+
+```php
+class Greeting
+{
+    public function getText()
+    {
+        return "Dear {$this->getFullname()}"
+    }
+    // ...
+}
+```
+
+### Pass an array with method names
+
+```php
+$greeting = $this->getMockBuilder(Greeting::class)
+    ->setMethods(['getFullname'])
+    ->getMock();
+
+$greeting->method('getFullname')
+    ->willReturn('John Doe');
+    
+$this->assertEquals('Dear John Doe', $greeting->getText());
+```
+
+In the `$greeting` mock object the `::getFullname()` method would return `null` or you can override their return values. 
+Any method within the class `Greeting` other than `::getFullname()` will run their original code.
 
 ### Mock without constructor args
 
