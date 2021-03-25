@@ -32,9 +32,13 @@ class Greeting
 Use `setMethods()` to define methods you want to stub:
 
 ```php
+// Way 1:
 $greeting = $this->getMockBuilder(Greeting::class)
     ->setMethods(['getFullname'])
     ->getMock();
+
+// Way 2:
+$greeting = $this->createPartialMock(Greeting::class, ['getFullname']);
 
 $greeting->method('getFullname')->willReturn('John Doe');
 
