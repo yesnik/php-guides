@@ -11,6 +11,10 @@
 echo Carbon::now()->subMinutes(2)->diffForHumans(); // '2 minutes ago'
 ```
 
+## Dependency Injection
+
+- [PHP-DI](https://github.com/PHP-DI/PHP-DI)
+
 ## Security
 
 - [roave/security-advisories](https://github.com/Roave/SecurityAdvisories). Package ensures that your application doesn't have installed dependencies with known security vulnerabilities.
