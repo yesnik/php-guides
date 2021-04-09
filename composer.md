@@ -51,7 +51,7 @@ composer init
 This command will generate file `composer.json`. 
 Edit this file and add [autoload](https://getcomposer.org/doc/04-schema.md#psr-4) section:
 
-```
+```json
 {
     "name": "nik/myautoload",
     "description": "Autoload test",
@@ -78,3 +78,20 @@ use App\Animals\Cat;
 
 $tom = new Cat();
 ```
+
+## Config
+
+```json
+{
+    "name": "kenny/app",
+    "type": "project",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {}
+}
+```
+
+File `composer.json` has `config` section with many [options](https://getcomposer.org/doc/06-config.md):
+
+- `sort-packages` - Defaults to false. If true, the require command keeps packages sorted by name in composer.json when adding a new package.
