@@ -11,3 +11,6 @@
 echo Carbon::now()->subMinutes(2)->diffForHumans(); // '2 minutes ago'
 ```
 
+## Security
+
+- [roave/security-advisories](https://github.com/Roave/SecurityAdvisories). Package ensures that your application doesn't have installed dependencies with known security vulnerabilities.
