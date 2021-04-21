@@ -63,11 +63,11 @@ public function getToken_returns_string()
 public function prefixedToken_starts_with_prefix()
 {
     $item = new Item();
-    $reflector = new ReflectionClass(Item::class);
+    $reflector = new ReflectionClass($item);
     $method = $reflector->getMethod('getPrefixedToken');
     $method->setAccessible(true);
 
-    $result = $method->invokeArgs($item, ['wp_']);
+    $result = $method->invokeArgs($item, [ 'wp_' ]);
 
     $this->assertStringStartsWith('wp_', $result);
 }
