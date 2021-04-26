@@ -29,8 +29,6 @@ class Greeting
 
 ### Stub methods of the class
 
-Use `setMethods()` to define methods you want to stub:
-
 ```php
 // Way 1:
 $greeting = $this->getMockBuilder(Greeting::class)
