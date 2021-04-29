@@ -75,17 +75,69 @@ yum install php-pecl-xdebug
 
 ## Docker-compose
 
-In your `php.ini` for container with PHP place this config:
+### Config PHP container
+
+Create file `docker/dev/php/conf.d/xdebug.ini`:
 
 ```
 [xdebug]
-xdebug.remote_host = 172.17.0.1
-xdebug.default_enable = 1
-xdebug.remote_autostart = 1
-xdebug.remote_connect_back = 0
-xdebug.remote_enable = 1
-xdebug.remote_handler = "dbgp"
-xdebug.remote_port = 9009
+xdebug.mode=debug
+xdebug.client_host=host.docker.internal
+xdebug.client_port=9003
 ```
 
-Note: `172.17.0.1` - is IP address of your host PC where you run PHPStorm
+Here `host.docker.internal` is an alias for your local PC IP address. In linux we need to modify `/etc/hosts` in our container:
+
+```
+172.27.0.1	host.docker.internal
+```
+
+We can do this automatically with script `entrypoint.sh`
+
+```
+#!/bin/sh
+set -e
+
+HOST_DOMAIN="host.docker.internal"
+if ! ping -q -c1 $HOST_DOMAIN > /dev/null 2>&1
+then
+  HOST_IP=$(ip route | awk 'NR==1 {print $3}')
+  # shellcheck disable=SC2039
+  echo -e "$HOST_IP\t$HOST_DOMAIN" >> /etc/hosts
+fi
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- php-fpm "$@"
+fi
+
+exec "$@"
+```
+
+Copy this script in your `Dockerfile` for PHP-FPM:
+
+```
+FROM php:8-fpm-alpine
+
+RUN apk update && apk add autoconf g++ make \
+    && pecl install xdebug \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable xdebug
+
+RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
+
+COPY ./dev/php/conf.d /usr/local/etc/php/conf.d
+
+WORKDIR /app
+
+COPY ./dev/php/entrypoint.sh /usr/local/bin/docker-php-entrypoint
+RUN chmod +x /usr/local/bin/docker-php-entrypoint
+```
+
+### Config PHPStorm
+
+- Open Settings > Languages & Frameworks > PHP > Servers.
+- Add server with name `API`:
+  - Host: 127.0.0.1
+  - Port: 8080
+  - Activate checkbox "Use path mappings" and define map: your local folder -> folder in docker
