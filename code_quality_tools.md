@@ -13,6 +13,10 @@ The process of code refactoring can result in stepwise reductions in *software e
 
 Software entropy is increased with accumulation of technical debt.
 
+### PHP Lint
+
+[phplint](https://github.com/overtrue/phplint) is a tool that can speed up linting of php files by running several lint processes at once.
+
 ### PHP Coding Standards Fixer
 
 [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) is a tool to automatically fix PHP Coding Standards issues.
