@@ -1,5 +1,9 @@
 # PHP packages
 
+## Config
+
+- [laminas-config-aggregator](https://github.com/laminas/laminas-config-aggregator) - library for collecting and merging configuration from different sources
+
 ## Images
 
 - [intervention/image](https://github.com/Intervention/image) - PHP Image Manipulation. It has Laravel integration.
