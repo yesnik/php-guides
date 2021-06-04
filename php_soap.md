@@ -48,7 +48,7 @@ Array
 It means that our service has only one function: `SI_REQ_DIRECTORIES`. This function:
 
 - accepts argument `$MT_REQ_DIRECTORIES` of the type `DT_REQ_DIRECTORIES`
-- returns argument of the type `DT_RES_DIRECTORIES`
+- returns value of the type `DT_RES_DIRECTORIES`
 
 **Get types of the service**
 
@@ -83,9 +83,9 @@ It means that the type `DT_REQ_DIRECTORIES` requires `REQUEST` tag. `REQUEST` ta
 ini_set('soap.wsdl_cache_ttl', 0);
 ini_set('default_socket_timeout', 20);
 
-$url = dirname(__DIR__) . '/wsdl/PIQ_SI_REQ_DIRECTORIES.wsdl';
+$wsdlPath = __DIR__ . '/wsdl/PIQ_SI_REQ_DIRECTORIES.wsdl';
 
-$client = new SoapClient($url, [
+$client = new SoapClient($wsdlPath, [
     'soap_version' => SOAP_1_1,
     'trace' => 1,
     'cache_wsdl' => WSDL_CACHE_NONE,
