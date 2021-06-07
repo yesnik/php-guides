@@ -46,6 +46,8 @@ $this->assertEquals('Dear John Doe', $greeting->getText());
 In the `$greeting` mock object the `getFullname()` method would return `null` or you can override their return values. 
 Any method within the class `Greeting` other than `getFullname()` will run their original code.
 
+**Important**: The mocked method may not be `private`, but it can be `protected`.
+
 ### Mock without constructor args
 
 We can create mock objects to remove unnecessary dependencies.
