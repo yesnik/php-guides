@@ -43,10 +43,19 @@ $greeting->method('getFullname')->willReturn('John Doe');
 $this->assertEquals('Dear John Doe', $greeting->getText());
 ```
 
+
+`setMethods(array $methods)` specifies the methods that are to be replaced with a configurable test double. 
+The behavior of the *other methods is not changed*. If you call `setMethods(null)`, then no methods will be replaced.
+
 In the `$greeting` mock object the `getFullname()` method would return `null` or you can override their return values. 
 Any method within the class `Greeting` other than `getFullname()` will run their original code.
 
 **Important**: The mocked method may not be `private`, but it can be `protected`.
+
+## Mocks objects
+
+The practice of replacing an object with a test double that *verifies expectations*, 
+for instance asserting that a method has been called, is referred to as *mocking*.
 
 ### Mock without constructor args
 
@@ -54,11 +63,15 @@ We can create mock objects to remove unnecessary dependencies.
 
 ```php
 // Create mock object
-$mailerMock = $this->createMock(Mailer::class);
+$mailer = $this->createMock(Mailer::class);
 
-// Stub method
-$mailerMock
+// Add expectation
+$mailer
     ->expects($this->once())
+    ->with(
+        $this->equalTo('hi@gmail.com'),
+        $this->equalTo('Hello')
+    )
     ->method('send')
     ->willReturn(true);
 
@@ -74,46 +87,10 @@ $this->getMockBuilder($originalClassName)
     // ...
 ```
 
-### Stub method
-
-**Check value of arguments**
+### Method will throw exception
 
 ```php
-$mailerMock = $this->createMock(Mailer::class);
-
-$mailerMock
-    ->expects($this->once())
-    ->method('send')
-    ->with(
-        $this->equalTo('joe@gmail.com'),
-        $this->equalTo('hello'),
-    )
-    ->willReturn(true);
-```
-
-**Stub only provided methods**
-
-```php
-// Example 1
-$mailerMock = $this->getMockBuilder(Mailer::class)
-                   ->disableOriginalConstructor()
-                   ->setMethods(['send'])
-                   ->getMock();
-
-// Example 2
-$handler = $this->getMockBuilder(DelayedPublicationHandler::class)
-    ->setMethods(['getObjectForUpdate'])
-    ->getMock();
-$handler->method('getObjectForUpdate')->willReturn(true);
-```
-
-`setMethods(array $methods)` specifies the methods that are to be replaced with a configurable test double. 
-The behavior of the *other methods is not changed*. If you call `setMethods(null)`, then no methods will be replaced.
-
-**Method will throw exception**
-
-```php
-$user = new User;
+$user = new User();
 
 $mailerMock = $this->createMock(Mailer::class);
 $mailerMock->method('send')
@@ -126,7 +103,7 @@ $this->expectException(Exception::class);
 $user->notify('hello');
 ```
 
-**Method will return values from the map**
+### Method will return values from the map
 
 ```php
 /** @test */
