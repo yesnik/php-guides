@@ -8,7 +8,9 @@ php-config --extension-dir
 
 If `php-config` doesn't exist, then `apt-get install php-config` if Ubuntu/Debian or `yum install php-config` if CentOS/Red Hat.
 
-That command will give exact location of your php extension folder.
+That command will give exact location of your php extension folder. Examples:
+
+- Centos 7: `/usr/lib64/php/modules/soap.so`
 
 ### Show all PHP config files
 
