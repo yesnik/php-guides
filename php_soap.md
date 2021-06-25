@@ -128,7 +128,7 @@ try {
     print_r($client->__getLastRequestHeaders());
 
     echo 'REQUEST';
-    print_r($client->__getLastRequest());
+    echo htmlentities($this->soapClient->__getLastRequest());
 
     throw $exception;
 }
