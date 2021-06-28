@@ -19,13 +19,16 @@ sudo yum-config-manager --enable remi-php73
 sudo yum install php \
   php-common \
   php-opcache \
+  php-mbstring \
   php-mcrypt \
   php-cli \
   php-gd \
   php-curl \
   php-mysqlnd \
+  php-pgsql \
   php-fpm \
-  php-xml
+  php-xml \
+  php-zip
 ```
 
 - Verify the PHP installation:
