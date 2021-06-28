@@ -16,7 +16,16 @@ sudo yum-config-manager --enable remi-php73
 - Install PHP 7.3 and some of the most common PHP modules:
 
 ```
-sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysqlnd php-fpm
+sudo yum install php \
+  php-common \
+  php-opcache \
+  php-mcrypt \
+  php-cli \
+  php-gd \
+  php-curl \
+  php-mysqlnd \
+  php-fpm \
+  php-xml
 ```
 
 - Verify the PHP installation:
