@@ -43,6 +43,7 @@ $greeting->method('getFullname')->willReturn('John Doe');
 $this->assertEquals('Dear John Doe', $greeting->getText());
 ```
 
+**NOTE**: The mocked method **may not** be `private`, but it can be `protected`.
 
 `setMethods(array $methods)` specifies the methods that are to be replaced with a configurable test double. 
 The behavior of the *other methods is not changed*. If you call `setMethods(null)`, then no methods will be replaced.
@@ -50,7 +51,7 @@ The behavior of the *other methods is not changed*. If you call `setMethods(null
 In the `$greeting` mock object the `getFullname()` method would return `null` or you can override their return values. 
 Any method within the class `Greeting` other than `getFullname()` will run their original code.
 
-**Important**: The mocked method may not be `private`, but it can be `protected`.
+
 
 ## Mocks objects
 
