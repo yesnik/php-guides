@@ -30,13 +30,16 @@ class Greeting
 ### Stub methods of the class
 
 ```php
-// Way 1:
-$greeting = $this->getMockBuilder(Greeting::class)
-    ->setMethods(['getFullname'])
-    ->getMock();
+// Way 1
+$greeting = $this->createMock(Greeting::class);
 
 // Way 2:
 $greeting = $this->createPartialMock(Greeting::class, ['getFullname']);
+
+// Way 3:
+$greeting = $this->getMockBuilder(Greeting::class)
+    ->setMethods(['getFullname'])
+    ->getMock();
 
 $greeting->method('getFullname')->willReturn('John Doe');
 
