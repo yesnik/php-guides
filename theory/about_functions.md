@@ -1,5 +1,35 @@
 # About PHP functions
 
+## Arrays are passed by value
+
+```php
+function addZ($arr)
+{
+    $arr['z'] = 'zz';
+    return $arr;
+}
+
+$arr = [5 => 'Five'];
+
+var_dump(addZ($arr)); // [5 => 'Five', 'z' => 'zz']
+var_dump($arr); // ?
+```
+
+### Ampersand allows to pass array by reference
+
+```php
+function addZ(&$arr)
+{
+    $arr['z'] = 'zz';
+    return $arr;
+}
+
+$arr = [5 => 'Five'];
+
+var_dump(addZ($arr)); // [5 => 'Five', 'z' => 'zz']
+var_dump($arr); // ?
+```
+
 ## Objects are passed by reference
 
 It's not completely true - [see docs](https://www.php.net/manual/en/language.oop5.references.php).
