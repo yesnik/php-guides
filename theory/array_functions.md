@@ -34,12 +34,39 @@ print_r($result); // [1, 4, 9]
 
 ### Flatten arrays
 
+*Example 1*
+
 ```php
 $a = [1, 2];
 $b = [2, 3];
 $res = array_merge($a, $b);
 
 print_r($res); // [1, 2, 2, 3]
+```
+
+*Example 2*
+
+```php
+$array = [
+    [
+        'a' => 1,  
+    ],
+    [
+        'b' => 2,
+        'c' => 3,
+    ],
+];
+
+$result = array_merge([], ...$array);
+
+var_dump($result);
+/*
+array(3) {
+  ["a"] => int(1)
+  ["b"] => int(2)
+  ["c"] => int(3)
+}
+*/
 ```
 
 ### Default values
