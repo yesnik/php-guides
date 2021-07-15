@@ -32,12 +32,44 @@ print_r($result); // [1, 4, 9]
 
 ## array_merge()
 
+### Flatten arrays
+
 ```php
 $a = [1, 2];
 $b = [2, 3];
 $res = array_merge($a, $b);
 
 print_r($res); // [1, 2, 2, 3]
+```
+
+### Default values
+
+We can use this function to define default parameters.
+
+```php
+$default = [
+    'a' => 11,
+    'b' => 22
+];
+
+$new = array_merge(
+    $default,
+    [
+        'b' => 2222,
+        'c' => 33
+    ]
+);
+
+var_dump($new);
+
+/*
+Returns:
+array(3) {
+  ["a"] => int(11)
+  ["b"] => int(2222)
+  ["c"] => int(33)
+}
+*/
 ```
 
 ## array_rand()
