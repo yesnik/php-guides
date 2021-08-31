@@ -29,6 +29,9 @@ composer dump-autoload
 # List required in composer.json packages that have updates available
 composer outdated --direct
 
+# Update minor dependencies
+composer update
+
 # Update Symfony components
 composer update "symfony/*"
 
