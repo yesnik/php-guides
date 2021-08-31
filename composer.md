@@ -14,6 +14,9 @@ composer init
 # Add package 'phpmd/phpmd' to 'require-dev' of composer.json
 composer req phpmd/phpmd --dev
 
+# Add/update package to specific version
+composer req phpmailer/phpmailer 5.2.28
+
 # Remove package from composer.json
 composer remove phpmd/phpmd
 
@@ -22,9 +25,6 @@ composer install --no-dev
 
 # Generate autoload files
 composer dump-autoload
-
-# Update package to specific version
-composer req phpmailer/phpmailer 5.2.28
 
 # Shows a list of installed packages that have updates available
 composer outdated
