@@ -32,6 +32,9 @@ composer outdated --direct
 # Update minor dependencies
 composer update
 
+# Update package with its dependencies
+composer update --with-dependencies phpmd/phpmd
+
 # Update Symfony components
 composer update "symfony/*"
 
