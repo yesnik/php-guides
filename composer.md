@@ -26,8 +26,8 @@ composer install --no-dev
 # Generate autoload files
 composer dump-autoload
 
-# Shows a list of installed packages that have updates available
-composer outdated
+# List required in composer.json packages that have updates available
+composer outdated --direct
 
 # Update Symfony components
 composer update "symfony/*"
