@@ -99,3 +99,16 @@ class DependTest extends TestCase
 ```
 
 We declare one variable in `testEmpty()` and use the same variable in dependent methods. `testPush()` method depends on `testEmpty()` as the return value can be used in `testPush()` method. 
+
+## @runInSeparateProcess
+
+Indicates that a test should be run in a separate PHP process. 
+By default, PHPUnit will attempt to preserve the global state from the parent process by serializing all globals 
+in the parent process and unserializing them in the child process.
+
+```php
+/**
+ * @runInSeparateProcess
+ */
+public function testSend() {}
+```
