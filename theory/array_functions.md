@@ -123,6 +123,30 @@ $res = array_reduce($a, function($total, $item) {
 echo $res; // 5
 ```
 
+## asort()
+
+Sort an array in *ascending* order and maintain index association.
+
+```php
+$arr = [
+    'a' => 10,
+    'b' => 2,
+    'c' => 3
+];
+
+asort($arr);
+
+print_r($arr);
+/*
+Array
+(
+    [b] => 2
+    [c] => 3
+    [a] => 10
+)
+*/
+```
+
 ## extract()
 
 This method allows you to initialize variables from associative array.
