@@ -123,9 +123,10 @@ $res = array_reduce($a, function($total, $item) {
 echo $res; // 5
 ```
 
-## asort()
+## asort() / arsort()
 
-Sort an array in *ascending* order and maintain index association.
+- `asort()` - sort an array in *ascending* order and maintain index association.
+- `arsort()` - ... *descending* order
 
 ```php
 $arr = [
