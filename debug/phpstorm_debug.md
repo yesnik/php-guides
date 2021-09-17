@@ -86,14 +86,16 @@ xdebug.client_host=host.docker.internal
 xdebug.client_port=9003
 ```
 
-Here `host.docker.internal` is an alias for your local PC IP address. In linux we need to modify `/etc/hosts` in our container:
+Note: **host.docker.internal** - alias for your notebook's IP address. In linux we need to modify `/etc/hosts` in our container:
 
 ```
 172.27.0.1	host.docker.internal
 ```
 
-We can do this automatically with script `entrypoint.sh`
+We can find out this IP address: 
 
+- manually with `ifconfig`. Example: `192.168.1.52`
+- automatically with script `entrypoint.sh`
 ```
 #!/bin/sh
 set -e
