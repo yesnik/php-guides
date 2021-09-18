@@ -8,6 +8,14 @@ Converts special characters to HTML entities. It helps to avoid XSS issues.
 echo htmlspecialchars('<a href="/">home</a>'); // &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;
 ```
 
+## str_starts_with
+
+PHP 8
+
+```php
+var_dump( str_starts_with('Kate', 'K') ); // bool(true)
+```
+
 ## trim
 
 ```php
