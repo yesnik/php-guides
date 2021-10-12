@@ -1,5 +1,8 @@
 # PHP Basic Auth
 
+See: [official PHP docs](https://www.php.net/manual/en/features.http-auth.php)
+
+## Code example
 ```php
 // index.php
 if (!isset($_SERVER['PHP_AUTH_USER'])) {
@@ -13,7 +16,9 @@ if (!isset($_SERVER['PHP_AUTH_USER'])) {
 }
 ```
 
-1. Try to open `index.php` in your browser. Server will respond:
+## Basic auth process
+
+1. Open `index.php` in your browser. Server will respond:
     ```
     HTTP/1.1 401 Unauthorized
     WWW-Authenticate: Basic realm="My Realm"
@@ -26,8 +31,7 @@ Browser will make the request:
     Authorization: Basic a2Vubnk6MTIz
     ...
     ```
-    But what is the string `a2Vubnk6MTIz`? That's simple:
-
+3. Server will decode `a2Vubnk6MTIz` in the Authorization header:
     ```php
     $user = 'kenny';
     $password = '123';
