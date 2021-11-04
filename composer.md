@@ -34,6 +34,7 @@ composer why psr/container
 
 # Show why project doesn't use version 2 of the package
 composer why-not psr/container 2
+composer why-not php 8
 
 # Update minor dependencies
 composer update
