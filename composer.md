@@ -29,6 +29,9 @@ composer dump-autoload
 # List required in composer.json packages that have updates available
 composer outdated --direct
 
+# Show what packages use this package
+composer why psr/container
+
 # Update minor dependencies
 composer update
 
