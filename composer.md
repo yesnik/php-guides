@@ -32,6 +32,9 @@ composer outdated --direct
 # Show what packages use this package
 composer why psr/container
 
+# Show why project doesn't use version 2 of the package
+composer why-not psr/container 2
+
 # Update minor dependencies
 composer update
 
