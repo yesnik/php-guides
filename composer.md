@@ -23,6 +23,9 @@ composer remove phpmd/phpmd
 # Install dependencies without dev
 composer install --no-dev
 
+# Install dependencies with verbose output (great for debugging)
+composer -vvv install
+
 # Generate autoload files
 composer dump-autoload
 
