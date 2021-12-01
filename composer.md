@@ -108,3 +108,44 @@ $tom = new Cat();
 File `composer.json` has `config` section with many [options](https://getcomposer.org/doc/06-config.md):
 
 - `sort-packages` - Defaults to false. If true, the require command keeps packages sorted by name in composer.json when adding a new package.
+
+## Repositories
+
+It's possible to download packages from your own storage (e.g. [Nexus](https://github.com/sonatype-nexus-community/nexus-repository-composer)) instead of default https://packagist.org
+
+### Add repository
+
+```
+composer config repo.nexus composer https://nexus.somesite.com/repository/composer-proxy/
+```
+
+This command will create entry in `repositories` key at `composer.json` file:
+
+```json
+"repositories": {
+    "nexus": {
+        "type": "composer",
+        "url": "https://nexus.somesite.com/repository/composer-proxy/"
+    }
+}
+```
+
+### Disable packagist
+
+If you use your own package repository it's possible to disable usage of the default https://packagist.org:
+
+```
+composer config repo.packagist false
+```
+
+This command will add entry in `repositories` key at `composer.json` file:
+
+```json
+"repositories": {
+    "nexus": {
+        "type": "composer",
+        "url": "https://nexus.somesite.com/repository/composer-proxy/"
+    }
+    "packagist": false
+}
+```
