@@ -133,6 +133,12 @@ This command will create entry in `repositories` key at `composer.json` file:
 }
 ```
 
+### Remove repository
+
+```
+composer config --unset repo.nexus
+```
+
 ### Disable packagist
 
 If you use your own package repository it's possible to disable usage of the default https://packagist.org:
