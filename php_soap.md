@@ -81,7 +81,9 @@ It means that the type `DT_REQ_DIRECTORIES` requires `REQUEST` tag. `REQUEST` ta
 
 ```php
 ini_set('soap.wsdl_cache_ttl', 0);
-ini_set('default_socket_timeout', 20);
+
+// Timeout for request in seconds
+ini_set('default_socket_timeout', 3);
 
 $wsdlPath = __DIR__ . '/wsdl/PIQ_SI_REQ_DIRECTORIES.wsdl';
 
