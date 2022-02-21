@@ -1,4 +1,4 @@
-# PHP installation on Ubuntu 20
+# PHP installation on Ubuntu
 
 * Update server:
 
@@ -22,6 +22,16 @@ sudo apt install php-fpm php-json php-pdo php-mysql php-zip \
 ```
 
 Check installed version: `php -v`
+
+## Import Ondřej Surý PHP PPA
+
+To install new version of PHP we can import the good renowned PPA from [Ondřej Surý](https://github.com/oerdnj), the lead developer on PHP and Debian.
+
+```
+sudo apt install software-properties-common && sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+sudo apt upgrade -y
+```
 
 ## PHP module installation
 
