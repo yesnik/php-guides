@@ -52,3 +52,30 @@ Array
 )
 */
 ```
+
+## `new` in initializers
+
+```php
+class Logger
+{
+    public function info(string $message)
+    {
+        echo '[INFO] ' . $message;
+    }
+}
+
+class Process
+{
+    public function __construct(
+        private Logger $logger = new Logger(), // We use 'new' here 
+    ) {}
+    
+    public function run()
+    {
+        $this->logger->info('Run');
+    }
+}
+
+$process = new Process();
+$process->run();
+```
