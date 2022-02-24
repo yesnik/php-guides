@@ -53,3 +53,18 @@ object(WeakMap)#1 (0) {
 }
 */
 ```
+
+## Trailing Comma in Parameter List
+
+```php
+declare(strict_types=1);
+
+function add(
+    int $a,
+    int $b, // trailing comma
+) {
+    return $a + $b;
+}
+
+echo add(2, 3); // 5
+```
