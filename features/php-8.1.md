@@ -93,3 +93,15 @@ class Student {
 $kenny = new Student('Kenny', new DateTimeImmutable('1990-12-22'));
 $kenny->name = 'Lenny'; // Uncaught Error: Cannot modify readonly property Student::$name 
 ```
+
+## First-class callable syntax
+
+You can now make a closure from a callable by calling that callable and passing it `...` as its argument:
+
+```php
+function add(int $a, int $b) { return $a + $b; }
+
+$add = add(...);
+
+echo $add(a: 1, b: 2); // 3
+```
