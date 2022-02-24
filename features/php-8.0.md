@@ -114,3 +114,16 @@ function sub(int $first, int $second) {
 
 echo sub(second: 5, first: 8); // 3
 ```
+
+## Nullsafe operator
+
+When the left hand side of the operator evaluates to null the execution of the entire chain will stop and evalute to null. 
+When it is not null it will behave exactly like the normal `->` operator. 
+
+```php
+$a = null;
+var_dump($a?->add()?->sub()); // null
+
+$a = 1;
+var_dump($a?->add()); // Uncaught Error: Call to a member function add() on int
+```
