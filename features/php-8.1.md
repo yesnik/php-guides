@@ -179,7 +179,7 @@ $notAList = [0 => "a", 1 => "b", 4 => "c"];
 var_dump(array_is_list($notAList)); // false
 ```
 
-##  Final class constants
+## Final class constants
 
 Class constants in PHP can be overridden during inheritance. 
 As of PHP 8.1, you can mark such constants as `final` in order to prevent this:
@@ -195,4 +195,21 @@ class Cat extends Animal
     public const PLANET = "Mars";
     // Fatal error: Cat::PLANET cannot override final constant Animal::PLANET
 }
+```
+
+## Function `fsync`
+
+PHP 8.1 adds the `fsync` and `fdatasync` functions to force synchronization of file changes to disk 
+and ensure operating system write buffers have been flushed before returning.
+
+```php
+$file = fopen("sample.txt", "w");
+
+fwrite($file, "Some content");
+
+if (fsync($file)) {
+    echo "File has been successfully persisted to disk.";
+}
+
+fclose($file);
 ```
