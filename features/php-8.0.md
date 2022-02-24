@@ -1,5 +1,19 @@
 # PHP 8.0 Features
 
+## Constructor Property Promotion
+
+```php
+class Point {
+    public function __construct(
+        private float $x,
+        private float $y
+    ) {}
+}
+
+$a = new Point(1.1, 2.2);
+var_dump($a);
+```
+
 ## Union types
 
 ```php
