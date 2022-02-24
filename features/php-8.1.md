@@ -178,3 +178,21 @@ $notAList = [0 => "a", 1 => "b", 4 => "c"];
 
 var_dump(array_is_list($notAList)); // false
 ```
+
+##  Final class constants
+
+Class constants in PHP can be overridden during inheritance. 
+As of PHP 8.1, you can mark such constants as `final` in order to prevent this:
+
+```php
+class Animal
+{
+    final public const PLANET = "Earth";
+}
+ 
+class Cat extends Animal
+{
+    public const PLANET = "Mars";
+    // Fatal error: Cat::PLANET cannot override final constant Animal::PLANET
+}
+```
