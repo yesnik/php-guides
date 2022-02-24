@@ -148,3 +148,13 @@ echo match (11) {
 	1 => 'b',
 }; // Uncaught UnhandledMatchError: Unhandled match value of type int 
 ```
+
+## str_starts_with, str_ends_with, get_debug_type
+
+```php
+var_dump(str_starts_with('Laravel', 'Lara')); // true
+
+var_dump(str_ends_with('Laravel', 'vel')); // true
+
+var_dump(get_debug_type(new stdClass())); // stdClass
+```
