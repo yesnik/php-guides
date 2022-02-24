@@ -104,3 +104,13 @@ foreach ($attrs as $attribute) {
     */
 }
 ```
+
+## Named arguments
+
+```php
+function sub(int $first, int $second) {
+    return $first - $second;
+}
+
+echo sub(second: 5, first: 8); // 3
+```
