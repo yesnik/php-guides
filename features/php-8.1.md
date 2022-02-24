@@ -79,3 +79,17 @@ class Process
 $process = new Process();
 $process->run();
 ```
+
+## Readonly properties
+
+```php
+class Student {
+    public function __construct(
+        public readonly string $name,
+        public readonly DateTimeImmutable $bitrhdate,
+    ) {}
+}
+
+$kenny = new Student('Kenny', new DateTimeImmutable('1990-12-22'));
+$kenny->name = 'Lenny'; // Uncaught Error: Cannot modify readonly property Student::$name 
+```
