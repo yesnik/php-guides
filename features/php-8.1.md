@@ -105,3 +105,48 @@ $add = add(...);
 
 echo $add(a: 1, b: 2); // 3
 ```
+
+## Intersection types
+
+Where union types require the input to be one of the given types, 
+intersection types require the input to be all of the specified types. 
+Intersection types are especially useful when you're working with lots of interfaces:
+
+```php
+interface HasId
+{
+    public function getId(): int;
+}
+
+interface HasTitle
+{
+    public function getTitle(): string;
+}
+
+class Post implements HasId, HasTitle
+{
+    public function __construct(
+        private int $id,
+        private string $title,
+    ) {}
+    public function getId(): int
+    {
+        return $this->id;
+    }
+    
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+}
+
+// Here we use Intersection Types
+function getSlug(HasId&HasTitle $post)
+{
+    return $post->getId() . '-' . $post->getTitle();
+}
+
+$post = new Post(1, 'php');
+
+echo getSlug($post); // 1-php
+```
