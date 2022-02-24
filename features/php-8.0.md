@@ -68,3 +68,39 @@ function add(
 
 echo add(2, 3); // 5
 ```
+
+## Attributes v2
+
+```php
+declare(strict_types=1);
+
+#[SomeAttribute('Hello world', 16)]
+class Foo {}
+
+#[Attribute]
+class SomeAttribute {
+    private string $message;
+    private int $answer;
+    public function __construct(string $message, int $answer) {
+        $this->message = $message;
+        $this->answer = $answer;
+    }
+}
+
+$reflector = new \ReflectionClass(Foo::class);
+$attrs = $reflector->getAttributes();
+
+foreach ($attrs as $attribute) {
+    var_dump($attribute->getName()); // "exampleAttribute"
+    var_dump($attribute->getArguments()); // ["Hello world", 16]
+    var_dump($attribute->newInstance());
+    /*
+    object(SomeAttribute)#3 (2) {
+      ["message":"SomeAttribute":private]=>
+        string(11) "Hello world"
+      ["answer":"SomeAttribute":private]=>
+        int(16)
+    }
+    */
+}
+```
