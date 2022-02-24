@@ -150,3 +150,18 @@ $post = new Post(1, 'php');
 
 echo getSlug($post); // 1-php
 ```
+
+## Type `never`
+
+The `never` type can be used to indicated that a function will actually stop the program flow. 
+This can be done either by throwing an exception, calling exit or other similar functions.
+
+```php
+function dd(mixed $var): never
+{
+    var_dump($var);
+    exit;
+}
+
+dd(1);
+```
