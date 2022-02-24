@@ -32,3 +32,24 @@ echo getGreeting('Kenny'); // Welcome, Kenny
 echo getGreeting(3.14); // Fatal error Uncaught TypeError: getGreeting(): 
                         // Argument #1 ($name) must be of type string|int, float given
 ```
+
+## Weak map
+
+A `WeakMap` class to create objects to be used as weak map keys that can be destroyed and removed from the weak map if there aren’t any further references to the key object.
+
+In long-running processes, this would prevent memory leaks and improve performance.
+
+```php
+declare(strict_types=1);
+
+$map = new WeakMap;
+$obj = new stdClass;
+$map[$obj] = 42;
+var_dump($map);
+unset($obj);
+var_dump($map);
+/*
+object(WeakMap)#1 (0) {
+}
+*/
+```
