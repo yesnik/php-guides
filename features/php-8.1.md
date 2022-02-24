@@ -165,3 +165,16 @@ function dd(mixed $var): never
 
 dd(1);
 ```
+`never` differs from `void` in that `void` still allows the program to continue. 
+
+## Function `array_is_list`
+
+```php
+$list = ["a", "b", "c"];
+
+var_dump(array_is_list($list)); // true
+
+$notAList = [0 => "a", 1 => "b", 4 => "c"];
+
+var_dump(array_is_list($notAList)); // false
+```
