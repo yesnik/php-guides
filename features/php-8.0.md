@@ -127,3 +127,24 @@ var_dump($a?->add()?->sub()); // null
 $a = 1;
 var_dump($a?->add()); // Uncaught Error: Call to a member function add() on int
 ```
+
+## Match
+
+```php
+echo match (1) {
+	0 => 'a',
+	1 => 'b',
+	2 => 'c',
+}; // 'b'
+
+echo match (11) {
+	0 => 'a',
+	1, 11, 111 => 'b',
+	2 => 'c',
+}; // 'b'
+
+echo match (11) {
+	0 => 'a',
+	1 => 'b',
+}; // Uncaught UnhandledMatchError: Unhandled match value of type int 
+```
