@@ -33,6 +33,20 @@ echo getGreeting(3.14); // Fatal error Uncaught TypeError: getGreeting():
                         // Argument #1 ($name) must be of type string|int, float given
 ```
 
+Example from symfony/http-foundation [HeaderBag.php](https://github.com/symfony/http-foundation/blob/v6.0.6/HeaderBag.php#L130):
+
+```php
+    /**
+     * Sets a header by name.
+     *
+     * @param string|string[]|null $values  The value or an array of values
+     * @param bool                 $replace Whether to replace the actual value or not (true by default)
+     */
+    public function set(string $key, string|array|null $values, bool $replace = true)
+    { 
+    	// ...
+```
+
 ## Weak map
 
 A `WeakMap` class to create objects to be used as weak map keys that can be destroyed and removed from the weak map if there aren’t any further references to the key object.
