@@ -150,7 +150,7 @@ Available values: `week`, `month`, `year`
 
 ### DateTime
 
-**Usinf constructor**
+**Using constructor**
 
 ```php
 // 3 days ago
@@ -166,6 +166,9 @@ object(DateTime)#1 (3) {
   string(10) "US/Pacific"
 }
 */
+```
+```php
+echo (new DateTime('- 1 hour'))->format('Y-m-d H:i:s'); // 2022-01-25 03:47:03
 ```
 
 **Using modify()**
