@@ -8,6 +8,12 @@ Converts special characters to HTML entities. It helps to avoid XSS issues.
 echo htmlspecialchars('<a href="/">home</a>'); // &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;
 ```
 
+## str_repeat
+
+```php
+echo str_repeat('ab', 3); // 'ababab'
+```
+
 ## str_starts_with
 
 PHP 8
