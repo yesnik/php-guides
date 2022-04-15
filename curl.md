@@ -32,32 +32,31 @@ curl_close($ch);
 ## POST JSON
 
 ```php
-function send(string $url, string $message)
-{
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($curl, CURLOPT_POSTFIELDS, $message);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HEADER, false);
-    curl_setopt($curl, CURLOPT_TIMEOUT_MS, 2000);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
-            'Accept: application/json',
-            'Content-Length: ' . strlen($message)
-        ]
-    );
+$url = 'https://google.com';
+$dataStr = json_encode(['a' => 1]);
 
-    $content = curl_exec($curl);
-    if (!$content) {
-        throw new Exception(curl_error($curl), curl_errno($curl));
-    }
+$ch = curl_init($url);
 
-    return [
-        'requestBody' => $message,
-        'status' => curl_getinfo($curl, CURLINFO_RESPONSE_CODE),
-        'data' => $content
-    ];
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $dataStr);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// curl_setopt($ch, CURLOPT_VERBOSE, true); // For debug
+curl_setopt($ch, CURLOPT_TIMEOUT_MS, 2000);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Content-Type: application/json',
+    'Accept: application/json',
+    'Content-Length: ' . strlen($dataStr)
+]);
+
+$content = curl_exec($ch);
+if (!$content) {
+    throw new Exception(curl_error($ch), curl_errno($ch));
 }
+
+echo 'Response code: ' . curl_getinfo($ch, CURLINFO_RESPONSE_CODE) . PHP_EOL;
+echo 'Response content: ' . $content;
+
+curl_close($ch);
 ```
 
 ## POST JSON with digest auth
