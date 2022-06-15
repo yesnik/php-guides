@@ -39,18 +39,30 @@ sudo apt upgrade -y
 
 ### Manual activation of modules
 
-You don't need to edit `php.ini` to activate module. 
-All modules' available config files are stored in `/etc/php/7.2/mods-available/` directory.
+We don't need to edit `php.ini` to activate module. 
+All modules' available config files are stored in `/etc/php/8.1/mods-available/` directory.
 
 To activate module just add symlink:
 
 ```
-sudo ln -s /etc/php/7.2/mods-available/apcu.ini /etc/php/7.2/cli/conf.d/20-apcu.ini
-sudo ln -s /etc/php/7.2/mods-available/apcu.ini /etc/php/7.2/fpm/conf.d/20-apcu.ini
+sudo ln -s /etc/php/8.1/mods-available/apcu.ini /etc/php/8.1/cli/conf.d/20-apcu.ini
+sudo ln -s /etc/php/8.1/mods-available/apcu.ini /etc/php/8.1/fpm/conf.d/20-apcu.ini
 ```
 
-### Check all available PHP modules
+### Show available PHP modules
 
 ```
 apt-cache search --names-only ^php
+```
+
+### Show installed PHP modules
+
+```
+php -m
+```
+
+### Show PHP config files
+
+```
+php --ini
 ```
