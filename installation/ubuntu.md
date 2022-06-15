@@ -49,19 +49,19 @@ sudo ln -s /etc/php/8.1/mods-available/apcu.ini /etc/php/8.1/cli/conf.d/20-apcu.
 sudo ln -s /etc/php/8.1/mods-available/apcu.ini /etc/php/8.1/fpm/conf.d/20-apcu.ini
 ```
 
-### Show available PHP modules
+### Available PHP modules
 
 ```
 apt-cache search --names-only ^php
 ```
 
-### Show installed PHP modules
+### Installed PHP modules
 
 ```
 php -m
 ```
 
-### Show PHP config files
+### PHP config files
 
 ```
 php --ini
