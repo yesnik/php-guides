@@ -1,6 +1,6 @@
 # Composer for PHP apps
 
-Composer allows us to manage package dependencies.
+[Composer](https://getcomposer.org/download/) allows us to manage package dependencies.
 
 ## Commands
 
