@@ -55,7 +55,7 @@ sudo ln -s /etc/php/8.1/mods-available/apcu.ini /etc/php/8.1/fpm/conf.d/20-apcu.
 apt-cache search --names-only ^php
 ```
 
-### Installed PHP modules
+### Enabled PHP modules
 
 ```
 php -m
