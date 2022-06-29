@@ -194,6 +194,13 @@ echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-04 20:02:30'
 // In 2 days 3 hours 30 minutes
 $date->add(new DateInterval('P2DT3H30M'));
 echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-06 23:32:30'
+
+// 1 day ago
+echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d H:i:s');
+
+// 1 day and 2 hours ago
+// ([P]eriod [1 D]ay [T]ime [2 H]ours)
+echo (new DateTime())->sub(new DateInterval('P1DT2H'))->format('Y-m-d H:i:s');
 ```
 
 ## Time from date
