@@ -1,4 +1,4 @@
-# Anonimous Class
+# Anonymous Class
 
 ```php
 class Cat {
