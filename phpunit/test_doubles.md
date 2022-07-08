@@ -61,6 +61,56 @@ Any method within the class `Greeting` other than `getFullname()` will run their
 **Mocking** is the practice of replacing an object with a test double that *verifies expectations*, 
 for instance asserting that a method has been called.
 
+### Mock example
+
+We have a class. We need to ensure that error will be added to `$model` if it's empty POST request.
+
+```php
+class LargeFileHandler
+{
+    private $request;
+
+    public function __construct(CHttpRequest $request)
+    {
+        $this->request = $request;
+    }
+
+    public function handleLargeFileUpload(CModel $model, string $fileAttributeName = 'file'): void
+    {
+        if ($this->wasLargeFileUploaded()) {
+            $model->addError($fileAttributeName, 'Размер загружаемого файла должен быть не более 15 Мб');
+        }
+    }
+
+    private function wasLargeFileUploaded(): bool
+    {
+        return $this->request->getIsPostRequest() && empty($_POST);
+    }
+}
+```
+
+Test:
+
+```php
+class LargeFileHandlerTest extends CTestCase
+{
+    public function testHandleLargeFileUpload()
+    {
+        // Create a mock of CHttpRequest and stub method getIsPostRequest
+        $request = self::getMockBuilder(CHttpRequest::class)->setMethods(['getIsPostRequest'])->getMock();
+        $request->expects(self::once())->method('getIsPostRequest')->willReturn(true);
+
+        $lagreFileHandler = new LargeFileHandler($request);
+
+        // Create a mock of FileManager and stub method addError
+        $model = self::createMock(FileManager::class);
+        $model->expects(self::once())->method('addError');
+
+        $lagreFileHandler->handleLargeFileUpload($model);
+    }
+}
+```
+
 ### Mock without constructor args
 
 We can create mock objects to remove unnecessary dependencies.
