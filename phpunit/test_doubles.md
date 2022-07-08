@@ -56,7 +56,7 @@ The behavior of the *other methods is not changed*. If you call `setMethods(null
 In the `$greeting` mock object the `getFullname()` method would return `null` or you can override their return values. 
 Any method within the class `Greeting` other than `getFullname()` will run their original code.
 
-## Mocks objects
+## Mock objects
 
 **Mocking** is the practice of replacing an object with a test double that *verifies expectations*, 
 for instance asserting that a method has been called.
