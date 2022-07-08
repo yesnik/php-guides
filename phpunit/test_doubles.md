@@ -3,16 +3,18 @@
 When we are writing a test in which we don't want to use a real depended-on component (DOC), we can replace it with a *Test Double*. 
 The Test Double has to provide the same API as the real one so that the tested system thinks it is the real one.
 
-PHPUnit has class [PHPUnit\Framework\TestCase](https://github.com/sebastianbergmann/phpunit/blob/master/src/Framework/TestCase.php) that provides methods: 
+PHPUnit has class [PHPUnit\Framework\TestCase](https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php) that provides methods: 
 
-- `createStub()`, `createMock()` - they immediately return a test double object for the specified type
-- `getMockBuilder()` - it allows to customize the test double generation 
+- `createStub()` - creates a *test stub* for the specified interface or clas
+- `createMock()` - creates a *mock object* for the specified interface or class
+- `createPartialMock()` - creates a partial mock object for the specified interface or class
+- `getMockBuilder()` - returns a builder object to create mock objects using a fluent interface
 
 They can be used in a test to automatically generate an object that can act as a test double for the specified original type (interface or class name).
 
 ## Stubs
 
-**Stubbing** is the practice of replacing an object with a test double that (optionally) returns configured return values.
+**Stubbing** is the practice of replacing an object with a test double that optionally can return configured values.
 
 Tested class:
 
@@ -31,19 +33,19 @@ class Greeting
 
 ```php
 // Way 1
-$greeting = $this->createMock(Greeting::class);
+$greeting = self::createMock(Greeting::class);
 
 // Way 2:
-$greeting = $this->createPartialMock(Greeting::class, ['getFullname']);
+$greeting = self::createPartialMock(Greeting::class, ['getFullname']);
 
 // Way 3:
-$greeting = $this->getMockBuilder(Greeting::class)
+$greeting = self::getMockBuilder(Greeting::class)
     ->setMethods(['getFullname'])
     ->getMock();
 
 $greeting->method('getFullname')->willReturn('John Doe');
 
-$this->assertEquals('Dear John Doe', $greeting->getText());
+self::assertEquals('Dear John Doe', $greeting->getText());
 ```
 
 **NOTE**: The mocked method **may not** be `private`, but it can be `protected`.
@@ -54,12 +56,10 @@ The behavior of the *other methods is not changed*. If you call `setMethods(null
 In the `$greeting` mock object the `getFullname()` method would return `null` or you can override their return values. 
 Any method within the class `Greeting` other than `getFullname()` will run their original code.
 
-
-
 ## Mocks objects
 
-The practice of replacing an object with a test double that *verifies expectations*, 
-for instance asserting that a method has been called, is referred to as *mocking*.
+**Mocking** is the practice of replacing an object with a test double that *verifies expectations*, 
+for instance asserting that a method has been called.
 
 ### Mock without constructor args
 
@@ -67,24 +67,24 @@ We can create mock objects to remove unnecessary dependencies.
 
 ```php
 // Create mock object
-$mailer = $this->createMock(Mailer::class);
+$mailer = self::createMock(Mailer::class);
 
 // Add expectation
 $mailer
-    ->expects($this->once())
+    ->expects(self::once())
     ->with(
-        $this->equalTo('hi@gmail.com'),
-        $this->equalTo('Hello')
+        self::equalTo('hi@gmail.com'),
+        self::equalTo('Hello')
     )
     ->method('send')
     ->willReturn(true);
 
-$this->assertTrue($mailer->send('hi@gmail.com', 'Hello'));
+self::assertTrue($mailer->send('hi@gmail.com', 'Hello'));
 ```
 
 If we don't provide stub for a method, this method will return `null` by default.
 
-Under the [hood](https://github.com/sebastianbergmann/phpunit/blob/master/src/Framework/TestCase.php) `createMock` calls 
+Under the [hood](https://github.com/sebastianbergmann/phpunit/blob/main/src/Framework/TestCase.php) `createMock` calls 
 ```php
 $this->getMockBuilder($originalClassName)
     ->disableOriginalConstructor()
@@ -96,13 +96,13 @@ $this->getMockBuilder($originalClassName)
 ```php
 $user = new User();
 
-$mailerMock = $this->createMock(Mailer::class);
+$mailerMock = self::createMock(Mailer::class);
 $mailerMock->method('send')
     ->will($this->throwException(new Exception));
 
 $user->setMailer($mailerMock);
 
-$this->expectException(Exception::class);
+self::expectException(Exception::class);
 
 $user->notify('hello');
 ```
@@ -110,24 +110,20 @@ $user->notify('hello');
 ### Method will return values from the map
 
 ```php
-/** @test */
-public function correct_average_is_returned()
-{
-    $service = $this->createMock(TemperatureService::class);
+$service = self::createMock(TemperatureService::class);
 
-    $map = [
-        ['12:00', 20],
-        ['14:00', 26],
-    ];
+$map = [
+    ['12:00', 20],
+    ['14:00', 26],
+];
 
-    $service->expects($this->exactly(2))
-            ->method('getTemperature')
-            ->will($this->returnValueMap($map));
+$service->expects(self::exactly(2))
+        ->method('getTemperature')
+        ->will(self::returnValueMap($map));
 
-    $weather = new WeatherMonitor($service);
+$weather = new WeatherMonitor($service);
 
-    $this->assertEquals(23, $weather->getAverageTemperature('12:00', '14:00'));
-}
+self::assertEquals(23, $weather->getAverageTemperature('12:00', '14:00'));
 ```
 
 ### Mock abstract class
