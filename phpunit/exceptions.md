@@ -37,11 +37,6 @@ Test:
 ```php
 $producer = self::createMock(Producer::class);
 $producer->expects(self::once())
-    ->method('newTopic')
-    ->with($topicName)
-    ->willReturn(self::createMock(ProducerTopic::class));
-$producer->expects(self::once())
     ->method('poll')
     ->willThrowException($exception = new Exception('Some error message'));
-
 ```
