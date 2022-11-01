@@ -21,31 +21,32 @@ Tested class:
 ```php
 class Greeting
 {
-    public function getText()
+    public function getText(): string
     {
-        return "Dear {$this->getFullname()}"
+        return "Dear {$this->getName()}";
     }
-    // ...
+    
+    public function getName(): string
+    {
+        return 'Stranger';
+    }
 }
 ```
 
 ### Stub methods of the class
 
 ```php
-// Way 1
-$greeting = self::createMock(Greeting::class);
+// Way 1:
+$greeting = self::createPartialMock(Greeting::class, ['getName']);
 
 // Way 2:
-$greeting = self::createPartialMock(Greeting::class, ['getFullname']);
-
-// Way 3:
 $greeting = self::getMockBuilder(Greeting::class)
-    ->setMethods(['getFullname'])
+    ->setMethods(['getName'])
     ->getMock();
 
-$greeting->method('getFullname')->willReturn('John Doe');
+$greeting->method('getName')->willReturn('Kenny');
 
-self::assertEquals('Dear John Doe', $greeting->getText());
+self::assertEquals('Dear Kenny', $greeting->getText());
 ```
 
 **NOTE**: The mocked method **may not** be `private`, but it can be `protected`.
@@ -53,8 +54,8 @@ self::assertEquals('Dear John Doe', $greeting->getText());
 `setMethods(array $methods)` specifies the methods that are to be replaced with a configurable test double. 
 The behavior of the *other methods is not changed*. If you call `setMethods(null)`, then no methods will be replaced.
 
-In the `$greeting` mock object the `getFullname()` method would return `null` or you can override their return values. 
-Any method within the class `Greeting` other than `getFullname()` will run their original code.
+In the `$greeting` mock object the `getName()` method would return `null` or you can override their return values. 
+Any method within the class `Greeting` other than `getName()` will run their original code.
 
 ## Mock objects
 
@@ -63,7 +64,7 @@ for instance asserting that a method has been called.
 
 ### Mock example
 
-We have a class. We need to ensure that error will be added to `$model` if it's empty POST request.
+We have a class. We need to ensure that error will be added to the `$model` if POST request contains no data.
 
 ```php
 class LargeFileHandler
@@ -98,12 +99,16 @@ class LargeFileHandlerTest extends CTestCase
     {
         // Create a mock of CHttpRequest and stub method getIsPostRequest
         $request = self::getMockBuilder(CHttpRequest::class)->setMethods(['getIsPostRequest'])->getMock();
-        $request->expects(self::once())->method('getIsPostRequest')->willReturn(true);
+        // Add an expectation
+        $request->expects(self::once())
+            ->method('getIsPostRequest')
+            ->willReturn(true);
 
         $lagreFileHandler = new LargeFileHandler($request);
 
         // Create a mock of FileManager and stub method addError
         $model = self::createMock(FileManager::class);
+        // Add an expectation
         $model->expects(self::once())->method('addError');
 
         $lagreFileHandler->handleLargeFileUpload($model);
