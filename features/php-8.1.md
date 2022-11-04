@@ -2,36 +2,107 @@
 
 ## Enums
 
+We can type-hint enums just like any other object:
+
 ```php
 enum Status {
-  case Enabled;
-  case Disabled;
+	case ENABLED;
+	case DISABLED;
 }
 
 class Cat {
-    private Status $status;
-    
-    public function setStatus(Status $status)
-    {
-        $this->status = $status;
-    }
-    
-    public function getStatus()
-    {
-        return $this->status;
-    }
+    public function __construct(
+        public Status $status,
+    ) {}
 }
-$tom = new Cat();
-$tom->setStatus(Status::Enabled);
-var_dump($tom->getStatus()); // enum(Status::Enabled)
+$tom = new Cat(Status::ENABLED);
+var_dump($tom->status); // enum(Status::ENABLED)
+var_dump($tom->status === Status::ENABLED); // bool(true)
 ```
+
+### Backed enums
+
+There's the possibility to assign string or integer values to enums:
+
 ```php
 enum Status: int {
-  case Enabled = 1;
-  case Disabled = 0;
+    case ENABLED = 1;
+    case DISABLED = 0;
 }
 
-var_dump(Status::Enabled); // enum(Status::Enabled)
+var_dump(Status::ENABLED); // enum(Status::ENABLED)
+```
+```php
+enum Status: string {
+    case PUBLISHED = 'published';
+    case ARCHIVED = 'archived';
+}
+```
+
+### Enum methods and interfaces
+
+Enums can implement interfaces and define methods, just like normal classes.
+
+```php
+interface HasColor
+{
+    public function color(): string;
+}
+
+enum Status: int implements HasColor
+{
+    case ENABLED = 1;
+    case DISABLED = 0;
+    
+    public function color(): string
+    {
+        return match($this) 
+        {
+            self::ENABLED => 'green',   
+            self::DISABLED => 'gray',   
+        };
+    }
+}
+
+var_dump( Status::ENABLED->color() ); // "green"
+```
+
+### Serializing backed enums
+
+Serializing them means you need a way to access the enum's value
+
+```php
+$value = Status::ENABLED->value; // 1
+```
+
+Restore an enum from a value:
+
+```php
+$status = Status::from(1); // Status::ENABLED
+$status = Status::from(2); // Fatal error: Uncaught ValueError: 2 is not a valid backing value for enum "Status"
+```
+
+There's also a `tryFrom` that returns null if an unknown value is passed:
+
+```php
+$status = Status::tryFrom(1); // Status::ENABLED
+$status = Status::tryFrom(2); // NULL
+```
+
+### Listing enum values
+
+Get a list of all available cases within an enum:
+
+```php
+var_dump( Status::cases() );
+/*
+array(2) {
+  [0]=>
+  enum(Status::ENABLED)
+  [1]=>
+  enum(Status::DISABLED)
+}
+*/
 ```
 
 ## Array unpacking with string keys
