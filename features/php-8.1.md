@@ -157,7 +157,7 @@ $process->run();
 class Student {
     public function __construct(
         public readonly string $name,
-        public readonly DateTimeImmutable $bitrhdate,
+        public readonly DateTimeImmutable $birthdate,
     ) {}
 }
 
@@ -224,7 +224,7 @@ echo getSlug($post); // 1-php
 
 ## Type `never`
 
-The `never` type can be used to indicated that a function will actually stop the program flow. 
+The `never` type can be used to indicate that a function will actually stop the program flow. 
 This can be done either by throwing an exception, calling exit or other similar functions.
 
 ```php
@@ -241,11 +241,11 @@ dd(1);
 ## Function `array_is_list`
 
 ```php
-$list = ["a", "b", "c"];
+$list = ["a", "b"];
 
 var_dump(array_is_list($list)); // true
 
-$notAList = [0 => "a", 1 => "b", 4 => "c"];
+$notAList = [0 => "a", 3 => "b"];
 
 var_dump(array_is_list($notAList)); // false
 ```
