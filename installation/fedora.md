@@ -24,13 +24,15 @@ sudo dnf install php
   ```bash
   sudo dnf -y update
   ```
-- Add REMI Repository. *Note:* Check your Fedora's version: `cat /etc/os-release` 
+- Add REMI Repository. *Notes:* 
+  - Check Fedora's version: `cat /etc/os-release`
+  - See available [release versions](https://rpms.remirepo.net/fedora/)
   ```bash
-  # Fedora 33
-  sudo dnf install https://rpms.remirepo.net/fedora/remi-release-33.rpm
+  # Fedora 36
+  sudo dnf install https://rpms.remirepo.net/fedora/remi-release-36.rpm
   
-  # Fedora 32
-  sudo dnf install https://rpms.remirepo.net/fedora/remi-release-32.rpm
+  # Fedora 37
+  sudo dnf install https://rpms.remirepo.net/fedora/remi-release-37.rpm
   ```
 - Enable repos
   ```bash
@@ -39,7 +41,7 @@ sudo dnf install php
 - Install PHP 8 
   ```bash
   sudo dnf module reset php
-  sudo dnf module install php:remi-8.0
+  sudo dnf module install php:remi-8.2
   ```
 - Check installed PHP version
   ```bash
@@ -58,4 +60,4 @@ sudo dnf install php-fpm php-mysqlnd php-zip \
  
  - `php-pgsql` - adds `pdo_pgsql` module
  - `php-amqp`
- 
+ - `php-pecl-rdkafka` - [Kafka Client](https://github.com/arnaud-lb/php-rdkafka) for PHP
