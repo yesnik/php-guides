@@ -335,3 +335,7 @@ if (fsync($file)) {
 
 fclose($file);
 ```
+
+## Fibers
+
+See [docs](https://www.php.net/manual/en/language.fibers.php)
