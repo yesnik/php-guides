@@ -291,6 +291,8 @@ dd(1);
 
 ## Function `array_is_list`
 
+This function checks whether an array only contains ordered, numerical keys:
+
 ```php
 $list = ["a", "b"];
 
