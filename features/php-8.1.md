@@ -105,10 +105,23 @@ array(2) {
 */
 ```
 
-## Array unpacking with string keys
+## Array unpacking 
+
+### With numeric keys
+
+Array unpacking has been in PHP *since PHP 7.4*, though with a significant limitation: only arrays with *numeric keys* were allowed. 
 
 ```php
+$arr = [2, 3];
 
+$result = [1, ...$arr, 4]; // [1, 2, 3, 4]
+```
+
+If we try to unpack not numeric values, we'll get an error: *Fatal error: Cannot unpack array with string keys*.
+
+### With string keys
+
+```php
 $a = ['a' => 1];
 $b = ['b' => 2];
 $arr = ['a' => 0, ...$a, ...$b, 'c' => 3];
