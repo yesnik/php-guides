@@ -196,6 +196,8 @@ Where union types require the input to be one of the given types,
 intersection types require the input to be all of the specified types. 
 Intersection types are especially useful when you're working with lots of interfaces:
 
+### Example 1
+
 ```php
 interface HasId
 {
@@ -234,6 +236,42 @@ $post = new Post(1, 'php');
 
 echo getSlug($post); // 1-php
 ```
+
+### Example 2
+
+Let's imagine that we have 2 interfaces:
+
+```php
+interface WithUuid
+{
+    public function getUuid(): Uuid;
+}
+
+interface WithSlug
+{
+    public function getSlug(): string;
+}
+```
+
+Also we have a function that only works with objects that both have a UUID and a slug:
+
+```php
+function url($object): string {}
+```
+
+So the only solution, prior to PHP 8.1, was to make a new interface that extends both `WithUuid` and `WithSlug`:
+
+```php
+interface WithUrl extends WithUuid, WithSlug {}
+```
+
+Intersection types add more flexibility for using types, without the need of creating new interfaces:
+
+```php
+function url(WithUuid&WithSlug $object): string {}
+```
+
+*Note*: pure intersection types don't support `null` at the moment.
 
 ## Type `never`
 
