@@ -1,5 +1,37 @@
 # PHP 8.2 Features
 
+## Standalone types: null, true, and false
+
+Before PHP 8.2 we could already use `false` with other types as union:
+
+```php
+function sayHi(): string|false {
+	echo 'Hi';
+	return false;
+}
+```
+
+But now we can use `false`, `true`, `null` as a standalone type:
+
+```php
+function sayHi(): false {
+	echo 'Hi';
+	return false;
+}
+
+function sayHi(): true
+{
+	echo 'Hi';
+	return true;
+}
+
+function sayHi(): null
+{
+	echo 'Hi';
+	return null;
+}
+```
+
 ## Readonly classes
 
 This syntactic sugar allows us to make all class properties readonly at once. So instead of writing this:
@@ -17,7 +49,6 @@ class Student
 We can write this:
 
 ```php
-
 readonly class Student
 {
     public function __construct(
