@@ -148,6 +148,24 @@ Array
 */
 ```
 
+## natsort
+
+```php
+$array = ['car1.jpg', 'car2.jpg', 'car13.jpg'];
+
+natsort($array);
+// Natural order sorting
+print_r($array);
+/*
+Array
+(
+    [0] => car1.jpg
+    [1] => car2.jpg
+    [2] => car13.jpg
+)
+*/
+```
+
 ## extract()
 
 This method allows you to initialize variables from associative array.
