@@ -19,6 +19,12 @@ access global variables inside a function: `$GLOBALS['myvariable']`
 - `$_ENV`. An array of environment variables
 - `$_SESSION`. An array of session variables
 
+### get_defined_vars
+
+```php
+print_r(get_defined_vars());
+```
+
 ## Scopes
 
 ### Assignment inside function call
