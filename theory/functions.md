@@ -1,4 +1,12 @@
-# About PHP functions
+# Functions in PHP
+
+## get_defined_functions
+
+Returns an array of all defined functions:
+
+```php
+print_r(get_defined_functions(true));
+```
 
 ## Arrays are passed by value
 
