@@ -142,8 +142,10 @@ date_default_timezone_set($currentTimezone);
 
 ```php
 echo date('Y-m-d H:i:s', strtotime("+15 minutes")); // Returns string: '2017-11-03 11:00:00'
-
 echo date('Y-m-d H:i:s', strtotime('-3 hours')); // Returns string: '2017-11-03 09:00:00'
+
+date('Y-m-d', strtotime('next Monday'));
+date('Y-m-d', strtotime('last Thirsday'))
 ```
 
 Available values: `week`, `month`, `year`
