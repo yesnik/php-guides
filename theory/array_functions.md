@@ -123,6 +123,12 @@ $res = array_reduce($a, function($total, $item) {
 echo $res; // 5
 ```
 
+## array_reverse()
+
+```php
+array_reverse([1, 2]); // [2, 1]
+```
+
 ## asort() / arsort()
 
 - `asort()` - sort an array in *ascending* order and maintain index association.
@@ -148,7 +154,7 @@ Array
 */
 ```
 
-## natsort
+## natsort()
 
 ```php
 $array = ['car1.jpg', 'car2.jpg', 'car13.jpg'];
