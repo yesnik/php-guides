@@ -33,7 +33,9 @@ echo 'Sesson name: ' . session_name() . '<br>';
 - Name of this session is defined in param `session.name` (default: `PHPSESSID`).
 - For this session PHP generates a unique ID (`3995nghgct24oopkg5mldd5vg7`) and write it to a cookie.
 - Param `session.save_handler` (default: `files`) defines the name of the handler which is used for storing and retrieving data associated with a session.
-- In our case session data is written to a file `/var/lib/php/session/sess_3995nghgct24oopkg5mldd5vg7`
+- Session data is stored in `$_SESSION` variable. 
+- PHP uses [serialize()](https://www.php.net/manual/en/function.serialize) to save it to a file `/var/lib/php/session/sess_3995nghgct24oopkg5mldd5vg7`
+- Here is a content of this file: `name|s:5:"Kenny";`
 - PHP sends `PHPSESSID` with session ID value to browser via cookie.
 - On next requests the browser will send `PHPSESSID` cookie to the server.
 - PHP will search `PHPSESSID` value in the temporary directory and compares it to the file name. 
