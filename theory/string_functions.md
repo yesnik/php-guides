@@ -5,7 +5,10 @@
 Converts special characters to HTML entities. It helps to avoid XSS issues.
 
 ```php
-echo htmlspecialchars('<a href="/">home</a>'); // &lt;a href=&quot;/&quot;&gt;home&lt;/a&gt;
+$name = $_GET['name'] ?? 'Guest';
+
+echo "<h1>Hello, " . htmlspecialchars($name) . "</h1>";
+// <h1>Hello, &lt;script&gt;alert(1)&lt;/script&gt;</h1>
 ```
 
 ## str_repeat
