@@ -103,17 +103,17 @@ echo json_encode($items); // [{"name":"Kenny"},{"name":"Lara"}]
 ```php
 class Cat implements JsonSerializable
 {
-	public function __construct(
-		private string $name,
-		private string $age	
-	) {}
-	
-	public function jsonSerialize(): mixed {
-		return [
-			'name' => $this->name,
-			'age' => $this->age,
-		];
-	}
+    public function __construct(
+        private string $name,
+        private string $age	
+    ) {}
+
+    public function jsonSerialize(): mixed {
+        return [
+            'name' => $this->name,
+            'age' => $this->age,
+        ];
+    }
 }
 
 $tom = new Cat('Tom', 5);
