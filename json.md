@@ -100,20 +100,20 @@ echo json_encode($items); // [{"name":"Kenny"},{"name":"Lara"}]
 
 *Example 2*
 
+**Note:** We use [get_object_vars](https://www.php.net/manual/en/function.get-object-vars.php) to get the properties of the given object.
+
 ```php
+
 class Cat implements JsonSerializable
 {
-    public function __construct(
-        private string $name,
-        private string $age	
-    ) {}
-
-    public function jsonSerialize(): mixed {
-        return [
-            'name' => $this->name,
-            'age' => $this->age,
-        ];
-    }
+	public function __construct(
+		private string $name,
+		private string $age	
+	) {}
+	
+	public function jsonSerialize(): mixed {
+		return get_object_vars($this);
+	}
 }
 
 $tom = new Cat('Tom', 5);
