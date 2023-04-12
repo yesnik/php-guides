@@ -28,3 +28,35 @@ print_r($two);
 )
 */
 ```
+
+## Copy object by reference
+
+```php
+class Cat
+{
+    public $name;
+    public $age;
+    
+    public function __construct(string $name, int $age)
+    {
+        $this->name = $name;
+        $this->age = $age;
+    }
+}
+
+$kesha = new Cat('Kesha', 5);
+
+$tom = $kesha;
+
+$tom->name = 'Tom';
+
+print_r($kesha);
+print_r($tom);
+/* Both will print:
+Cat Object
+(
+    [name] => Tom
+    [age] => 5
+)
+*/
+```
