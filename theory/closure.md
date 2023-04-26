@@ -23,6 +23,23 @@ echo run($hello);
 
 [Closure::bindTo](https://www.php.net/manual/en/closure.bindto.php) duplicates the closure with a new bound object and class scope.
 
+```php
+class Cat
+{
+	public function say(): string
+	{
+		return 'Meow';
+	}
+}
+$greet = function($animal) { return $animal . ' says: ' . $this->say(); };
+
+$cat = new Cat();
+
+$main = $greet->bindTo($cat);
+
+echo $main('cat'); // cat says: Meow
+```
+
 ## Closure::bind
 
 [Closure::bind](https://www.php.net/manual/en/closure.bind.php) is a static version of `Closure::bindTo()`.
