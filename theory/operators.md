@@ -171,6 +171,10 @@ var_dump($tom instanceof Cat); // true
 
 ## Splat operator (`...`)
 
+The PHP splat operator (...) has been available in PHP since version 5.6.
+
+Internally, this operator in PHP is called `T_ELLIPSIS`. Alternative names for *splat operator*: ellipsis, unpacking operator, packing operator, three dots operator, spread operator.
+
 ```php
 function add($a, $b) {
     return $a + $b;
@@ -179,6 +183,37 @@ function add($a, $b) {
 $digits = [1, 2];
 
 echo add(...$digits); // 3
+```
+
+### Check type of array's elements
+
+```php
+final class Car {
+	public function __construct(
+		public string $name	
+	) {}
+}
+
+$cars = [new Car('BMW'), new Car('Audi')];
+
+function getCarNames(Car ...$cars)
+{
+	return array_map(fn($item): string => $item->name, $cars);
+}
+
+$carNames = getCarNames(...$cars);
+print_r($carNames); // ['BMW', 'Audi']
+
+final class Animal {
+	public function __construct(
+		public string $name	
+	) {}
+}
+
+$cars[] = new Animal('Cat');
+
+$carNames = getCarNames(...$cars);
+// Fatal error: Uncaught TypeError: getCarNames(): Argument #3 must be of type Car, Animal given
 ```
 
 ## Nullsafe operator (`?->`)
