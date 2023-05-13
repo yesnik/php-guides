@@ -187,6 +187,8 @@ echo add(...$digits); // 3
 
 ### Check type of array's elements
 
+We can ensure that function `getCarNames()` can only accept one or more `Car` objects by using a type hint in front of the splat operator:
+
 ```php
 final class Car {
 	public function __construct(
