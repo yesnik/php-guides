@@ -105,7 +105,7 @@ $reflector = new \ReflectionClass(Foo::class);
 $attrs = $reflector->getAttributes();
 
 foreach ($attrs as $attribute) {
-    var_dump($attribute->getName()); // "exampleAttribute"
+    var_dump($attribute->getName()); // "SomeAttribute"
     var_dump($attribute->getArguments()); // ["Hello world", 16]
     var_dump($attribute->newInstance());
     /*
