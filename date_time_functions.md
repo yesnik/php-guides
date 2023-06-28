@@ -183,6 +183,9 @@ echo $date->format('Y-m-d H:i:s'); // Returns string: '2018-01-29 05:08:56'
 
 **Using DateInterval**
 
+[DateInterval](https://www.php.net/manual/en/dateinterval.construct.php) has parameter `$duration`. It's an interval specification. The format starts with the letter `P`, for period. Each duration period is represented by an integer value followed by a period designator. 
+If the duration contains time elements, that portion of the specification is preceded by the letter `T`.
+
 ```php
 $date = new DateTime(); 
 echo $date->format('Y-m-d H:i:s'); // Returns string: '2019-04-04 19:58:39'
