@@ -6,6 +6,6 @@
 var_dump('hi' == 1); // false
 
 var_dump('hi' === 0); // false
-var_dump('hi' == 0); // true (!)
+var_dump('hi' == 0); // true (!) if PHP < 8
 
 ```
