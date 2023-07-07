@@ -16,6 +16,11 @@ echo "<h1>Hello, " . htmlspecialchars($name) . "</h1>";
 [strtok](https://www.php.net/manual/en/function.strtok.php) - Tokenize string. We need to call this function in a loop to get all tokens.
 
 ```php
+$string = "/posts?a=1&b=2";
+echo strtok($string, '?'); // 'posts'
+```
+
+```php
 $string = "aa:bb:cc;:dd:";
 $tok = strtok($string, ":;");
 
