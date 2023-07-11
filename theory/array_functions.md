@@ -1,5 +1,34 @@
 # PHP array functions
 
+## array_column()
+
+[array_column](https://www.php.net/manual/en/function.array-column.php) — Return values from a single column in the input array
+
+```php
+$records = [
+    [
+        'id' => 2135,
+        'first_name' => 'Kenny',
+        'last_name' => 'Doe',
+    ],
+    [
+        'id' => 3245,
+        'first_name' => 'Jenny',
+        'last_name' => 'Smith',
+    ],
+];
+
+$first_names = array_column($records, 'first_name');
+print_r($first_names);
+/* 
+Array
+(
+    [0] => Kenny
+    [1] => Jenny
+)
+*/
+```
+
 ## array_filter()
 
 ```php
