@@ -45,6 +45,12 @@ echo ord('A'); // 65
 echo ord('B'); // 66
 ```
 
+## strrev
+
+```php
+echo strrev('ABC'); // CBA
+```
+
 ## strtok
 
 [strtok](https://www.php.net/manual/en/function.strtok.php) - Tokenize string. We need to call this function in a loop to get all tokens.
