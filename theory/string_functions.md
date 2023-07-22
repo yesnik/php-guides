@@ -11,6 +11,26 @@ echo "<h1>Hello, " . htmlspecialchars($name) . "</h1>";
 // <h1>Hello, &lt;script&gt;alert(1)&lt;/script&gt;</h1>
 ```
 
+## mb_str_split
+
+[mb_str_split](https://www.php.net/manual/en/function.mb-str-split.php) — Given a multibyte string, return an array of its characters.
+
+```php
+$word = 'abc';
+
+var_dump( mb_str_split($word) );
+/*
+array(3) {
+  [0]=>
+  string(1) "a"
+  [1]=>
+  string(1) "b"
+  [2]=>
+  string(1) "c"
+}
+*/
+```
+
 ## strtok
 
 [strtok](https://www.php.net/manual/en/function.strtok.php) - Tokenize string. We need to call this function in a loop to get all tokens.
