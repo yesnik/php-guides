@@ -1,5 +1,12 @@
 # PHP String functions
 
+## chr
+
+```php
+echo chr(65); // A
+echo chr(66); // B
+```
+
 ## htmlspecialchars
 
 Converts special characters to HTML entities. It helps to avoid XSS issues.
@@ -29,6 +36,13 @@ array(3) {
   string(1) "c"
 }
 */
+```
+
+## ord
+
+```php
+echo ord('A'); // 65
+echo ord('B'); // 66
 ```
 
 ## strtok
