@@ -201,6 +201,135 @@ var_dump( empty($bmw->color) ); // 'Is set: color' false
 var_dump( empty($bmw->some) ); // 'Is set: some' false
 ```
 
+## 8. `public __unset(string $name): void`
+
+It is invoked when `unset()` is used on *inaccessible* (protected or private) or non-existing *properties*.
+
+```php
+class Car
+{
+    public string $model = 'BMW';
+    private string $color = 'red';
+    
+    public function __unset(string $name): void
+    {
+        echo 'Unset: ' . $name;
+    }
+}
+
+$bmw = new Car();
+unset($bmw->model);
+unset($bmw->color); // Unset: color
+unset($bmw->some); // Unset: some
+```
+
+## 9. `public __sleep(): array`
+
+`serialize()` checks if the class has a function with the magic name `__sleep()`. 
+If so, that function is executed prior to any serialization. 
+It can clean up the object and is supposed to return an array with the names of all variables of that object that should be serialized.
+
+The intended use of `__sleep()` is to commit pending data or perform similar cleanup tasks. 
+Also, the function is useful if a very large object doesn't need to be saved completely.
+
+## 10. `public __wakeup(): void`
+
+Conversely, `unserialize()` checks for the presence of a function with the magic name `__wakeup()`. 
+If present, this function can reconstruct any resources that the object may have.
+
+The intended use of `__wakeup()` is to reestablish any database connections 
+that may have been lost during serialization and perform other reinitialization tasks.
+
+```php
+class Connection
+{
+    protected $link;
+    private $dsn, $username, $password;
+    
+    public function __construct($dsn, $username, $password)
+    {
+        $this->dsn = $dsn;
+        $this->username = $username;
+        $this->password = $password;
+        $this->connect();
+    }
+    
+    private function connect()
+    {
+        $this->link = new PDO($this->dsn, $this->username, $this->password);
+    }
+    
+    public function __sleep()
+    {
+        return array('dsn', 'username', 'password');
+    }
+    
+    public function __wakeup()
+    {
+        $this->connect();
+    }
+}
+```
+## 11. `public __serialize(): array`
+
+`serialize()` checks if the class has a function with the magic name __serialize(). 
+If so, that function is executed prior to any serialization. 
+It must construct and return an associative array of key/value pairs that represent the serialized form of the object.
+
+The intended use of `__serialize()` is to define a serialization-friendly arbitrary representation of the object.
+
+**Note:** If both `__serialize()` and `__sleep()` are defined in the same object, only `__serialize()` will be called. 
+  `__sleep()` will be ignored. If the object implements the `Serializable` interface, 
+  the interface's `serialize()` method will be ignored and `__serialize()` used instead.
+
+## 12. `public __unserialize(array $data): void`
+
+Conversely, `unserialize()` checks for the presence of a function with the magic name `__unserialize()`. 
+If present, this function will be passed the restored array that was returned from `__serialize()`. 
+It may then restore the properties of the object from that array as appropriate.
+
+**Note:** If both `__unserialize()` and `__wakeup()` are defined in the same object, 
+    only `__unserialize()` will be called. `__wakeup()` will be ignored.
+
+```php
+class Connection
+{
+    protected $link;
+    private $dsn, $username, $password;
+
+    public function __construct($dsn, $username, $password)
+    {
+        $this->dsn = $dsn;
+        $this->username = $username;
+        $this->password = $password;
+        $this->connect();
+    }
+
+    private function connect()
+    {
+        $this->link = new PDO($this->dsn, $this->username, $this->password);
+    }
+
+    public function __serialize(): array
+    {
+        return [
+          'dsn' => $this->dsn,
+          'user' => $this->username,
+          'pass' => $this->password,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->dsn = $data['dsn'];
+        $this->username = $data['user'];
+        $this->password = $data['pass'];
+
+        $this->connect();
+    }
+}
+```
+
 ## 13. `__toString`
 
 Method allows a class to decide how it will react when it is treated like a string. For example, what `echo $obj;` will print.
