@@ -18,3 +18,7 @@ class Cat extends Animal
 $tom = new Cat();
 echo $tom->getSpeed(); // ?
 ```
+
+<details><summary>Answer</summary>
+<b>PHP 8.2:</b> Method will return 2
+</details>
