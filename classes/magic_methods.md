@@ -94,16 +94,13 @@ class Car
     }
 }
 $bmw = new Car();
+echo $bmw->getName(); // Some car
 $bmw->someMethod(1, 'kenny');
-echo $bmw->getName();
-/*
-Calling object method someMethod, args: Array
+/* Calling object method someMethod, args: Array
 (
     [0] => 1
     [1] => kenny
-)
-Some car
-*/
+) */
 ```
 
 ## 13. `__toString`
