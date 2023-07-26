@@ -131,6 +131,50 @@ Car::someMethod(18, 'jenny');
 ) */
 ```
 
+## 5. `public __get(string $name): mixed`
+
+It is utilized for reading data from *inaccessible* (protected or private) or non-existing properties.
+
+```php
+class Car
+{
+    public string $model = 'BMW';
+    private string $color = 'red';
+    
+    public function __get(string $name)
+    {
+        echo 'Trying to get property: ' . $name;
+    }
+}
+
+$bmw = new Car();
+echo $bmw->model; // BMW
+$bmw->year; // Trying to get property: year
+$bmw->color; // Trying to get property: color
+```
+
+## 6. `public __set(string $name, mixed $value): void`
+
+It is run when writing data to *inaccessible* (protected or private) or non-existing properties.
+
+```php
+class Car
+{
+    public string $model = 'BMW';
+    private string $color = 'red';
+    
+    public function __set(string $name, mixed $value): void
+    {
+        echo 'Setting property: ' . $name . ' = ' . print_r($value, true);
+    }
+}
+
+$bmw = new Car();
+$bmw->model = 'Audi';
+$bmw->color = 'blue'; // Setting property: color = blue
+$bmw->someProperty = 'x'; // Setting property: someProperty = x
+```
+
 ## 13. `__toString`
 
 Method allows a class to decide how it will react when it is treated like a string. For example, what `echo $obj;` will print.
