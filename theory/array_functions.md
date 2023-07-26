@@ -158,6 +158,12 @@ echo $res; // 5
 array_reverse([1, 2]); // [2, 1]
 ```
 
+## array_sum()
+
+```php
+echo array_sum([1, 2, 3]); // 6
+```
+
 ## asort() / arsort()
 
 [asort](https://www.php.net/manual/en/function.asort) is used mainly when sorting associative arrays where the actual element order is significant.
