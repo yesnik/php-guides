@@ -174,6 +174,32 @@ $bmw->model = 'Audi';
 $bmw->color = 'blue'; // Setting property: color = blue
 $bmw->someProperty = 'x'; // Setting property: someProperty = x
 ```
+## 7. public __isset(string $name): bool
+
+It is triggered by calling `isset()` or `empty()` on inaccessible (protected or private) or non-existing properties.
+
+```php
+class Car
+{
+    public string $model = 'BMW';
+    private string $color = 'red';
+    
+    public function __isset(string $name): bool
+    {
+        echo 'Is set: ' . $name;
+        return false;
+    }
+}
+
+$bmw = new Car();
+var_dump( isset($bmw->model) ); // true
+var_dump( isset($bmw->color) ); // 'Is set: color' false
+var_dump( isset($bmw->some) ); // 'Is set: some' false
+
+var_dump( empty($bmw->model) ); // true
+var_dump( empty($bmw->color) ); // 'Is set: color' false
+var_dump( empty($bmw->some) ); // 'Is set: some' false
+```
 
 ## 13. `__toString`
 
