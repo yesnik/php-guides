@@ -77,7 +77,7 @@ unset($bmw);
 
 ## 3. `__call(string $name, array $arguments): mixed`
 
-It's triggered when invoking inaccessible methods in an object context.
+It's triggered when invoking *inaccessible* methods in an object context.
 
 ```php
 class Car
@@ -100,6 +100,34 @@ $bmw->someMethod(1, 'kenny');
 (
     [0] => 1
     [1] => kenny
+) */
+```
+
+## 4. `public static __callStatic(string $name, array $arguments): mixed`
+
+It's triggered when invoking *inaccessible* methods in a static context.
+
+```php
+class Car
+{
+    public static function __callStatic(string $name, array $arguments)
+    {
+        echo 'Calling object method ' . $name . ', args: ' . 
+        	print_r($arguments, true);
+    }
+    
+    public static function getName(): string
+    {
+    	return 'Some car';
+    }
+}
+
+echo Car::getName(); // Some car
+Car::someMethod(18, 'jenny');
+/* Some carCalling object method someMethod, args: Array
+(
+    [0] => 18
+    [1] => jenny
 ) */
 ```
 
