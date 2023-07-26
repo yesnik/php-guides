@@ -75,6 +75,37 @@ $bmw = new Car();
 unset($bmw);
 ```
 
+## 3. `__call(string $name, array $arguments): mixed`
+
+It's triggered when invoking inaccessible methods in an object context.
+
+```php
+class Car
+{
+    public function __call(string $name, array $arguments)
+    {
+        echo 'Calling object method ' . $name . ', args: ' . 
+        	print_r($arguments, true);
+    }
+    
+    public function getName(): string
+    {
+    	return 'Some car';
+    }
+}
+$bmw = new Car();
+$bmw->someMethod(1, 'kenny');
+echo $bmw->getName();
+/*
+Calling object method someMethod, args: Array
+(
+    [0] => 1
+    [1] => kenny
+)
+Some car
+*/
+```
+
 ## 13. `__toString`
 
 Method allows a class to decide how it will react when it is treated like a string. For example, what `echo $obj;` will print.
