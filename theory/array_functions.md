@@ -160,25 +160,51 @@ array_reverse([1, 2]); // [2, 1]
 
 ## asort() / arsort()
 
-- `asort()` - sort an array in *ascending* order and maintain index association.
+[asort](https://www.php.net/manual/en/function.asort) is used mainly when sorting associative arrays where the actual element order is significant.
+
+- `asort(array &$array, int $flags = SORT_REGULAR): true` - sort an array in *ascending* order and maintain index association.
 - `arsort()` - ... *descending* order
+
+### Example 1
 
 ```php
 $arr = [
     'a' => 10,
     'b' => 2,
-    'c' => 3
+    'c' => 3,
 ];
 
 asort($arr);
 
 print_r($arr);
 /*
-Array
-(
+Array (
     [b] => 2
     [c] => 3
     [a] => 10
+)
+*/
+```
+
+### Example 2
+
+```php
+$arr = [
+	'0' => 'a1',
+	'1' => 'A10',
+	'2' => 'a12',
+	'3' => 'A2',
+	'4' => 'A3',
+];
+asort($arr, SORT_NATURAL|SORT_STRING|SORT_FLAG_CASE);
+print_r($arr);
+/*
+Array (
+    [0] => a1
+    [3] => A2
+    [4] => A3
+    [1] => A10
+    [2] => a12
 )
 */
 ```
