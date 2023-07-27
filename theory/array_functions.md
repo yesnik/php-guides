@@ -47,9 +47,14 @@ $filteredOperations = array_filter($operations, function($operation) {
 });
 ```
 ```php
-$arr = [-1, 3, 5, -3];
+$arr = [-1, 3, -3, 5];
 $res = array_filter($arr, fn($n) => $n > 0);
-var_dump($res); // [3, 5]
+print_r($res);
+/* Array
+(
+    [1] => 3
+    [3] => 5
+) */
 ```
 
 ## array_map()
