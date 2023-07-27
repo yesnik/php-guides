@@ -158,6 +158,15 @@ echo $res; // 5
 array_reverse([1, 2]); // [2, 1]
 ```
 
+## array_search()
+
+Searches the array for a given value and returns the first corresponding key if successful
+
+```php
+$arr = [1, 3, 5, 3];
+echo array_search(3, $arr); // 1
+```
+
 ## array_sum()
 
 ```php
