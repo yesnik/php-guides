@@ -32,7 +32,6 @@ Array
 ## array_filter()
 
 ```php
-// Example 1
 $a = [5, 0, [], 2, null, ''];
 print_r( array_filter($a) );
 /* Array
@@ -41,11 +40,16 @@ print_r( array_filter($a) );
     [3] => 2
 )
 */
-
-// Example 2
+```
+```php
 $filteredOperations = array_filter($operations, function($operation) {
     return $operation instanceof OperationInterface;
 });
+```
+```php
+$arr = [-1, 3, 5, -3];
+$res = array_filter($arr, fn($n) => $n > 0);
+var_dump($res); // [3, 5]
 ```
 
 ## array_map()
