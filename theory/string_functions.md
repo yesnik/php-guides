@@ -45,6 +45,15 @@ echo ord('A'); // 65
 echo ord('B'); // 66
 ```
 
+## preg_split
+
+```php
+$string = ",12, A , ,  0, ";
+
+$arr = preg_split("/\s*\,\s*/", $string, -1, PREG_SPLIT_NO_EMPTY);  
+print_r($arr); // [12, A, 0]
+```
+
 ## strrev
 
 ```php
