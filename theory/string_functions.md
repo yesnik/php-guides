@@ -47,6 +47,8 @@ echo ord('B'); // 66
 
 ## preg_split
 
+[preg_split](https://www.php.net/manual/en/function.preg-split.php) — Split string by a regular expression
+
 ```php
 $string = ",12, A , ,  0, ";
 
