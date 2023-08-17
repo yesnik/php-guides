@@ -31,6 +31,7 @@ Array
 
 ## array_filter()
 
+Filter not empty values:
 ```php
 $a = [5, 0, [], 2, null, ''];
 print_r( array_filter($a) );
@@ -41,11 +42,23 @@ print_r( array_filter($a) );
 )
 */
 ```
+
+Filter only numbers:
+```php
+$arr = ['1', '2A', '5', '*'];
+$res = array_filter($arr, 'is_numeric');
+
+print_r($res); // [1, 5]
+```
+
+Filter only instances of the class `OperationInterface`:
 ```php
 $filteredOperations = array_filter($operations, function($operation) {
     return $operation instanceof OperationInterface;
 });
 ```
+
+Filter positive numbers:
 ```php
 $arr = [-1, 3, -3, 5];
 $res = array_filter($arr, fn($n) => $n > 0);
