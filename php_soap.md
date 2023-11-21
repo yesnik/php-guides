@@ -75,7 +75,8 @@ Array
 */
 ```
 
-It means that the type `DT_REQ_DIRECTORIES` requires `REQUEST` tag. `REQUEST` tag must have 2 params: `PRODUCT` and `type`.
+It means that the type `DT_REQ_DIRECTORIES` requires `REQUEST` tag. 
+`REQUEST` tag must have 2 params: `PRODUCT` and `type`.
 
 **Full example**
 
@@ -83,13 +84,13 @@ It means that the type `DT_REQ_DIRECTORIES` requires `REQUEST` tag. `REQUEST` ta
 ini_set('soap.wsdl_cache_ttl', 0);
 
 // Timeout for request in seconds
-ini_set('default_socket_timeout', 3);
+ini_set('default_socket_timeout', 5);
 
 $wsdlPath = __DIR__ . '/wsdl/PIQ_SI_REQ_DIRECTORIES.wsdl';
 
 $client = new SoapClient($wsdlPath, [
     'soap_version' => SOAP_1_1,
-    'trace' => 1,
+    'trace' => true,
     'cache_wsdl' => WSDL_CACHE_NONE,
     'login' => 'admin',
     'password' => '123'
@@ -112,9 +113,17 @@ $data = [
 class SoapTimeoutException extends Exception {};
 
 try {
-    $response = $client->__soapCall("SI_REQ_DIRECTORIES", [$data]);
+    // Way 1. Not recommended
+    $response = $client->__soapCall("SI_REQ_DIRECTORIES", $data);
 
-    var_dump($response);
+    // Way 2. Recommended, because we'll get an opportunity to see request as XML
+    $response = $client->SI_REQ_DIRECTORIES($data);
+
+    echo 'REQUEST: ' . PHP_EOL;
+    echo $client->__getLastRequest() . PHP_EOL;
+
+    echo 'RESPONSE: ' . PHP_EOL;
+    print_r($response);
 
 } catch (Throwable $exception) {
     $message = $exception->getMessage();
@@ -128,9 +137,6 @@ try {
     
     echo 'REQUEST HEADERS ';
     print_r($client->__getLastRequestHeaders());
-
-    echo 'REQUEST';
-    echo htmlentities($this->soapClient->__getLastRequest());
 
     throw $exception;
 }
