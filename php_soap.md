@@ -114,16 +114,10 @@ class SoapTimeoutException extends Exception {};
 
 try {
     // Way 1. Not recommended
-    $response = $client->__soapCall("SI_REQ_DIRECTORIES", $data);
+    // $client->__soapCall("SI_REQ_DIRECTORIES", $data);
 
     // Way 2. Recommended, because we'll get an opportunity to see request as XML
-    $response = $client->SI_REQ_DIRECTORIES($data);
-
-    echo 'REQUEST: ' . PHP_EOL;
-    echo $client->__getLastRequest() . PHP_EOL;
-
-    echo 'RESPONSE: ' . PHP_EOL;
-    print_r($response);
+    $client->SI_REQ_DIRECTORIES($data);
 
 } catch (Throwable $exception) {
     $message = $exception->getMessage();
@@ -132,13 +126,17 @@ try {
         throw new SoapTimeoutException();
     }
 
-    echo 'ERROR! ';
-    print_r($client->__getLastResponse());
-    
-    echo 'REQUEST HEADERS ';
-    print_r($client->__getLastRequestHeaders());
+    echo 'REQUEST HEADERS: ' . PHP_EOL;
+    print_r($client->__getLastRequestHeaders()) . PHP_EOL;
 
     throw $exception;
+
+} finally {
+    echo 'REQUEST: ' . PHP_EOL;
+    print_r($client->__getLastRequest()) . PHP_EOL;
+
+    echo 'RESPONSE: ' . PHP_EOL;
+    print_r($client->__getLastResponse()) . PHP_EOL;
 }
 ```
 
