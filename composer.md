@@ -41,6 +41,7 @@ composer why-not php 8
 
 # Show root dependencies that require this package
 composer depends symfony/polyfill-mbstring
+composer depends symfony/polyfill-mbstring --tree
 
 # Update minor dependencies
 composer update
