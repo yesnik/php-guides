@@ -39,6 +39,9 @@ composer why psr/container
 composer why-not psr/container 2
 composer why-not php 8
 
+# Show root dependencies that require this package
+composer depends symfony/polyfill-mbstring
+
 # Update minor dependencies
 composer update
 
