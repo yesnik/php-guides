@@ -283,3 +283,27 @@ function getAge($birthdate)
     return $interval->format('%y');
 }
 ```
+
+## Get dates between 2 dates
+
+```php
+$startDate = new DateTimeImmutable('2024-02-28');
+$endDate = new DateTimeImmutable('2024-03-02');
+
+$interval = new DateInterval('P1D');
+$dateRange = new DatePeriod($startDate, $interval, $endDate->modify('+1 day'));
+
+foreach($dateRange as $date){
+    echo $date->format("Y-m-d") . "\n";
+}
+/*
+2024-02-28
+2024-02-29
+2024-03-01
+2024-03-02
+*/
+
+// Ensure that code hasn't modified args
+echo $startDate->format('Y-m-d') . PHP_EOL; // 2024-02-28
+echo $endDate->format('Y-m-d'); // 2024-03-02
+```
