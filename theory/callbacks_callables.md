@@ -2,6 +2,8 @@
 
 [Callbacks](https://www.php.net/manual/en/language.types.callable.php) can be denoted by `callable` type hint as of PHP 5.4.
 
+`callable` is a PHP data type. It means anything which can be called - closure, static/regular method, etc.
+
 ## Callback function examples
 
 ### 1. Simple callback
