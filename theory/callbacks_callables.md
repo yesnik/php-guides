@@ -4,35 +4,50 @@
 
 ## Callback function examples
 
+### 1. Simple callback
+
 ```php
-// An example callback function
-function square($a) {
+function square(int $a): int {
     return $a ** 2;
 }
 
-// An example callback method
+echo call_user_func('square', 3); // 9
+echo call_user_func('date', 'now'); // 220245
+```
+
+### 2. Static class method call
+
+```php
 class Calculator {
-    static function square($a) {
+    public static function square($a) {
         return $a ** 2;
     }
 }
 
-// Type 1: Simple callback
-echo call_user_func('square', 3); // 9
-
-// Type 2: Static class method call
 echo call_user_func(['Calculator', 'square'], 3); // 9
 echo ['Calculator', 'square'](3); // 9
+```
 
-// Type 3: Object method call
+### 3. Object method call
+
+```php
 $obj = new Calculator();
 echo call_user_func([$obj, 'square'], 3); // 9
 echo [$obj, 'square'](3); // 9
 
-// Type 4: Static class method call
-echo call_user_func('Calculator::square', 3);
+$obj = new DateTimeImmutable();
+echo call_user_func([$obj, 'format'], 'Y-m-d'); // 2024-02-16
+```
 
-// Type 5: Objects implementing __invoke can be used as callables (since PHP 5.3)
+### 4. Static class method call
+
+```php
+echo call_user_func('Calculator::square', 3);
+```
+
+### 5. Objects implementing `__invoke` can be used as callables (since PHP 5.3)
+
+```php
 class Man {
     public function __invoke($name) {
         return 'Hello ' . $name;
