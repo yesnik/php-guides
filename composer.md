@@ -99,6 +99,19 @@ use App\Animals\Cat;
 $tom = new Cat();
 ```
 
+### autoload-dev
+
+For development mode we also can add autoload section in the `composer.json`:
+
+```
+"autoload-dev": {
+    "psr-4": {
+        "tests\\": "tests/",
+        "app\\": "./"
+    }
+},
+```
+
 ## Config
 
 ```json
