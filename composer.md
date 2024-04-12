@@ -4,60 +4,26 @@
 
 ## Commands
 
-```bash
-# Update composer's version
-composer self-update
-
-# Init project
-composer init
-
-# Add package 'phpmd/phpmd' to 'require-dev' of composer.json
-composer req phpmd/phpmd --dev
-
-# Add/update package to specific version
-composer req phpmailer/phpmailer 5.2.28
-
-# Remove package from composer.json
-composer remove phpmd/phpmd
-
-# Install dependencies without dev
-composer install --no-dev
-
-# Install dependencies with verbose output (great for debugging)
-composer -vvv install
-
-# Generate autoload files
-composer dump-autoload
-
-# List required in composer.json packages that have updates available
-composer outdated --direct
-
-# Show what packages use this package
-composer why psr/container
-
-# Show why project doesn't use version 2 of the package
-composer why-not psr/container 2
-composer why-not php 8
-
-# Show root dependencies that require this package
-composer depends symfony/polyfill-mbstring
-composer depends symfony/polyfill-mbstring --tree
-
-# Update minor dependencies
-composer update
-
-# Update package with its dependencies
-composer update --with-dependencies phpmd/phpmd
-
-# Update Symfony components
-composer update "symfony/*"
-
-# Show all dependencies and versions
-composer show
-
-# Show all dependencies as a tree 
-composer show --tree
-```
+- `composer self-update` - Update composer's version
+- `composer init` - Init project
+- `composer dump-autoload` - Generate autoload files
+- `composer -vvv install` - Install dependencies with verbose output (great for debugging)
+- `composer install --no-dev` - Install dependencies without dev
+- `composer req phpmd/phpmd --dev` - Add package 'phpmd/phpmd' to 'require-dev' of composer.json
+- `composer req phpmailer/phpmailer 5.2.28` - Add/update package to specific version
+- `composer remove phpmd/phpmd` - Remove package from composer.json
+- `composer outdated --direct` - List required in composer.json packages that have updates available
+- `composer why psr/container` - Show what packages use this package
+- `composer why-not psr/container 2` - Show why project doesn't use version 2 of the package
+- `composer why-not php 8`
+- `composer depends symfony/polyfill-mbstring` - Show root dependencies that require this package
+- `composer depends symfony/polyfill-mbstring --tree`
+- `composer update` - Update minor dependencies
+- `composer update --lock` - Update *content-hash* in composer.lock
+- `composer update --with-dependencies phpmd/phpmd` - Update package with its dependencies
+- `composer update "symfony/*"` - Update Symfony components
+- `composer show` - Show all dependencies and versions
+- `composer show --tree` - Show all dependencies as a tree 
 
 ## Autoload with composer
 
