@@ -181,6 +181,16 @@ $weather = new WeatherMonitor($service);
 self::assertEquals(23, $weather->getAverageTemperature('12:00', '14:00'));
 ```
 
+### onConsecutiveCalls
+
+Returns a list of values in the specified order:
+
+```php
+$mock->expects($this->any())
+    ->method('someMethod')
+    ->will($this->onConsecutiveCalls(11, 22));
+```
+
 ### Mock abstract class
 
 Suppose we have abstract class:
