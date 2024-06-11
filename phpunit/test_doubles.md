@@ -162,7 +162,9 @@ self::expectException(Exception::class);
 $user->notify('hello');
 ```
 
-### Method will return values from the map
+### willReturnMap / returnValueMap 
+
+Method will return values from the map:
 
 ```php
 $service = self::createMock(TemperatureService::class);
@@ -172,6 +174,12 @@ $map = [
     ['14:00', 26],
 ];
 
+// Way 1
+$service->expects(self::exactly(2))
+        ->method('getTemperature')
+        ->willReturnMap($map);
+
+// Way 2
 $service->expects(self::exactly(2))
         ->method('getTemperature')
         ->will(self::returnValueMap($map));
@@ -183,12 +191,18 @@ self::assertEquals(23, $weather->getAverageTemperature('12:00', '14:00'));
 
 ### onConsecutiveCalls
 
-Returns a list of values in the specified order:
+Returns a list of values in the specified order on each call:
 
 ```php
+// Way 1
 $mock->expects($this->any())
     ->method('someMethod')
     ->will($this->onConsecutiveCalls(11, 22));
+
+// Way 2
+$mock->expects($this->any())
+    ->method('someMethod')
+    ->willReturn(11, 22);
 ```
 
 ### Mock abstract class
