@@ -19,6 +19,15 @@ $dt = new DateTime();
 echo $dt->format('c'); // Returns string: '2020-05-17T21:30:00-07:00'
 ```
 
+## `DateTimeImmutable`
+
+```php
+echo (new \DateTimeImmutable('today'))->format('Y-m-d H:i:s'); // 2024-06-12 00:00:00
+echo (new \DateTimeImmutable('January 1'))->format('Y-m-d H:i:s'); // 2024-01-01 00:00:00
+echo (new \DateTimeImmutable('January 1 last year'))->format('Y-m-d H:i:s'); // 2023-01-01 00:00:00
+echo (new \DateTimeImmutable('now next year'))->format('Y-m-d H:i:s'); // 2025-06-12 12:14:52
+```
+
 ## Time with timezone
 
 ### Given datetime in different timezone
