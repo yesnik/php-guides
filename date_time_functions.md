@@ -1,25 +1,13 @@
-# Date and time functions
+# PHP date and time functions
 
-## Convert date format
-
-```php
-$dateString = '21.01.1990';
-// Method returns `false` in case of conversion error
-$dateTime = DateTime::createFromFormat('d.m.Y', $dateString);
-
-if ($dateTime !== false) {
-    echo $dateTime->format('Y-m-d'); // '1990-01-21'
-}
-```
-
-### ISO 8601 date format
+## ISO 8601 date format
 
 ```php
 $dt = new DateTime();
 echo $dt->format('c'); // Returns string: '2020-05-17T21:30:00-07:00'
 ```
 
-## `DateTimeImmutable`
+## DateTimeImmutable
 
 ```php
 echo (new \DateTimeImmutable('today'))->format('Y-m-d H:i:s'); // 2024-06-12 00:00:00
@@ -30,7 +18,7 @@ echo (new \DateTimeImmutable('now next year'))->format('Y-m-d H:i:s'); // 2025-0
 
 ## Time with timezone
 
-### Given datetime in different timezone
+### Show time in another timezone
 
 ```php
 $dt = new DateTime('2018-01-31T11:55:00Z');
@@ -45,21 +33,23 @@ echo $dt->format('Y-m-d H:i:s'); // 2018-01-31 16:55:00
 ```php
 echo date('Y-m-d H:i:s'); // Returns string: '2020-03-10 09:00:00'
 
-$dt = new DateTime();
+$dt = new DateTimeImmutable();
 echo $dt->format('Y-m-d H:i:s'); // Returns string: '2020-03-10 09:00:00'
 ```
 
-### Current time in defined timezone
+### Current time in the defined timezone
 
 ```php
-$dt = new DateTime();
+$dt = new DateTimeImmutable();
 $dt->setTimezone(new DateTimeZone('UTC'));
-echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 07:15:00'
+echo $dt->format('Y-m-d H:i:s'); // Returns string: '2024-08-28 10:30:00'
 ```
 
 ```php
-$dt->setTimezone(new DateTimeZone('Europe/Moscow'));
-echo $dt->format('Y-m-d H:i:s'); // Returns string: '2018-01-31 10:15:00'
+$dt = new DateTimeImmutable('2024-05-01T05:00:00');
+$dtInMoscow = $dt->setTimezone(new DateTimeZone('Europe/Moscow'));
+
+echo $dtInMoscow->format('Y-m-d H:i:s'); // Returns string: '2024-05-01 08:00:00'
 ```
 
 ```php
@@ -225,7 +215,17 @@ $date = '2020-03-15';
 echo date('Y-m-d', strtotime($date . ' - 5 days')); // Returns string: '2020-03-10'
 ```
 
-## Difference between dates
+## Common tasks with date and time
+
+### Check if date is in interval
+
+```php
+$date = strtotime(date('Y-m-d'));
+$startDate = strtotime( date('Y-m-d', strtotime('-1 day')) );
+$endDate = strtotime( date('Y-m-d', strtotime('+10 day')) );
+
+var_dump($startDate <= $date && $date <= $endDate); // true
+```
 
 ### Difference between dates in seconds
 
@@ -236,17 +236,7 @@ $datetime2 = strtotime('2018-02-05 00:01:30');
 echo $datetime2 - $datetime1; // returns integer: 90
 ```
 
-## Check if date is in interval
-
-```php
-$date = strtotime(date('Y-m-d'));
-$startDate = strtotime( date('Y-m-d', strtotime('-1 day')) );
-$endDate = strtotime( date('Y-m-d', strtotime('+10 day')) );
-
-var_dump($startDate <= $date && $date <= $endDate); // true
-```
-
-## Round to nearest minute interval
+### Round to nearest minute interval
 
 ```php
 function roundToNearestMinuteInterval(\DateTime $dateTime, $minuteInterval = 10)
@@ -269,7 +259,19 @@ echo $roundedDatetime->format('Y-m-d H:i:s'); // returns string '2018-02-01 16:3
 
 Another useful functions about rounding time in PHP can be found at [stackoverflow](https://stackoverflow.com/a/40084666).
 
-## Get age by date of birth
+## Convert date format
+
+```php
+$dateString = '21.01.1990';
+// Method returns `false` in case of conversion error
+$dateTime = DateTime::createFromFormat('d.m.Y', $dateString);
+
+if ($dateTime !== false) {
+    echo $dateTime->format('Y-m-d'); // '1990-01-21'
+}
+```
+
+### Get age by date of birth
 
 ```php
 /**
@@ -293,7 +295,7 @@ function getAge($birthdate)
 }
 ```
 
-## Get dates between 2 dates
+### Get dates between 2 dates
 
 ```php
 $startDate = new DateTimeImmutable('2024-02-28');
