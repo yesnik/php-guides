@@ -29,6 +29,21 @@ Array
 */
 ```
 
+## array_combine()
+
+[array_combine](https://www.php.net/manual/en/function.array-combine.php) - Creates an array by using one array for keys and another for its values.
+
+```php
+$keys = [2023, 2024];
+$values = ['Year 2023', 'Year 2024'];
+$result = array_combine($keys, $values);
+var_dump($result);
+/* array(2) {
+  [2023]=> string(9) "Year 2023"
+  [2024]=> string(9) "Year 2024"
+} */
+```
+
 ## array_filter()
 
 Filter not empty values. Indeces are not modified:
