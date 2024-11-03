@@ -52,7 +52,7 @@ $service = new StoreService();
 echo $service->getCoordinates('Moscow'); // Yandex: Moscow
 ```
 
-**Note:** Without dependency injection, our classes are tightly coupled to their dependencies.
+**Note:** Without dependency injection, our classes are *tightly coupled* to their dependencies.
 
 ## With DI
 
@@ -95,7 +95,7 @@ class StoreService
 // $geolocationService = new GoogleMaps();
 $geolocationService = new YandexMaps();
 
-// Pass dependency in the constructor
+// Pass dependency to the constructor
 $service = new StoreService($geolocationService);
 
 echo $service->getCoordinates('Moscow'); // Yandex: Moscow
@@ -114,78 +114,78 @@ $service = new StoreService($geolocationService);
 
 [PHP-DI](http://php-di.org/) is a dependency injection container.
 
-It helps us to place injection of dependencies to config file.
+It helps us to place injection of dependencies to the config file.
 
 1. Install *PHP-DI*: `composer require php-di/php-di`
 
-2. Create files in `src/` directory:
+2. Create files at the `src/` directory:
 
-```php
-// File: src/GeolocationInterface.php
-interface GeolocationInterface {
-    public function getCityCoordinates($cityName);
-}
-
-// File: src/GoogleMaps.php
-class GoogleMaps implements GeolocationInterface
-{
-    public function getCityCoordinates($cityName) {
-        // Get coordinates from Google API
-        return 'Google: ' . $cityName;
-    }
-}
-
-// File: src/YandexMaps.php
-class YandexMaps implements GeolocationInterface
-{
-    public function getCityCoordinates($cityName) {
-        // Get coordinates from YandexMaps API
-        return 'Yandex: ' . $cityName;
-    }
-}
-
-// File: src/StoreService.php
-class StoreService
-{
-    public function __construct(GeolocationInterface $geolocaionService)
-    {
-        $this->geolocationService = $geolocaionService;
+    ```php
+    // File: src/GeolocationInterface.php
+    interface GeolocationInterface {
+        public function getCityCoordinates($cityName);
     }
     
-    public function getCoordinates($cityName) {
-        return $this->geolocationService->getCityCoordinates($cityName);
+    // File: src/GoogleMaps.php
+    class GoogleMaps implements GeolocationInterface
+    {
+        public function getCityCoordinates($cityName) {
+            // Get coordinates from Google API
+            return 'Google: ' . $cityName;
+        }
     }
-}
-```
+    
+    // File: src/YandexMaps.php
+    class YandexMaps implements GeolocationInterface
+    {
+        public function getCityCoordinates($cityName) {
+            // Get coordinates from YandexMaps API
+            return 'Yandex: ' . $cityName;
+        }
+    }
+    
+    // File: src/StoreService.php
+    class StoreService
+    {
+        public function __construct(GeolocationInterface $geolocaionService)
+        {
+            $this->geolocationService = $geolocaionService;
+        }
+        
+        public function getCoordinates($cityName) {
+            return $this->geolocationService->getCityCoordinates($cityName);
+        }
+    }
+    ```
 
 3. Create `config.php`:
-
-```php
-return [
-    'GeolocationInterface' => DI\autowire('GoogleMaps'),
-];
-```
+    
+    ```php
+    return [
+        'GeolocationInterface' => DI\autowire('GoogleMaps'),
+    ];
+    ```
 
 4. Create `index.php`:
+    
+    ```php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    
+    require __DIR__ . '/vendor/autoload.php';
+    
+    $builder = new DI\ContainerBuilder();
+    $builder->addDefinitions('config.php');
+    $container = $builder->build();
+    
+    $storeService = $container->get('StoreService');
+    
+    echo $storeService->getCoordinates('Moscow'); // Google: Moscow
+    ```
 
-```php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-require __DIR__ . '/vendor/autoload.php';
-
-$builder = new DI\ContainerBuilder();
-$builder->addDefinitions('config.php');
-$container = $builder->build();
-
-$storeService = $container->get('StoreService');
-
-echo $storeService->getCoordinates('Moscow'); // Google: Moscow
-```
-
-As you can see container helps us not to think about dependency injection in client code. In `config.php` we defined how dependencies should be resolved.
+As you can see container helps us not to think about dependency injection in a client code. 
+In the `config.php` we defined how dependencies should be resolved.
 
 ## Useful links
 
 - [Understanding Dependency Injection](http://php-di.org/doc/understanding-di.html)
-- [Dependency Injection (DI) Container in PHP](https://medium.com/tech-tajawal/dependency-injection-di-container-in-php-a7e5d309ccc6)
