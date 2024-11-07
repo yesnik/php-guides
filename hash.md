@@ -1,6 +1,17 @@
 # Hash
 
+A hashing algorithm is a method used to convert data into a fixed-size string of characters.
+
+## Ideal cryptographic hash function
+
+- It should be fast to compute the hash value for any kind of data;
+- It should be impossible to regenerate a message from its hash value (brute force attack is the only option);
+- It should be impossible to find two messages with the same hash (a collision);
+- Every change to a message, even the smallest one, should change the hash value. It should be completely different. It’s called the avalanche effect.
+
 ## `hash()`
+
+[hash](https://www.php.net/manual/en/function.hash.php) - Generate a hash value (message digest)
 
 ```php
 echo hash('md5', 'Hello'); // 32 symbols:  "8b1a9953c4611296a827abf8c47804d7"
@@ -10,6 +21,8 @@ echo hash('whirlpool', 'Hello'); // 128 symbols: "00acca7f805 ... 0ed2fb56bf326b
 ```
 
 ## `hash_algos()`
+
+[hash_algos](https://www.php.net/manual/en/function.hash-algos.php) - Return a list of registered hashing algorithms
 
 ```php
 print_r(hash_algos());
