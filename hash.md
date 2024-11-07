@@ -17,12 +17,17 @@ A hashing algorithm is a method used to convert data into a fixed-size string of
 echo hash('md5', 'Hello'); // 32 symbols:  "8b1a9953c4611296a827abf8c47804d7"
 echo hash('sha1', 'Hello'); // 40 symbols: "f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0"
 echo hash('sha256', 'Hello'); // 64 symbols: "185f8db32271fe25 ... 304eda64826381969"
+echo hash('sha3-512', 'Hello'); // 128 symbols: "0b844ac991e ... 1afc4bd5a8e34627"
 echo hash('whirlpool', 'Hello'); // 128 symbols: "00acca7f805 ... 0ed2fb56bf326bca"
 ```
 
 ## `hash_algos()`
 
 [hash_algos](https://www.php.net/manual/en/function.hash-algos.php) - Return a list of registered hashing algorithms
+
+`MD5`, once considered safe, is now completely compromised. 
+Then there was `SHA-1`, which is now unsafe. 
+The same thing will surely happen to the widely used `SHA-2` someday.
 
 ```php
 print_r(hash_algos());
