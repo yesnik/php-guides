@@ -236,6 +236,24 @@ $datetime2 = strtotime('2018-02-05 00:01:30');
 echo $datetime2 - $datetime1; // returns integer: 90
 ```
 
+### Parse date to day, month, year
+
+[strtotime()](https://www.php.net/manual/en/function.strtotime.php) - Parse about any English textual datetime description into a Unix timestamp.
+
+```php
+$birth_date = '24.11.1990';
+$birth_date = '1990-11-26';
+$birth_date = '11/24/1990';
+
+if ($timestamp = strtotime($birth_date)) {
+    echo date('d', $timestamp); // 24
+    echo date('m', $timestamp); // 11
+    echo date('Y', $timestamp); // 1990
+} else {
+	echo 'Invalid date';
+}
+```
+
 ### Round to nearest minute interval
 
 ```php
