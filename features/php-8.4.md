@@ -34,3 +34,13 @@ $result = array_all($array, function (string $value) {
     return strlen($value) < 12;
 }); // true
 ```
+
+## request_parse_body()
+
+```php
+// Parse request and store result in the $_POST and $_FILES superglobals.
+[$_POST, $_FILES] = request_parse_body();
+
+// Echo the content of some transferred file
+echo file_get_contents($_FILES['file_name']['tmp_name']);
+```
