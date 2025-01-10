@@ -51,3 +51,13 @@ echo file_get_contents($_FILES['file_name']['tmp_name']);
 $date = new DateTimeImmutable();
 echo $date->getMicrosecond();
 ```
+
+## error_reporting(): Constant E_STRICT is deprecated
+
+```php
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+```
+
+- PHP 7: Big part of E_STRICT became E_NOTICE
+- PHP 8.0: All E_STRICT became E_NOTICE
+ 
