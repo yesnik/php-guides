@@ -44,3 +44,10 @@ $result = array_all($array, function (string $value) {
 // Echo the content of some transferred file
 echo file_get_contents($_FILES['file_name']['tmp_name']);
 ```
+
+## DateTimeImmutable->getMicrosecond()
+
+```php
+$date = new DateTimeImmutable();
+echo $date->getMicrosecond();
+```
