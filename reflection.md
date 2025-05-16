@@ -14,13 +14,10 @@ PHP is providing a rich Reflection API that makes life easy to reach any area of
 See [documentation](http://php.net/manual/en/class.reflectionclass.php)
 
 ```php
-/**
- * Class Robot
- */
 class Robot {
-    public function __construct($nickname) {
-        $this->nickname = $nickname;
-    }
+    public function __construct(
+        private ?string $nickname = null
+    ) {}
 
     /**
      * @return string
@@ -39,12 +36,12 @@ class Robot {
     }
 }
 
-class Robocop extends Robot {
+class Cyborg extends Robot {
 }
 
 $reflectionClass = new ReflectionClass('Robot');
 
-$reflectionClassChild = new ReflectionClass('Robocop');
+$reflectionClassChild = new ReflectionClass('Cyborg');
 ```
 
 ### isInstantiable()
@@ -52,6 +49,23 @@ $reflectionClassChild = new ReflectionClass('Robocop');
 ```php
 // Returns true if we can create instance
 var_dump( $reflectionClass->isInstantiable() ); // bool(true)
+```
+
+### newInstance()
+
+```php
+// Create instance with arguments
+$object = $reflectionClass->newInstance('Kenny');
+var_dump($object->getNickname()); // Kenny
+```
+
+### newInstanceWithoutConstructor()
+
+```php
+// Create instance without arguments
+$object = $reflectionClass->newInstanceWithoutConstructor();
+$object->setNickname('Jenny');
+var_dump($object->getNickname()); // Jenny
 ```
 
 ### newInstanceArgs()
