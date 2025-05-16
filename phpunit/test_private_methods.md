@@ -29,8 +29,8 @@ class Item
 /** @test */
 public function getToken_returns_string()
 {
-    $item = new Item();
-    $method = new ReflectionMethod($item, 'getToken');
+    $class = new Item();
+    $method = new ReflectionMethod($class, 'getToken');
     $method->setAccessible(true);
 
     $result = $method->invoke($item);
