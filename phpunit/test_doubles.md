@@ -79,7 +79,7 @@ class LargeFileHandler
     public function handleLargeFileUpload(CModel $model, string $fileAttributeName = 'file'): void
     {
         if ($this->wasLargeFileUploaded()) {
-            $model->addError($fileAttributeName, 'Размер загружаемого файла должен быть не более 15 Мб');
+            $model->addError($fileAttributeName, 'File size must be less than 15 Mb');
         }
     }
 
@@ -104,14 +104,14 @@ class LargeFileHandlerTest extends CTestCase
             ->method('getIsPostRequest')
             ->willReturn(true);
 
-        $lagreFileHandler = new LargeFileHandler($request);
+        $largeFileHandler = new LargeFileHandler($request);
 
         // Create a mock of FileManager and stub method addError
         $model = self::createMock(FileManager::class);
         // Add an expectation
         $model->expects(self::once())->method('addError');
 
-        $lagreFileHandler->handleLargeFileUpload($model);
+        $largeFileHandler->handleLargeFileUpload($model);
     }
 }
 ```
