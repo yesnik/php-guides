@@ -92,8 +92,20 @@ $client = new SoapClient($wsdlPath, [
     'soap_version' => SOAP_1_1,
     'trace' => true,
     'cache_wsdl' => WSDL_CACHE_NONE,
+
+    // If you need auth:
     'login' => 'admin',
-    'password' => '123'
+    'password' => '123',
+
+    // If you need proxy:
+    'proxy_host' => '192.10.10.10',
+    'proxy_port' => '8080',
+    'proxy_login' => 'myuser',
+    'proxy_password' => 'myPass123',
+    'stream_context' => stream_context_create([
+        'proxy' => "tcp://192.10.10.10:8080",
+        'request_fulluri' => true,
+    ]),
 ]);
 
 // echo 'Types: ' . PHP_EOL;
