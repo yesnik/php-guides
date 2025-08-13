@@ -1,8 +1,10 @@
 # PHP array functions
 
+Documentation: [Array Functions](https://www.php.net/manual/en/ref.array.php)
+
 ## array_column()
 
-[array_column](https://www.php.net/manual/en/function.array-column.php) — Return values from a single column in the input array
+Return values from a single column in the input array
 
 ```php
 $records = [
@@ -31,7 +33,7 @@ Array
 
 ## array_combine()
 
-[array_combine](https://www.php.net/manual/en/function.array-combine.php) - Creates an array by using one array for keys and another for its values.
+Creates an array by using one array for keys and another for its values.
 
 ```php
 $keys = [2023, 2024];
@@ -215,7 +217,7 @@ echo array_sum([1, 2, 3]); // 6
 
 ## asort() / arsort()
 
-[asort](https://www.php.net/manual/en/function.asort) is used mainly when sorting associative arrays where the actual element order is significant.
+It's used mainly when sorting associative arrays where the actual element order is significant.
 
 - `asort(array &$array, int $flags = SORT_REGULAR): true` - sort an array in *ascending* order and maintain index association.
 - `arsort()` - ... *descending* order
