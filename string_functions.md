@@ -87,6 +87,16 @@ Word = dd
 */
 ```
 
+## strtr
+
+[strtr](https://www.php.net/manual/en/function.strtr.php) - Translate characters or replace substrings.
+
+```php
+$trans = ["{name}" => "Ken", "{age}" => "20", "some" => "-"];
+echo strtr("Dear {name}! Hi {name}! Your age is {age}", $trans);
+// Dear Ken! Hi Ken! Your age is 20
+```
+
 ## str_repeat
 
 ```php
