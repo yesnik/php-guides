@@ -4,13 +4,20 @@ See [documentation](https://www.php.net/manual/en/book.password.php)
 
 ## password_hash
 
-Creates a password hash using defined algorithms
+Creates a password hash using defined algorithms.
 
 ```php
 $password = '123';
 
 // Generate hash of password. We can save it to Database
 $hash = password_hash($password, PASSWORD_DEFAULT);
+echo $hash;
+/*
+Output will be different each time:
+'$2y$12$4Ik02B5dkGyTDTrk8m3iSe1F.vCmEcL5TGLmqRnOhfjeg7KUUvNq2'
+'$2y$12$K6GrmGXy4fQVddpwaFaPaudREZDOwFv4jPyXLYTlO6oo4Iw6exrb2'
+'$2y$12$.l0nnZbpTX7mcgWzwfJN7eMzy.aBjoDprP7ejYP2dSea5RruD8jGu'
+*/
 ```
 
 It is recommended to store the generated hash in a database column that can expand beyond 
