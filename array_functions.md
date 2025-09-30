@@ -2,6 +2,23 @@
 
 Documentation: [Array Functions](https://www.php.net/manual/en/ref.array.php)
 
+## array_chunk()
+
+Chunks an array into arrays with `length` elements. The last chunk may contain less than `length` elements.
+
+```php
+$arr = [1, 2, 3, 4, 5, 6, 7];
+
+$res = array_chunk($arr, 3);
+/* Result:
+[
+	0 => [1, 2, 3],
+    1 => [4, 5, 6],
+    2 => [7]
+]
+*/
+```
+
 ## array_column()
 
 Return values from a single column in the input array
