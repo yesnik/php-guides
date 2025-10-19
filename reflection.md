@@ -160,6 +160,49 @@ array(1) {
 */
 ```
 
+### ReflectionMethod example
+
+```php
+// Here we create attribute that could be applied to method, and could be repeatable
+#[Attribute(Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
+class Given
+{
+    public function __construct(
+        private string $title,    
+    ) {}
+    
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+}
+
+class Car
+{
+    // Apply attribute 'Given' to the method
+    #[Given(title: 'product :arg1')]
+    #[Given(title: 'product :arg2')]
+    public function getModel(): string
+    {
+        return 'BMW';
+    }
+}
+
+
+$reflectionMethod = new ReflectionMethod(Car::class, 'getModel');
+
+// Get all attributes on the method
+$methodAttributes = $reflectionMethod->getAttributes('Given');
+$attribute = $methodAttributes[0];
+
+echo "Attribute Name: " . $attribute->getName() . PHP_EOL; // 'Attribute Name: Given'
+echo "Attribute Arguments: " . print_r($attribute->getArguments(), true) . PHP_EOL; // 'Attribute Arguments: Array( [title] => product :arg1 )'
+
+// Instantiate the actual attribute class
+$attributeInstance = $attribute->newInstance();
+echo "Attribute Instance Param: " . $attributeInstance->getTitle() . PHP_EOL; // 'Attribute Instance Param: product :arg1'
+```
+
 ## ReflectionParameter
 
 See [documentation](https://www.php.net/manual/en/class.reflectionparameter.php)
