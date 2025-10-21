@@ -94,6 +94,38 @@ $message = openssl_decrypt($ciphertext, $algo, $secretKey, 0, $iv);
 echo 'Decoded message: ' . $message . PHP_EOL; // Decoded message: Hello world
 ```
 
+## Encrypt, decrypt with base64_encode, base64_decode and hash_hmac
+
+```php
+$message = "Hello world";
+$cipher = "AES-128-CBC";
+$secretKey = 'mypassword';
+$ivLength = openssl_cipher_iv_length($cipher); 
+$iv = openssl_random_pseudo_bytes($ivLength); // cipher initialization vector (iv)
+
+// Encrypt
+$ciphertextBin = openssl_encrypt($message, $cipher, $secretKey, OPENSSL_RAW_DATA, $iv);
+$hmac = hash_hmac('sha256', $ciphertextBin, $secretKey, true);
+
+// IMPORTANT! We concatenate 3 values here
+$messageEncoded = base64_encode($iv . $hmac . $ciphertextBin);
+echo "messageEncoded: " . $messageEncoded . "\n"; // messageEncoded: otDEV1YLD8HwB5SzInnl+kmeE/SHgSpGPtmDHj8gn3T5A6FSJgUKSnfnVybFNNtDxUAn6y4LnBwoIR8/kivVQg==
+
+// Decrypt
+$messageDecoded = base64_decode($messageEncoded);
+$ivDecode = substr($messageDecoded, 0, $ivLength);
+$hmacDecode = substr($messageDecoded, $ivLength, 32); // SHA256 is 32 bytes
+$ciphertextBinDecoded = substr($messageDecoded, $ivLength + 32);
+$messageDecrypted = openssl_decrypt($ciphertextBinDecoded, $cipher, $secretKey, OPENSSL_RAW_DATA, $ivDecode);
+$hmacCalculated = hash_hmac('sha256', $ciphertextBinDecoded, $secretKey, true);
+
+if (hash_equals($hmacDecode, $hmacCalculated)) {
+    echo "Decrypted: " . $messageDecrypted . "\n"; // Decrypted: Hello world
+} else {
+    echo "Decryption failed: HMAC mismatch.\n";
+}
+```
+
 ## Create public / private keys
 
 ```php
