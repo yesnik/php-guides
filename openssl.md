@@ -1,6 +1,5 @@
 # PHP OpenSSL
 
-- **HMAC** (Hash-based message authentication code) is a cryptographic authentication technique that uses a hash function and a secret key.
 - Don't use `ECB` mode, use `CBC` instead.
 - Never use plain text as encryption key. Always hash the plain text key and then use for encryption.
 - Always use Random `IV` (Initialization Vector) for encryption and decryption. True randomization is important.
