@@ -54,6 +54,46 @@ Array
 */
 ```
 
+## Encrypt, decrypt with bin2hex, hex2bin
+
+```php
+// Sender
+echo '== ENCODE: ' . PHP_EOL;
+
+$message = 'Hello world';
+$algo = 'AES-256-CBC';
+$secretKey = 'password';
+$ivLength = openssl_cipher_iv_length($algo);
+$iv = openssl_random_pseudo_bytes($ivLength);
+
+$ciphertext = openssl_encrypt($message, $algo, $secretKey, 0, $iv);
+echo 'ciphertext: ' . $ciphertext . PHP_EOL; // ciphertext: sBZFqL6h7l3oxAox/aN6Bg==
+
+// IMPORTANT! We concatenate 2 values here
+$messageEncoded = bin2hex($iv . $ciphertext);
+echo 'bin2hex: ' . $messageEncoded . PHP_EOL; // bin2hex: c789e1d3b1ca6a887a834ff0fe0f57cf73425a46714c3668376c336f78416f782f614e3642673d3d
+
+// Receiver
+echo '== DECODE: ' . PHP_EOL;
+
+$algo = 'AES-256-CBC';
+$secretKey = 'password';
+$ivLength = openssl_cipher_iv_length($algo);
+
+$messageBin = hex2bin($messageEncoded);
+
+$iv = substr($messageBin, 0, $ivLength);
+if (strlen($iv) < $ivLength) {
+    throw new Exception('Key length is less than ' . $ivLength);
+}
+
+$ciphertext = substr($messageBin, $ivLength);
+echo 'ciphertext: ' . $ciphertext . PHP_EOL; // ciphertext: sBZFqL6h7l3oxAox/aN6Bg==
+
+$message = openssl_decrypt($ciphertext, $algo, $secretKey, 0, $iv);
+echo 'Decoded message: ' . $message . PHP_EOL; // Decoded message: Hello world
+```
+
 ## Create public / private keys
 
 ```php
