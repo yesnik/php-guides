@@ -51,3 +51,18 @@ foreach ($result as $row) {
     echo $row['id'] . ' - ' . $row['alias'] . '<br>';
 }
 ```
+
+### Map result to a class with `PDO::FETCH_CLASS`
+
+```php
+$host = '127.0.0.1';
+$db = 'my_store';
+$user = 'root';
+$password = '';
+$dsn = "mysql:host=$host;dbname=$db";
+$pdo = new PDO($dsn, $user, $password);
+
+$stmt = $pdo->query('SELECT * FROM products');
+$stmt->setFetchMode(PDO::FETCH_CLASS, Product::class);
+$products = $stmt->fetchAll();
+```
