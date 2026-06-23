@@ -66,11 +66,19 @@ echo "Associative array always displayed as object: ", json_encode($d), "\n";
 
 echo "Associative array always displayed as object: ", json_encode($d, JSON_FORCE_OBJECT), "\n\n";
 // Associative array always displayed as object: {"name":"Kenny","age":"18"}
+
+// An invalid, malformed UTF-8 sequence
+$invalidData = "\xB1\\x31"; 
+// your code goes here
+var_dump( json_encode($invalidData) ); // bool(false)
+
+var_dump( json_encode($invalidData, JSON_THROW_ON_ERROR) ); // PHP Fatal error:  Uncaught JsonException: Malformed UTF-8 characters, possibly incorrectly encoded
 ```
 
 ## Interface `JsonSerializable`
 
-Allows us to make class serializable with `json_encode`.
+The [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php) interface in PHP allows objects to customize how they are represented when passed into `json_encode()`. By default, `json_encode()` only serializes public properties. 
+Implementing this interface lets us expose private data, hide sensitive data, or transform formats.
 
 *Example 1*
 
